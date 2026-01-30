@@ -1,5 +1,4 @@
-# Dokumentáció
-
+[Link Text](https://docs.google.com/document/d/1VTaurLMwOshJRTh83sCHWm3pjS5-mS59yrQJPQiQALk/edit?usp=sharing)
 ![Page 1](docs/GSA_page-0001.jpg)
 ![Page 2](docs/GSA_page-0002.jpg)
 ![Page 3](docs/GSA_page-0003.jpg)
