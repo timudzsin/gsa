@@ -56,6 +56,6 @@
 
 
 
-## *Ha önmagad legjobb verziója lennél, akkor ki lennél?*
-## *Kaptál egy életet, és te tényleg úgy fogsz dönteni, hogy elpazarlod?*
-## *Van lehetőséged küzdeni.*
+## ***Ha önmagad legjobb verziója lennél, akkor ki lennél?***
+## ***Van lehetőséged küzdeni.***
+## ***Kaptál egy életet, és te tényleg úgy fogsz dönteni, hogy elpazarlod?***
