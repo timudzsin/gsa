@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('password');
             $table->boolean('is_admin')->default(false);
+            
             $table->text('dont_want_essay')->nullable();
             $table->text('want_essay')->nullable();
 
