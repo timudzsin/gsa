@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('checklist_id')->references('id')->on('checklists')->cascadeOnDelete();
             $table->foreignId('task_id')->references('id')->on('tasks')->cascadeOnDelete();
             $table->boolean('is_completed')->default(false);
-            //$table->string('description');
-            //$table->integer('rank');
+            $table->string('description');
+            $table->integer('rank');
 
             $table->timestamps();
         });

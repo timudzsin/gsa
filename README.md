@@ -3,10 +3,14 @@
 
 
 
+
 # 💻 Hátralévő fejlesztések
 - ✅ backend: inicializálás, api csomag, key, .env
 - ✅ frontend: inicializálás, axios csomag, react-router-dom csomag
-- backend: adatbázis migrációk és modellek
+- ✅ backend: adatbázis migrációk és modellek
+- ❌ backend: teszt adatok seederekel
+- ❌ backend: register, login, logout, me API végpontok
+
 
 
 
@@ -21,9 +25,11 @@
 
 
 
+
 # ℹ️ Információ
 ### 🎯 Miért fontos, hogy legyen célod?
 ...
+
 
 
 
@@ -52,6 +58,7 @@
 - 📋 Előző checklistek megtekintése
 - ℹ️ Információ
 - ↩️ Kilépés
+
 
 
 

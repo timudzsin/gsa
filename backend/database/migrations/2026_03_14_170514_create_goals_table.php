@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('is_completed')->default(false);
             $table->integer('rank')->default(1);
 
-            $table->string('color')->default('gray');
+            $table->string('color')->default('GRAY');
             $table->string('icon_url')->default('default.png');
 
             $table->timestamps();
