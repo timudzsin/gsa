@@ -9,7 +9,9 @@
 - ✅ frontend: inicializálás, axios csomag, react-router-dom csomag
 - ✅ backend: adatbázis migrációk és modellek
 - ✅ backend: teszt adatok seederekel
-- ❌ backend: register, login, logout, me API végpontok
+- ✅ backend: register, login, logout, me API végpontok
+- ✅ frontend: react projekt előkészítése
+- ❌ frontend: react-router-dom navigáció, és Page komponensek elkészítése
 
 
 
