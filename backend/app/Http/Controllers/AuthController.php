@@ -27,7 +27,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // API (bearer) token létrehozása a felhasználónak (tehát regisztráció után rögtön belépünk)
+        // API Bearer Token létrehozása a felhasználónak (tehát regisztráció után rögtön belépünk)
         $token = $user->createToken('api-token')->plainTextToken;
 
         // Válasz
@@ -59,7 +59,7 @@ class AuthController extends Controller
         }
         $user = Auth::user();
 
-        // API (bearer) token létrehozása a felhasználónak
+        // API Bearer Token létrehozása a felhasználónak
         $token = $user->createToken('api-token')->plainTextToken;
 
         // Válasz
@@ -68,5 +68,52 @@ class AuthController extends Controller
             'user' => $user,
             'token' => $token,
         ], 200);
+    }
+
+
+
+    public function me(Request $request)
+    {
+        // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
+        $request->headers->set('Accept', 'application/json');
+
+        // Felhasználó lekérdezése
+        $user = $request->user();
+        if (!$user) {
+            return response()->json([
+                'message' => 'Nem található felhasználó ehhez a Bearer Tokenhez'
+            ], 404);
+        }
+
+        // Válasz
+        return response()->json([
+            'message' => 'A Bearer Token felhasználója:',
+            'user' => $user,
+        ]);
+    }
+
+
+
+    public function logout(Request $request)
+    {
+        // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
+        $request->headers->set('Accept', 'application/json');
+
+        // Felhasználó lekérdezése
+        $user = $request->user();
+        if (!$user) {
+            return response()->json([
+                'message' => 'Nem található felhasználó ehhez a Bearer Tokenhez'
+            ], 404);
+        }
+
+        // A felhasználó Bearer Tokenjét töröljük
+        $request->user()->currentAccessToken()->delete();
+
+        // Válasz
+        return response()->json([
+            'message' => 'Sikeres kijelentkezés',
+            'user' => $user,
+        ]);
     }
 }
