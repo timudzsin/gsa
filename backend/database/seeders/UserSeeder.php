@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'marci',
             'password' => 'marci',
+            
             'dont_want_essay' => 'Egy vesztes leszek.',
             'want_essay' => 'Gazdag, izmos és sikeres vagyok.',
         ]);

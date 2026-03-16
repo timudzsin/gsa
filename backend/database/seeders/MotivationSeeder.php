@@ -15,7 +15,7 @@ class MotivationSeeder extends Seeder
     {
         Motivation::create([
             'goal_id' => 1,
-            'description' => 'Hogy könnyebben eljuthassak helyekre.',
+            'description' => 'Hogy könnyebben eljuthassak bárhova.',
         ]);
         Motivation::create([
             'goal_id' => 1,

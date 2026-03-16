@@ -16,7 +16,9 @@ class TaskSeeder extends Seeder
         Task::create([
             'goal_id' => 1,
             'user_id' => 1,
+
             'description' => 'munka',
+
             'type' => 'on_certain_days_of_the_week',
             'is_on_saturday' => true,
             'is_on_sunday' => true,
@@ -24,14 +26,18 @@ class TaskSeeder extends Seeder
         Task::create([
             'goal_id' => 2,
             'user_id' => 1,
+
             'description' => 'edzés',
+
             'type' => 'x_times_per_week',
             'times_per_week' => 3,
         ]);
         Task::create([
             'goal_id' => 2,
             'user_id' => 1,
+
             'description' => '150 g protein',
+            
             'type' => 'daily',
         ]);
     }
