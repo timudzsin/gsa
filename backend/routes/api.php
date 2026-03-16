@@ -10,4 +10,8 @@ Route::get('/user', function (Request $request) {
 
 // register, login, me, logout
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/register_old', [AuthController::class, 'register_old']);
+Route::post('/login', [AuthController::class, 'login']);
+
+
+
+
