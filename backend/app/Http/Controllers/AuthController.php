@@ -82,14 +82,14 @@ class AuthController extends Controller
         if (!$user) {
             return response()->json([
                 'message' => 'Nem található felhasználó ehhez a Bearer Tokenhez'
-            ], 404);
+            ], 401);
         }
 
         // Válasz
         return response()->json([
             'message' => 'A Bearer Token felhasználója:',
             'user' => $user,
-        ]);
+        ], 200);
     }
 
 
@@ -114,6 +114,6 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Sikeres kijelentkezés',
             'user' => $user,
-        ]);
+        ], 200);
     }
 }

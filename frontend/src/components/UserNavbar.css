@@ -1,0 +1,37 @@
+.UserNavbar {
+	background-color: hsla(0, 0%, 20%, 0.6);
+	backdrop-filter: blur(3px);
+	/* For some browsers, also include this */
+	-webkit-backdrop-filter: blur(3px);
+	box-shadow: 0px 0px 10px hsla(0, 0%, 0%, 0.6);
+	border: 1.5px solid hsl(0, 0%, 30%, 0.6);
+	border-top: 1.5px solid hsl(0, 0%, 60%, 0.6);
+	border-bottom: 1.5px solid hsl(0, 0%, 45%, 0.6);    
+	width: fit-content;
+	border-radius: 72px;
+	padding: 2px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+
+	position: fixed;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1000;
+}
+
+.UserNavbar a {
+	padding: 4px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-decoration: none;
+	font-size: 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.UserNavbar a img {
+	height: 30px;
+	width: 30px;
+}
