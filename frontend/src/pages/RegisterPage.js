@@ -5,6 +5,7 @@ export default function RegisterPage() {
 	// ezen még dolgozni kell:
 	// /me végpontot használva.
 	// ha 200 jön, navigálj /user-re; ha 401/419, töröld a token-t és maradjon a regisztrációnál.
+    // ezt a logikát lehet, hogy érdemes az App.js-be rakni
 	/* 	const navigate = useNavigate();
 
 	useEffect(() => {
