@@ -7,11 +7,12 @@
 	border: 1.5px solid hsl(0, 0%, 30%, 0.6);
 	border-top: 1.5px solid hsl(0, 0%, 60%, 0.6);
 	border-bottom: 1.5px solid hsl(0, 0%, 45%, 0.6);
+	border-radius: 100000000000000000000000px;
+
 	width: fit-content;
-	border-radius: 72px;
-	padding: 2px;
-	padding-left: 15px;
-	padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
@@ -24,15 +25,20 @@
 }
 
 .UserNavbar a {
-	padding: 4px;
-	width: 71px;
+    min-width: max(60px, 8vw);
+    padding: 5px;
+
 	text-decoration: none;
-	font-size: 12px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-.UserNavbar a img {
-	height: 30px;
-	width: 30px;
+.UserNavbar a svg {
+    fill: hsl(0, 0%, 95%);
+    height: 32px;
+	width: 32px;
+}
+.UserNavbar a p {
+    color: hsl(0, 0%, 95%);
+    font-size: 12px;
 }

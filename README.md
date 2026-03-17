@@ -11,7 +11,21 @@
 - ✅ backend: teszt adatok seederekel
 - ✅ backend: register, login, logout, me API végpontok
 - ✅ frontend: react projekt előkészítése
-- ❌ frontend: react-router-dom navigáció, és Page komponensek elkészítése
+- ✅ frontend: react-router-dom navigáció, és Page komponensek elkészítése
+- ❌ frontend: register form
+- ❌ frontend: login form
+- ❌ 
+- ❌ 
+- ❌ 
+- ❌ 
+- ❌ 
+- ❌ 
+- ❌ 
+- ❌ 
+- ❌ 
+- ❌ 
+- ❌ 
+- ❌ 
 
 
 
