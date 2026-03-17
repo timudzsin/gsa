@@ -25,7 +25,7 @@
 }
 
 .UserNavbar a {
-    min-width: max(60px, 8vw);
+    min-width: max(65px, 7.5vw);
     padding: 5px;
 
 	text-decoration: none;
@@ -35,8 +35,8 @@
 }
 .UserNavbar a svg {
     fill: hsl(0, 0%, 95%);
-    height: 32px;
-	width: 32px;
+    height: 30px;
+	width: 30px;
 }
 .UserNavbar a p {
     color: hsl(0, 0%, 95%);
