@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import RegisterForm from "../components/RegisterForm";
+import "./RegisterPage.css";
 
 export default function RegisterPage() {
 	// ezen még dolgozni kell:
 	// /me végpontot használva.
 	// ha 200 jön, navigálj /user-re; ha 401/419, töröld a token-t és maradjon a regisztrációnál.
-    // ezt a logikát lehet, hogy érdemes az App.js-be rakni
+	// ezt a logikát lehet, hogy érdemes az App.js-be rakni
 	/* 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -17,5 +19,9 @@ export default function RegisterPage() {
 		}
 	}, []); // csak egyszer, a komponens mountolásakor lefut
  */
-	return <div className="RegisterPage">RegisterPage</div>;
+	return (
+		<div className="RegisterPage">
+			<RegisterForm></RegisterForm>
+		</div>
+	);
 }

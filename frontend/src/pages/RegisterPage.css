@@ -1,0 +1,13 @@
+.RegisterPage {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	/*    
+    background-image: url("../assets/images/bloom.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    */
+}
