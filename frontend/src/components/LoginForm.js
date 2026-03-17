@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./RegisterForm.css";
+import "./LoginForm.css";
 
-export default function RegisterForm() {
+export default function LoginForm() {
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function RegisterForm() {
 		e.preventDefault(); // ne frissüljön az oldal
 
 		axios
-			.post("http://localhost:8000/api/register", {
+			.post("http://localhost:8000/api/login", {
 				name,
 				password,
 			})
@@ -43,7 +43,7 @@ export default function RegisterForm() {
 	}
 
 	return (
-		<form className="RegisterForm" onSubmit={handleSubmit}>
+		<form className="LoginForm" onSubmit={handleSubmit}>
 			<input
 				type="text"
 				placeholder="Név"
@@ -58,7 +58,7 @@ export default function RegisterForm() {
 				onChange={(e) => setPassword(e.target.value)}
 				required
 			/>
-			<button type="submit">Regisztráció</button>
+			<button type="submit">Belépés</button>
 		</form>
 	);
 }

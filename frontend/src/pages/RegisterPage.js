@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import RegisterForm from "../components/RegisterForm";
 import "./RegisterPage.css";
 
