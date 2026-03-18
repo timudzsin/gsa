@@ -1,0 +1,26 @@
+.UserDontWantEssay {
+	min-height: calc(100vh - 75px - 75px);
+}
+
+.UserDontWantEssay > textarea {
+	background-color: hsl(0, 0%, 0%);
+	width: 100%;
+	min-height: calc(100vh - 75px - 75px);
+    overflow-y: hidden;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+	border: none;
+	resize: none;
+
+	font-size: 20px;
+}
+
+
+
+
+
+textarea:focus {
+	outline: none;
+}

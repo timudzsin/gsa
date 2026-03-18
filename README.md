@@ -12,10 +12,13 @@
 - ✅ backend: register, login, logout, me API végpontok
 - ✅ frontend: react projekt előkészítése
 - ✅ frontend: react-router-dom navigáció, és Page komponensek elkészítése
-- ❌ frontend: register form
-- ❌ frontend: login form
-- ❌ 
-- ❌ 
+- ✅ frontend: register form
+- ✅ frontend: login form
+- ❌ dokumentáció: dokumentáció elkezdése a sablon alapján
+- ❌ frontend: UserDontWantEssay komponens
+- ❌ frontend: UserWantEssay komponens
+- ❌ frontend: UserGoals komponens
+- ❌ frontend: UserGoal komponens
 - ❌ 
 - ❌ 
 - ❌ 
@@ -52,25 +55,26 @@
 
 # 🔳 Mik a legfontosabb menük, és ott miket tudsz csinálni?
 ### 🪵 Mit nem akarok?
-- ✍️ "Mit nem akarok?" esszé megírása
+- "Mit nem akarok?" esszé megírása
 - ℹ️ Információ
 - ↩️ Kilépés
 
 ### 🥕 Mit akarok?
-- ✍️ "Mit akarok?" esszé megírása
+- "Mit akarok?" esszé megírása
 - ℹ️ Információ
 - ↩️ Kilépés
 
 ### 🎯 CÉLOK
-- 🎯 Célok szerkesztése
-- 🎯 Új cél létrehozása
+- Célok szerkesztése
+- ➕ Új cél létrehozása
 - 🏆 Teljesített célok megtekintése
 - ℹ️ Információ
 - ↩️ Kilépés
 
 ### ✅ FELADATOK
-- ✅ Feladatok teljesítése a mai checklisten
-- ✅ Új céltól független feladat létrehozása (today only, daily, on certain days of the week, x times a week) (és ezek szerkesztése)
+- Feladatok teljesítése a mai checklisten
+- ➕ Új céltól független feladat létrehozása (today only, daily, on certain days of the week, x times a week) (és ezek szerkesztése)
+- ⭕ Céltól független feladatok szerkesztése
 - 📋 Előző checklistek megtekintése
 - ℹ️ Információ
 - ↩️ Kilépés
