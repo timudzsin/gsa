@@ -17,7 +17,7 @@ export default function RegisterForm() {
 				password,
 			})
 			.then(function (response) {
-				console.log(response);
+				console.log(response.data);
 
 				// Token beállítása
 				const token =

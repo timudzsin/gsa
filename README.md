@@ -15,6 +15,8 @@
 - ✅ frontend: register form
 - ✅ frontend: login form
 - ❌ dokumentáció: dokumentáció elkezdése a sablon alapján
+- ❌ backend: get UserDontWantEssay route
+- ❌ backend: post UserDontWantEssay route
 - ❌ frontend: UserDontWantEssay komponens
 - ❌ frontend: UserWantEssay komponens
 - ❌ frontend: UserGoals komponens

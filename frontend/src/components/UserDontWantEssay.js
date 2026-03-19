@@ -16,7 +16,9 @@ export default function UserDontWantEssay() {
 		<form className="UserDontWantEssay">
 			<textarea
 				onChange={handleChange}
-				placeholder="Mit nem akarok?"
+				placeholder={
+					"\n\n\nMit nem akarok a következő 4 évben?\n\n\nMilyen negatív gondolataim vannak?\n\n\nMi fog történni, ha nem teszem a dolgokat amiket kéne?"
+				}
 				ref={textareaRef}
 				spellCheck={false}
 			></textarea>

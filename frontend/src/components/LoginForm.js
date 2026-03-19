@@ -17,7 +17,7 @@ export default function LoginForm() {
 				password,
 			})
 			.then(function (response) {
-				console.log(response);
+				console.log(response.data);
 
 				// Token beállítása
 				const token =
