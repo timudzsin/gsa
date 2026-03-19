@@ -14,13 +14,13 @@
 - ✅ frontend: react-router-dom navigáció, és Page komponensek elkészítése
 - ✅ frontend: register form
 - ✅ frontend: login form
-- ❌ dokumentáció: dokumentáció elkezdése a sablon alapján
-- ❌ backend: get UserDontWantEssay route
-- ❌ backend: post UserDontWantEssay route
+- ✅ backend: get UserDontWantEssay route
+- ✅ backend: post UserDontWantEssay route
 - ❌ frontend: UserDontWantEssay komponens
 - ❌ frontend: UserWantEssay komponens
 - ❌ frontend: UserGoals komponens
 - ❌ frontend: UserGoal komponens
+- ❌ dokumentáció: dokumentáció elkezdése a sablon alapján
 - ❌ 
 - ❌ 
 - ❌ 
@@ -37,7 +37,7 @@
 
 
 # 💡 Ötletek
-- Üveg elemek: A képernyőn fix helyen van
+- Üveg elemek: A képernyőn fix helyen van (az üveg gombok ikon és font színe 100% fehér)
 - Opak elemek: Az oldalon fix helyen van
 - Egy feladatra hosszan nyomva fel-le lehet mozgatni a listán, ezzel változtatva a rankját
 - Egy feladatra hosszan nyomva megjelennek a beállítása, ha egy céltól független feladat akkor felugróablakban, ha célhoz kapcsolódó feladat akkor a megfelelő célt megnyitja

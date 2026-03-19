@@ -14,7 +14,7 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Navigate to="/login" replace />} />
+					<Route path="/" element={<Navigate to="/register" replace />} />
 
 					<Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
 

@@ -17,3 +17,4 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 // Don't want essay
 Route::get('/dont-want-essay', [UserController::class, 'getDontWantEssay'])->middleware('auth:sanctum');
+Route::post('/dont-want-essay', [UserController::class, 'postDontWantEssay'])->middleware('auth:sanctum');

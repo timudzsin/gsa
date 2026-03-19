@@ -15,7 +15,7 @@ class UserController extends Controller
         $user = $request->user();
         if (!$user) {
             return response()->json([
-                'message' => 'Nincs bejelentkezett felhasználó'
+                'message' => 'Nincs bejelentkezett felhasználó ehhez a tokenhez'
             ], 401);
         }
 
@@ -26,7 +26,33 @@ class UserController extends Controller
     }
 
 
-    
+
+    public function postDontWantEssay(Request $request)
+    {
+        // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
+        $request->headers->set('Accept', 'application/json');
+
+        // Felhasználó lekérdezése
+        $user = $request->user();
+        if (!$user) {
+            return response()->json([
+                'message' => 'Nincs bejelentkezett felhasználó ehhez a tokenhez'
+            ], 401);
+        }
+
+        // Mentés
+        $user->dont_want_essay = $request->dont_want_essay;
+        $user->save();
+
+        // Válasz
+        return response()->json([
+            'message' => 'Mit nem akarok esszé mentve',
+            'dont_want_essay' => $user->dont_want_essay
+        ], 200);
+    }
+
+
+
 
 
     /**
