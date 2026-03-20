@@ -6,16 +6,25 @@
     buttons:            20?
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+
+@font-face {
+	font-family: "Lexend";
+	src: url("./assets/fonts/Lexend/Lexend-VariableFont_wght.ttf") format("truetype");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
 
 * {
 	box-sizing: border-box;
 	padding: 0px;
 	margin: 0px;
+
 	font-family: "Lexend", sans-serif;
-	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;
+	font-optical-sizing: auto;
 	color: hsl(0, 0%, 95%);
 }
 html,
@@ -24,6 +33,7 @@ body,
 .App {
 	background-color: hsl(0, 0%, 0%);
 }
+
 
 body {
 	-webkit-font-smoothing: antialiased;
