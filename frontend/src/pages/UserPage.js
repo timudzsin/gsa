@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import UserNavbar from "../components/UserNavbar";
 import "./UserPage.css";
 import axios from "axios";
+import { UserContext } from "../contexts/UserContext";
 
 export default function UserPage() {
-	// Ki van bejelentkezve?
+	const { loading } = useContext(UserContext);
+
+	// Segítség: Ki van bejelentkezve?
 	useEffect(() => {
 		axios
 			.get("http://localhost:8000/api/me", {
@@ -21,6 +24,7 @@ export default function UserPage() {
 			});
 	}, []);
 
+	if (loading) return <h1>Betöltés… Betöltés… Betöltés… Betöltés… Betöltés… Betöltés… Betöltés… Betöltés… </h1>;
 	return (
 		<div className="UserPage">
 			<Outlet></Outlet>

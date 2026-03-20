@@ -3,17 +3,20 @@ import "./UserDontWantEssay.css";
 import { UserContext } from "../contexts/UserContext";
 
 export default function UserDontWantEssay() {
-	const [formData, setFormData] = useState(""); // Kontrollált komponenshez
+	const { userDontWantEssay, setUserDontWantEssay, postUserDontWantEssay } = useContext(UserContext);
+    const debounceTimeout = useRef(null);
 	const textareaRef = useRef(null);
-	const { getUserDontWantEssay } = useContext(UserContext);
-
-    // A komponens mount-olásakor lekérdezzük a felhasználó dont_want_essay-ét, és beállítjuk a form-ba
-	useEffect(() => {
-		getUserDontWantEssay().then(data => setFormData(data.dont_want_essay));
-	}, []);
 
 	function handleChange(e) {
-		setFormData(e.target.value); // Kontrollált komponenshez
+		setUserDontWantEssay(e.target.value);
+
+		// Postolás a backend-nek 3 másodperc no-activity után
+		if (debounceTimeout.current) {
+			clearTimeout(debounceTimeout.current);
+		}
+		debounceTimeout.current = setTimeout(() => {
+			postUserDontWantEssay(e.target.value);
+		}, 3000);
 
 		// A form megfelelő magasságának beállítása (reseteljük a magasságot és állítjuk a tartalomhoz)
 		if (textareaRef.current) {
@@ -25,7 +28,7 @@ export default function UserDontWantEssay() {
 	return (
 		<form className="UserDontWantEssay">
 			<textarea
-				value={formData} // Kontrollált komponenshez
+				value={userDontWantEssay}
 				onChange={handleChange}
 				placeholder={
 					"\n\n\nMit nem akarok a következő 4 évben?\n\n\nMilyen negatív gondolataim vannak?\n\n\nMi fog történni, ha nem teszem a dolgokat amiket kéne?"

@@ -13,27 +13,32 @@ import { UserProvider } from "./contexts/UserContext";
 function App() {
 	return (
 		<div className="App">
-			<UserProvider>
-				<BrowserRouter>
-					<Routes>
-						<Route path="/" element={<Navigate to="/register" replace />} />
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Navigate to="/register" replace />} />
 
-						<Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
+					<Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
 
-						<Route path="/login" element={<LoginPage></LoginPage>}></Route>
+					<Route path="/login" element={<LoginPage></LoginPage>}></Route>
 
-						<Route path="/user" element={<UserPage></UserPage>}>
-							<Route index element={<Navigate to="dont-want" replace />}></Route>
-							<Route path="dont-want" element={<UserDontWantPage></UserDontWantPage>}></Route>
-							<Route path="want" element={<UserWantPage></UserWantPage>}></Route>
-							<Route path="goals" element={<UserGoalsPage></UserGoalsPage>}></Route>
-							<Route path="tasks" element={<UserTasksPage></UserTasksPage>}></Route>
-						</Route>
+					<Route
+						path="/user"
+						element={
+							<UserProvider>
+								<UserPage></UserPage>
+							</UserProvider>
+						}
+					>
+						<Route index element={<Navigate to="dont-want" replace />}></Route>
+						<Route path="dont-want" element={<UserDontWantPage></UserDontWantPage>}></Route>
+						<Route path="want" element={<UserWantPage></UserWantPage>}></Route>
+						<Route path="goals" element={<UserGoalsPage></UserGoalsPage>}></Route>
+						<Route path="tasks" element={<UserTasksPage></UserTasksPage>}></Route>
+					</Route>
 
-						<Route path="/admin" element={<AdminPage></AdminPage>}></Route>
-					</Routes>
-				</BrowserRouter>
-			</UserProvider>
+					<Route path="/admin" element={<AdminPage></AdminPage>}></Route>
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }
