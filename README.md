@@ -16,11 +16,16 @@
 - ✅ frontend: login form
 - ✅ backend: get UserDontWantEssay route
 - ✅ backend: post UserDontWantEssay route
+- ❌ frontend: egy UserContext, ami get-eli és post-olja az esszéket, célokat, stb
 - ❌ frontend: UserDontWantEssay komponens
 - ❌ frontend: UserWantEssay komponens
 - ❌ frontend: UserGoals komponens
 - ❌ frontend: UserGoal komponens
+- ❌ 
+- ❌ 
+- ❌ 
 - ❌ dokumentáció: dokumentáció elkezdése a sablon alapján
+- ❌ github project page: elkezdése (ez olyan mint a trello)
 - ❌ 
 - ❌ 
 - ❌ 
@@ -86,5 +91,5 @@
 
 
 ## ***Ha önmagad legjobb verziója lennél, akkor ki lennél?***
-## ***Van lehetőséged küzdeni.***
 ## ***Kaptál egy életet, és te tényleg úgy fogsz dönteni, hogy elpazarlod?***
+## ***Van lehetőséged küzdeni.***

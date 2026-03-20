@@ -17,7 +17,7 @@ export default function LoginForm() {
 				password,
 			})
 			.then(function (response) {
-				console.log(response.data);
+				//console.log(response.data);
 
 				// Token beállítása
 				const token =
@@ -27,7 +27,7 @@ export default function LoginForm() {
 					null;
 				if (token) {
 					localStorage.setItem("token", token);
-					console.log("Token mentve:", token);
+					//console.log("Token mentve:", token);
 				}
 
 				// Form mezőinek törlése

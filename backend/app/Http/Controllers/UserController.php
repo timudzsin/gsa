@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function getDontWantEssay(Request $request)
+    public function getUserDontWantEssay(Request $request)
     {
         // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
         $request->headers->set('Accept', 'application/json');
@@ -27,7 +27,7 @@ class UserController extends Controller
 
 
 
-    public function postDontWantEssay(Request $request)
+    public function postUserDontWantEssay(Request $request)
     {
         // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
         $request->headers->set('Accept', 'application/json');
