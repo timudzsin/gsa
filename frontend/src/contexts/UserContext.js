@@ -19,19 +19,8 @@ export const UserProvider = ({ children }) => {
 			});
 	}
 
-	async function postUserDontWantEssay() {
-		return axios
-			.get("http://localhost:8000/api/user-dont-want-essay", {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
-				},
-			})
-			.then(function (response) {
-				return response.data;
-			})
-			.catch(function (error) {
-				return null;
-			});
+	async function postUserDontWantEssay(apiBody) {
+		
 	}
 
 	return (
