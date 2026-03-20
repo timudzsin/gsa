@@ -4,23 +4,37 @@ import axios from "axios";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-
-    
 	async function getUserDontWantEssay() {
-		axios
-			.get("localhost:8000/api/user-dont-want-essay", {
+		return axios
+			.get("http://localhost:8000/api/user-dont-want-essay", {
 				headers: {
 					Authorization: `Bearer ${localStorage.getItem("token")}`,
 				},
 			})
 			.then(function (response) {
-				console.log(response.data);
-
+				return response.data;
 			})
 			.catch(function (error) {
-				console.log(error);
+				return null;
 			});
 	}
 
-	return <UserContext.Provider value={{ getUserDontWantEssay }}>{children}</UserContext.Provider>;
+	async function postUserDontWantEssay() {
+		return axios
+			.get("http://localhost:8000/api/user-dont-want-essay", {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
+				},
+			})
+			.then(function (response) {
+				return response.data;
+			})
+			.catch(function (error) {
+				return null;
+			});
+	}
+
+	return (
+		<UserContext.Provider value={{ getUserDontWantEssay, postUserDontWantEssay }}>{children}</UserContext.Provider>
+	);
 };
