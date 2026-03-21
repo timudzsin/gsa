@@ -16,8 +16,9 @@
 - ✅ frontend: login form
 - ✅ backend: get UserDontWantEssay route
 - ✅ backend: post UserDontWantEssay route
-- ❌ frontend: egy UserContext, ami get-eli és post-olja az esszéket, célokat, stb
-- ❌ frontend: UserDontWantEssay komponens
+- ✅ frontend: egy UserContext, ami get-eli és post-olja a "mit nem akarok" esszéket (és state-ben tárolja)
+- ✅ frontend: UserDontWantEssay komponens, ami a UserContext get és post függvényeit használja
+- ✅ frontend: a UserContext "loading" state-jét használva egy töltőképernyő van a UserPage-en.
 - ❌ frontend: UserWantEssay komponens
 - ❌ frontend: UserGoals komponens
 - ❌ frontend: UserGoal komponens

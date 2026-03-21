@@ -24,7 +24,7 @@ export default function UserPage() {
 			});
 	}, []);
 
-	if (loading) return <h1>Betöltés… Betöltés… Betöltés… Betöltés… Betöltés… Betöltés… Betöltés… Betöltés… </h1>;
+	//if (loading) return <div></div>;
 	return (
 		<div className="UserPage">
 			<Outlet></Outlet>

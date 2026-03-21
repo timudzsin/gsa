@@ -10,7 +10,7 @@ export default function UserDontWantEssay() {
 	function handleChange(e) {
 		setUserDontWantEssay(e.target.value);
 
-		// Postolás a backend-nek 3 másodperc no-activity után
+		// Postolás 3 másodperc no-activity után
 		if (debounceTimeout.current) {
 			clearTimeout(debounceTimeout.current);
 		}

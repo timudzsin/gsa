@@ -6,7 +6,6 @@
     buttons:            20?
 */
 
-
 @font-face {
 	font-family: "Lexend";
 	src: url("./assets/fonts/Lexend/Lexend-VariableFont_wght.ttf") format("truetype");
@@ -14,7 +13,6 @@
 	font-style: normal;
 	font-display: swap;
 }
-
 
 * {
 	box-sizing: border-box;
@@ -33,7 +31,6 @@ body,
 .App {
 	background-color: hsl(0, 0%, 0%);
 }
-
 
 body {
 	-webkit-font-smoothing: antialiased;
