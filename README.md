@@ -19,8 +19,8 @@
 - ✅ frontend: egy UserContext, ami get-eli és post-olja a "mit nem akarok" esszéket (és state-ben tárolja)
 - ✅ frontend: UserDontWantEssay komponens, ami a UserContext get és post függvényeit használja
 - ✅ frontend: a UserContext "loading" state-jét használva egy töltőképernyő van a UserPage-en.
-- ❌ frontend: UserWantEssay komponens
-- ❌ backend: user-want-essay erőforrás
+- ✅ backend: user-want-essay post és get végpontok
+- ✅ frontend: UserWantEssay komponens
 - ❌ frontend: UserGoals komponens
 - ❌ frontend: UserGoal komponens
 - ❌ 
@@ -93,6 +93,6 @@
 
 
 
-## ***Ha önmagad legjobb verziója lennél, akkor ki lennél?***
+## ***Ha a legtöbbet hoznád ki az életből, az hogyan nézne ki?***
 ## ***Kaptál egy életet, és te tényleg úgy fogsz dönteni, hogy elpazarlod?***
 ## ***Van lehetőséged küzdeni.***

@@ -53,6 +53,53 @@ class UserController extends Controller
 
 
 
+    public function getUserWantEssay(Request $request)
+    {
+        // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
+        $request->headers->set('Accept', 'application/json');
+
+        // Felhasználó lekérdezése
+        $user = $request->user();
+        if (!$user) {
+            return response()->json([
+                'message' => 'Nincs bejelentkezett felhasználó ehhez a tokenhez'
+            ], 401);
+        }
+
+        // Válasz
+        return response()->json([
+            'want_essay' => $user->want_essay
+        ], 200);
+    }
+
+
+
+    public function postUserWantEssay(Request $request)
+    {
+        // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
+        $request->headers->set('Accept', 'application/json');
+
+        // Felhasználó lekérdezése
+        $user = $request->user();
+        if (!$user) {
+            return response()->json([
+                'message' => 'Nincs bejelentkezett felhasználó ehhez a tokenhez'
+            ], 401);
+        }
+
+        // Mentés
+        $user->want_essay = $request->want_essay;
+        $user->save();
+
+        // Válasz
+        return response()->json([
+            'message' => 'Mit nem akarok esszé mentve',
+            'want_essay' => $user->want_essay
+        ], 200);
+    }
+
+
+
 
 
     /**

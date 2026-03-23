@@ -15,6 +15,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-// Don't want essay
+// User don't want essay
 Route::get('/user-dont-want-essay', [UserController::class, 'getUserDontWantEssay'])->middleware('auth:sanctum');
 Route::post('/user-dont-want-essay', [UserController::class, 'postUserDontWantEssay'])->middleware('auth:sanctum');
+
+// User want essay
+Route::get('/user-want-essay', [UserController::class, 'getUserWantEssay'])->middleware('auth:sanctum');
+Route::post('/user-want-essay', [UserController::class, 'postUserWantEssay'])->middleware('auth:sanctum');
+
+
+
