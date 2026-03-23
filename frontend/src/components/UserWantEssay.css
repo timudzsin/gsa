@@ -1,0 +1,26 @@
+.UserWantEssay {
+	min-height: calc(100vh - 75px - 75px - 40px);
+}
+
+.UserWantEssay > textarea {
+	min-height: calc(100vh - 75px - 75px - 40px);
+	background-color: hsl(0, 0%, 0%);
+	width: 100%;
+	overflow-y: hidden;
+
+	padding-left: 10px;
+	padding-right: 10px;
+
+	border: none;
+	resize: none;
+
+	font-size: 20px;
+}
+.UserWantEssay > textarea::placeholder {
+	text-align: center;
+    color: hsl(0, 0%, 40%);
+}
+
+.UserWantEssay > textarea:focus {
+	outline: none;
+}

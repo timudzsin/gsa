@@ -1,22 +1,22 @@
-import React, { useRef, useState, useContext, useEffect } from "react";
-import "./UserDontWantEssay.css";
+import React, { useContext, useRef } from "react";
 import { UserContext } from "../contexts/UserContext";
+import "./UserWantEssay.css";
 
-export default function UserDontWantEssay() {
+export default function UserWantEssay() {
 	const { loading } = useContext(UserContext);
-	const { userDontWantEssay, setUserDontWantEssay, postUserDontWantEssay } = useContext(UserContext);
+	const { userWantEssay, setUserWantEssay, postUserWantEssay } = useContext(UserContext);
 	const debounceTimeout = useRef(null);
 	const textareaRef = useRef(null);
 
-	function handleChange(e) {
-		setUserDontWantEssay(e.target.value);
+    function handleChange(e) {
+		setUserWantEssay(e.target.value);
 
 		// Postolás 3 másodperc no-activity után
 		if (debounceTimeout.current) {
 			clearTimeout(debounceTimeout.current);
 		}
 		debounceTimeout.current = setTimeout(() => {
-			postUserDontWantEssay(e.target.value);
+			postUserWantEssay(e.target.value);
 		}, 3000);
 
 		// A form megfelelő magasságának beállítása (reseteljük a magasságot és állítjuk a tartalomhoz)
@@ -26,14 +26,14 @@ export default function UserDontWantEssay() {
 		}
 	}
 
-	if (loading) return <div></div>;
+
 	return (
-		<form className="UserDontWantEssay">
+		<form className="UserWantEssay">
 			<textarea
-				value={userDontWantEssay || ""}
+				value={userWantEssay || ""}
 				onChange={handleChange}
 				placeholder={
-					"\n\nMit nem akarok a következő 4 évben?\n\n\nMilyen negatív gondolataim vannak?\n\n\nMi fog történni, ha nem teszem a dolgokat amiket kéne?"
+					"\n\nMit akarok a következő 4 évben?\n\n\nMi az, aminek a gondolata igazán motivál engem?\n\n\nHa a legtöbbet hoznám ki az életből, az hogyan nézne ki?"
 				}
 				ref={textareaRef}
 				spellCheck={false}
