@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { UserContext } from "../contexts/UserContext";
 import "./UserWantEssay.css";
 
@@ -8,7 +8,15 @@ export default function UserWantEssay() {
 	const debounceTimeout = useRef(null);
 	const textareaRef = useRef(null);
 
-    function handleChange(e) {
+	useEffect(() => {
+		// A form megfelelő magasságának beállítása (reseteljük a magasságot és állítjuk a tartalomhoz)
+		if (textareaRef.current) {
+			textareaRef.current.style.height = "auto";
+			textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
+		}
+	}, [userWantEssay]);
+
+	function handleChange(e) {
 		setUserWantEssay(e.target.value);
 
 		// Postolás 3 másodperc no-activity után
@@ -18,15 +26,9 @@ export default function UserWantEssay() {
 		debounceTimeout.current = setTimeout(() => {
 			postUserWantEssay(e.target.value);
 		}, 3000);
-
-		// A form megfelelő magasságának beállítása (reseteljük a magasságot és állítjuk a tartalomhoz)
-		if (textareaRef.current) {
-			textareaRef.current.style.height = "auto";
-			textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
-		}
 	}
 
-
+	if (loading) return <div></div>;
 	return (
 		<form className="UserWantEssay">
 			<textarea

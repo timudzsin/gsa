@@ -62,7 +62,7 @@ export const UserProvider = ({ children }) => {
 			.get("http://localhost:8000/api/user-want-essay", {
 				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 			})
-			.then((res) => res.data.dont_want_essay);
+			.then((res) => res.data.want_essay);
 	}
 
 	function postUserWantEssay(x) {

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from "react";
+import React, { useRef, useContext, useEffect } from "react";
 import "./UserDontWantEssay.css";
 import { UserContext } from "../contexts/UserContext";
 
@@ -7,6 +7,14 @@ export default function UserDontWantEssay() {
 	const { userDontWantEssay, setUserDontWantEssay, postUserDontWantEssay } = useContext(UserContext);
 	const debounceTimeout = useRef(null);
 	const textareaRef = useRef(null);
+
+	useEffect(() => {
+		// A form megfelelő magasságának beállítása (reseteljük a magasságot és állítjuk a tartalomhoz)
+		if (textareaRef.current) {
+			textareaRef.current.style.height = "auto";
+			textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
+		}
+	}, [userDontWantEssay]);
 
 	function handleChange(e) {
 		setUserDontWantEssay(e.target.value);
@@ -18,12 +26,6 @@ export default function UserDontWantEssay() {
 		debounceTimeout.current = setTimeout(() => {
 			postUserDontWantEssay(e.target.value);
 		}, 3000);
-
-		// A form megfelelő magasságának beállítása (reseteljük a magasságot és állítjuk a tartalomhoz)
-		if (textareaRef.current) {
-			textareaRef.current.style.height = "auto";
-			textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
-		}
 	}
 
 	if (loading) return <div></div>;

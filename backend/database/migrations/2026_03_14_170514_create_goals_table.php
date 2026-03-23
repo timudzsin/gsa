@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->date('deadline');
             $table->boolean('is_completed')->default(false);
-            $table->integer('rank')->default(1);
+            $table->integer('rank')->default(100);
 
             $table->string('color')->default('GRAY');
             $table->string('icon_url')->default('default.png');

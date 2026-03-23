@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('goal_id')->references('id')->on('goals')->cascadeOnDelete();
+            $table->foreignId('goal_id')->nullable()->references('id')->on('goals')->cascadeOnDelete();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->string('description');
             $table->enum('type', ['daily', 'on_certain_days_of_the_week', 'x_times_per_week']);

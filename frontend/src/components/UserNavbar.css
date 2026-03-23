@@ -1,5 +1,5 @@
 .UserNavbar {
-	background-color: hsla(0, 0%, 20%, 0.75);
+	background-color: hsla(0, 0%, 15%, 0.75);
 	backdrop-filter: blur(1.5px);
 	/* For some browsers, also include this */
 	-webkit-backdrop-filter: blur(1.5px);
