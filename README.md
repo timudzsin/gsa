@@ -21,20 +21,20 @@
 - ✅ frontend: a UserContext "loading" state-jét használva egy töltőképernyő van a UserPage-en.
 - ✅ backend: user-want-essay post és get végpontok
 - ✅ frontend: UserWantEssay komponens
+- ❌ backend: Felhasználó céljainak lekérdezése és postolása a backenden.
 - ❌ frontend: UserGoals komponens
 - ❌ frontend: UserGoal komponens
 - ❌ 
 - ❌ 
 - ❌ 
-- ❌ dokumentáció: dokumentáció elkezdése a sablon alapján
+- ❌ 
 - ❌ github project page: elkezdése (ez olyan mint a trello)
 - ❌ 
 - ❌ 
+- ❌ 
+- ❌ dokumentáció: dokumentáció elkezdése a sablon alapján
+- ❌ 
 - ❌ frontend: Oldalak közötti animált váltás.
-- ❌ 
-- ❌ 
-- ❌ 
-- ❌ 
 - ❌ 
 - ❌ 
 - ❌ 
