@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Goal;
 
 class Motivation extends Model
 {
@@ -14,4 +15,10 @@ class Motivation extends Model
         'goal_id',
         'description',
     ];
+
+    // Kapcsolatok
+    public function goal()
+    {
+        return $this->belongsTo(Goal::class);
+    }
 }

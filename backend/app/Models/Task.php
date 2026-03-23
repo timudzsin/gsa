@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Goal;
+use App\Models\User;
+use App\Models\ChecklistItem;
 
 class Task extends Model
 {
@@ -24,4 +27,18 @@ class Task extends Model
         'is_on_sunday',
         'times_per_week',
     ];
+
+    // Kapcsolatok
+    public function goal()
+    {
+        return $this->belongsTo(Goal::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function checklistItems()
+    {
+        return $this->hasMany(ChecklistItem::class);
+    }
 }

@@ -23,16 +23,22 @@ class GoalController extends Controller
             ], 401);
         }
 
+        // Felhasználó céljainak lekérdezése. Ez a rész olyan mint egy SQL query
         $goals = $user->goals()
             ->with(['motivations', 'tasks'])
             ->orderBy('rank')
             ->get();
 
+        // Válasz
         return response()->json([
             'message' => 'A felhasználó céljai sikeresen lekérve',
             'goals' => $goals
         ], 200);
     }
+
+
+
+
 
     /**
      * Display a listing of the resource.

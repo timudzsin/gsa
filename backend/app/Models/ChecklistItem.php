@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Checklist;
+use App\Models\Task;
+
 
 class ChecklistItem extends Model
 {
@@ -16,4 +19,14 @@ class ChecklistItem extends Model
         'description',
         'rank',
     ];
+
+    // Kapcsolatok
+    public function checklist()
+    {
+        return $this->belongsTo(Checklist::class);
+    }
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
+    }
 }
