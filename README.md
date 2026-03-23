@@ -21,7 +21,8 @@
 - ✅ frontend: a UserContext "loading" state-jét használva egy töltőképernyő van a UserPage-en.
 - ✅ backend: user-want-essay post és get végpontok
 - ✅ frontend: UserWantEssay komponens
-- ❌ backend: Felhasználó céljainak lekérdezése és postolása a backenden. (max 8)
+- ❌ frontend: Egy jó UI font keresése.
+- ❌ backend: Route a felhasználó céljainak lekérdezésére.
 - ❌ frontend: UserGoals komponens
 - ❌ frontend: UserGoal komponens
 - ❌ 
