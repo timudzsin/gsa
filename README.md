@@ -21,7 +21,7 @@
 - ✅ frontend: a UserContext "loading" state-jét használva egy töltőképernyő van a UserPage-en.
 - ✅ backend: user-want-essay post és get végpontok
 - ✅ frontend: UserWantEssay komponens
-- ❌ frontend: Egy jó UI font keresése.
+- ✅ frontend: Egy jó UI font keresése: MARAD A LEXEND.
 - ❌ backend: Route a felhasználó céljainak lekérdezésére.: 
 - https://chatgpt.com/share/69c14dc6-110c-8013-8bb3-e6cac52c2fa4
 - ❌ frontend: UserGoals komponens

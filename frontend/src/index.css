@@ -10,8 +10,8 @@
 	font-family: "Lexend";
 	src: url("./assets/fonts/Lexend/Lexend-VariableFont_wght.ttf") format("truetype");
 	font-weight: 100 900;
+    font-optical-sizing: auto;
 	font-style: normal;
-	font-display: swap;
 }
 
 * {
@@ -20,9 +20,9 @@
 	margin: 0px;
 
 	font-family: "Lexend", sans-serif;
-    font-weight: 360;
-	font-style: normal;
+    font-weight: 370;
 	font-optical-sizing: auto;
+	font-style: normal;
 	color: hsl(0, 0%, 95%);
 }
 html,

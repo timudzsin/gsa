@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GoalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,9 @@ Route::post('/user-dont-want-essay', [UserController::class, 'postUserDontWantEs
 // User want essay
 Route::get('/user-want-essay', [UserController::class, 'getUserWantEssay'])->middleware('auth:sanctum');
 Route::post('/user-want-essay', [UserController::class, 'postUserWantEssay'])->middleware('auth:sanctum');
+
+// User goals
+Route::get('/user-goals', [GoalController::class, 'userGoals'])->middleware('auth:sanctum');
 
 
 

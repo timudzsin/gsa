@@ -93,7 +93,7 @@ class UserController extends Controller
 
         // Válasz
         return response()->json([
-            'message' => 'Mit nem akarok esszé mentve',
+            'message' => 'Mit akarok esszé mentve',
             'want_essay' => $user->want_essay
         ], 200);
     }
