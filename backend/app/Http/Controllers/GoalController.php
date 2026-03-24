@@ -39,7 +39,7 @@ class GoalController extends Controller
 
 
 
-    public function postUserGoals(Request $request)
+    public function putUserGoals(Request $request)
     {
         // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
         $request->headers->set('Accept', 'application/json');
@@ -79,6 +79,9 @@ class GoalController extends Controller
         // Adatbázis tranzakció → ha bármi hiba van, minden visszagörgetődik
         $createdGoals = [];
         DB::transaction(function () use ($validated, $user, &$createdGoals) {
+            // Régi adatok törlése
+            $user->goals()->delete();
+
             // Végigmegyünk a beküldött célokon
             foreach ($validated['goals'] as $goalData) {
                 // Cél létrehozása (a felhasználóhoz)

@@ -23,7 +23,8 @@
 - ✅ frontend: UserWantEssay komponens
 - ✅ frontend: Egy jó UI font keresése: MARAD A LEXEND.
 - ✅ backend: Route a felhasználó céljainak lekérdezésére.: getUserGoals kész.
-- ❌ backend: postUserGoals controller és route
+- ✅ backend: putUserGoals controller és route (frontenden majd ki kell szedni a getUserGoals válaszából az id-ket és f_id-ket)
+- ✅ backend: néhány végpont valójában PUT, ezt megváltoztatni
 - ❌ backend: tesztadatok átdolgozása (seederek), ami:
     - Bemutat két embert: egy reál beállítottságú férfi, és egy humán beállítottságú nő.
     - A férfi esszéit és céljait mi írjuk meg, hogy ennek a folyamatát bemutassuk.

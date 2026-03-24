@@ -16,17 +16,17 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-// User don't want essay
+// user Don't want essay
 Route::get('/user-dont-want-essay', [UserController::class, 'getUserDontWantEssay'])->middleware('auth:sanctum');
-Route::post('/user-dont-want-essay', [UserController::class, 'postUserDontWantEssay'])->middleware('auth:sanctum');
+Route::put('/user-dont-want-essay', [UserController::class, 'putUserDontWantEssay'])->middleware('auth:sanctum');
 
-// User want essay
+// user Want essay
 Route::get('/user-want-essay', [UserController::class, 'getUserWantEssay'])->middleware('auth:sanctum');
-Route::post('/user-want-essay', [UserController::class, 'postUserWantEssay'])->middleware('auth:sanctum');
+Route::put('/user-want-essay', [UserController::class, 'putUserWantEssay'])->middleware('auth:sanctum');
 
-// User goals
+// user Goals
 Route::get('/user-goals', [GoalController::class, 'getUserGoals'])->middleware('auth:sanctum');
-Route::post('/user-goals', [GoalController::class, 'postUserGoals'])->middleware('auth:sanctum');
+Route::put('/user-goals', [GoalController::class, 'putUserGoals'])->middleware('auth:sanctum');
 
 
 

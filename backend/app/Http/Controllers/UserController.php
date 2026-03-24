@@ -27,7 +27,7 @@ class UserController extends Controller
 
 
 
-    public function postUserDontWantEssay(Request $request)
+    public function putUserDontWantEssay(Request $request)
     {
         // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
         $request->headers->set('Accept', 'application/json');
@@ -74,7 +74,7 @@ class UserController extends Controller
 
 
 
-    public function postUserWantEssay(Request $request)
+    public function putUserWantEssay(Request $request)
     {
         // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
         $request->headers->set('Accept', 'application/json');
