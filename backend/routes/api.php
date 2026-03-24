@@ -25,7 +25,8 @@ Route::get('/user-want-essay', [UserController::class, 'getUserWantEssay'])->mid
 Route::post('/user-want-essay', [UserController::class, 'postUserWantEssay'])->middleware('auth:sanctum');
 
 // User goals
-Route::get('/user-goals', [GoalController::class, 'userGoals'])->middleware('auth:sanctum');
+Route::get('/user-goals', [GoalController::class, 'getUserGoals'])->middleware('auth:sanctum');
+Route::post('/user-goals', [GoalController::class, 'postUserGoals'])->middleware('auth:sanctum');
 
 
 

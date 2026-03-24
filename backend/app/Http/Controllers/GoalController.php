@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class GoalController extends Controller
 {
-    public function userGoals(Request $request)
+    public function getUserGoals(Request $request)
     {
         // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
         $request->headers->set('Accept', 'application/json');

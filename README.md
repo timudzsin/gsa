@@ -22,11 +22,16 @@
 - ✅ backend: user-want-essay post és get végpontok
 - ✅ frontend: UserWantEssay komponens
 - ✅ frontend: Egy jó UI font keresése: MARAD A LEXEND.
-- ❌ backend: Route a felhasználó céljainak lekérdezésére.: 
-- https://chatgpt.com/share/69c14dc6-110c-8013-8bb3-e6cac52c2fa4
+- ✅ backend: Route a felhasználó céljainak lekérdezésére.: getUserGoals kész.
+- ❌ backend: postUserGoals controller és route
+- ❌ backend: tesztadatok átdolgozása (seederek), ami:
+    - Bemutat két embert: egy reál beállítottságú férfi, és egy humán beállítottságú nő.
+    - A férfi esszéit és céljait mi írjuk meg, hogy ennek a folyamatát bemutassuk.
+    - A nőn esszéi és céljai már kész vannak, hogy bemutassuk milyen mindennapi használatban az app.
+    - Mind a kettőben demonstrálni kell a 3 féle Task típust (és a célok színét és ikonját).
+- ❌ frontend: a felhasználó céljainak lekérdezése és eltárolása a UserContext-ben.
 - ❌ frontend: UserGoals komponens
 - ❌ frontend: UserGoal komponens
-- ❌ 
 - ❌ 
 - ❌ 
 - ❌ 
