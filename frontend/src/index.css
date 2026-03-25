@@ -8,7 +8,7 @@
 
 @font-face {
 	font-family: "Lexend";
-	src: url("./assets/fonts/Lexend/Lexend-VariableFont_wght.ttf") format("truetype");
+	src: url("./fonts/Lexend/Lexend-VariableFont_wght.ttf") format("truetype");
 	font-weight: 100 900;
     font-optical-sizing: auto;
 	font-style: normal;

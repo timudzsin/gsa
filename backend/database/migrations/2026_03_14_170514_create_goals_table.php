@@ -20,8 +20,8 @@ return new class extends Migration
             $table->boolean('is_completed')->default(false);
             $table->integer('rank')->default(100);
 
-            $table->string('color')->default('GRAY');
-            $table->string('icon_url')->default('default.png');
+            $table->string('color')->default('DEFAULT');
+            $table->string('icon_url')->default('default.svg');
 
             $table->timestamps();
         });

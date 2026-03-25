@@ -79,7 +79,7 @@ class GoalController extends Controller
         // Adatbázis tranzakció → ha bármi hiba van, minden visszagörgetődik
         $createdGoals = [];
         DB::transaction(function () use ($validated, $user, &$createdGoals) {
-            // Régi adatok törlése
+            // Régi adatok törlése (Ez a céltól független taskokat nem törli, és pont ezt akarjuk)
             $user->goals()->delete();
 
             // Végigmegyünk a beküldött célokon

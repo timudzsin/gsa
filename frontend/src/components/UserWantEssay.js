@@ -4,7 +4,7 @@ import "./UserWantEssay.css";
 
 export default function UserWantEssay() {
 	const { loading } = useContext(UserContext);
-	const { userWantEssay, setUserWantEssay, postUserWantEssay } = useContext(UserContext);
+	const { userWantEssay, setUserWantEssay, putUserWantEssay } = useContext(UserContext);
 	const debounceTimeout = useRef(null);
 	const textareaRef = useRef(null);
 
@@ -24,7 +24,7 @@ export default function UserWantEssay() {
 			clearTimeout(debounceTimeout.current);
 		}
 		debounceTimeout.current = setTimeout(() => {
-			postUserWantEssay(e.target.value);
+			putUserWantEssay(e.target.value);
 		}, 3000);
 	}
 

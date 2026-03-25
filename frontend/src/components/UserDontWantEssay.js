@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/UserContext";
 
 export default function UserDontWantEssay() {
 	const { loading } = useContext(UserContext);
-	const { userDontWantEssay, setUserDontWantEssay, postUserDontWantEssay } = useContext(UserContext);
+	const { userDontWantEssay, setUserDontWantEssay, putUserDontWantEssay } = useContext(UserContext);
 	const debounceTimeout = useRef(null);
 	const textareaRef = useRef(null);
 
@@ -24,7 +24,7 @@ export default function UserDontWantEssay() {
 			clearTimeout(debounceTimeout.current);
 		}
 		debounceTimeout.current = setTimeout(() => {
-			postUserDontWantEssay(e.target.value);
+			putUserDontWantEssay(e.target.value);
 		}, 3000);
 	}
 
