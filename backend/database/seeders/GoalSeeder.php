@@ -19,7 +19,7 @@ class GoalSeeder extends Seeder
             'title' => 'Opel Astra',
             'deadline' => '2026-10-31',
 
-            'icon_url' => 'car.png',
+            'icon_url' => 'directions_car.svg',
         ]);
         Goal::create([
             'user_id' => 1,

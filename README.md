@@ -32,7 +32,7 @@
     - Mind a kettőben demonstrálni kell a 3 féle Task típust (és a célok színét és ikonját).
     - Egy felhasználó akinek sok teljesített célja, nem teljesített célja, és céltól független feladata van.
 - ✅ frontend: a felhasználó céljainak lekérdezése és eltárolása a UserContext-ben. (ki kell szedni a válaszból az id-ket és f_id-ket)
-- ❌ frontend: UserGoals komponens
+- ❌ frontend: UserGoals komponens megjeleníti a felhasználó lekérdezett céljait.
 - ❌ 
 - ❌ 
 - ❌ 

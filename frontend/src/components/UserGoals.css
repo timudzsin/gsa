@@ -1,0 +1,89 @@
+.UserGoals {
+	max-width: 500px;
+	margin: auto;
+	min-height: calc(100vh - 75px - 75px - 40px);
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+
+	padding-left: 1.25vw;
+	padding-right: 1.25vw;
+	gap: 1.5vw;
+}
+
+.UserGoals > .goal {
+	border-radius: 30px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: center;
+}
+.UserGoals > .goal > .goal-icon {
+	width: 50px;
+	height: 50px;
+}
+.UserGoals > .goal > .goal-title {
+    font-size: 20px;
+    font-weight: 500;
+
+    margin-bottom: 10px;
+}
+.UserGoals > .goal > .goal-deadline {
+    font-size: 14px;
+    color: hsl(0, 0%, 75%);
+}
+
+
+
+
+
+.UserGoals > .WHITE {
+    background-color: hsl(167, 100%, 98%);
+}
+.UserGoals > .ORANGE {
+    background-color: hsl(28, 93%, 53%);
+}
+.UserGoals > .MAGENTA {
+    background-color: hsl(305, 52%, 54%);
+}
+.UserGoals > .LIGHT_BLUE {
+    background-color: hsl(195, 67%, 54%);
+}
+.UserGoals > .YELLOW {
+    background-color: hsl(48, 99%, 62%);
+}
+.UserGoals > .LIME {
+    background-color: hsl(85, 73%, 45%);
+}
+.UserGoals > .PINK {
+    background-color: hsl(343, 81%, 75%);
+}
+.UserGoals > .GRAY {
+    background-color: hsl(196, 8%, 30%);
+}
+.UserGoals > .LIGHT_GRAY {
+    background-color: hsl(60, 3%, 60%);
+}
+.UserGoals > .CYAN {
+    background-color: hsl(180, 75%, 35%);
+}
+.UserGoals > .PURPLE {
+    background-color: hsl(279, 57%, 46%);
+}
+.UserGoals > .BLUE {
+    background-color: hsl(236, 48%, 45%);
+}
+.UserGoals > .BROWN {
+    background-color: hsl(25, 45%, 35%);
+}
+.UserGoals > .GREEN {
+    background-color: hsl(78, 70%, 29%);
+}
+.UserGoals > .RED {
+    background-color: hsl(4, 64%, 42%);
+}
+.UserGoals > .BLACK {
+    background-color: hsl(240, 7%, 12%);
+}
