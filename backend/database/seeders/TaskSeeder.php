@@ -13,7 +13,7 @@ class TaskSeeder extends Seeder
      */
     public function run(): void
     {
-        Task::create([
+        /*         Task::create([
             'goal_id' => 1,
             'user_id' => 1,
 
@@ -40,5 +40,6 @@ class TaskSeeder extends Seeder
             
             'type' => 'daily',
         ]);
+ */
     }
 }

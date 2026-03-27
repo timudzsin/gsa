@@ -1,4 +1,6 @@
 .UserDontWantEssay {
+	max-width: 500px;
+	margin: auto;
 	min-height: calc(100vh - 75px - 75px - 40px);
 }
 

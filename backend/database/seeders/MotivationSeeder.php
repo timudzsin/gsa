@@ -13,7 +13,7 @@ class MotivationSeeder extends Seeder
      */
     public function run(): void
     {
-        Motivation::create([
+        /*         Motivation::create([
             'goal_id' => 1,
             'description' => 'Hogy könnyebben eljuthassak bárhova.',
         ]);
@@ -33,5 +33,6 @@ class MotivationSeeder extends Seeder
             'goal_id' => 2,
             'description' => 'Hogy egészségesebb legyek.',
         ]);
+ */
     }
 }
