@@ -13,29 +13,23 @@ class GoalSeeder extends Seeder
      */
     public function run(): void
     {
-        // dorina
+        // anna
         Goal::create([
             'user_id' => 1,
-
-            'title' => '3kg fogyás',
-            'deadline' => '2026-09-01',
-
+            'title' => 'Emma Stone önbizalma',
+            'deadline' => '2026-11-01',
             'color' => 'LIME',
         ]);
         Goal::create([
             'user_id' => 1,
-
             'title' => 'C1 angol nyelvvizsga',
             'deadline' => '2026-08-26',
-
             'color' => 'BLUE',
         ]);
         Goal::create([
             'user_id' => 1,
-
-            'title' => '2 hónapig napi 10 perc meditáció',
+            'title' => '2 hónapig minden nap 10 perc meditáció',
             'deadline' => '2026-06-1',
-
             'color' => 'LIGHT_BLUE',
         ]);
 
@@ -48,12 +42,10 @@ class GoalSeeder extends Seeder
         ]);
         Goal::create([
             'user_id' => 2,
-            'title' => 'Heti 4 edzés 6 hónapon át',
+            'title' => 'Heti 7 edzés 6 hónapon át',
             'deadline' => '2026-10-01',
             'color' => 'RED',
         ]);
-
-
         Goal::create([
             'user_id' => 2,
             'title' => 'Saját vállalkozás bevételének megduplázása',
@@ -66,8 +58,6 @@ class GoalSeeder extends Seeder
             'deadline' => '2026-11-30',
             'color' => 'PURPLE',
         ]);
-
-
         Goal::create([
             'user_id' => 2,
             'title' => 'Testzsír százalék 15% alá csökkentése',
@@ -80,14 +70,6 @@ class GoalSeeder extends Seeder
             'deadline' => '2026-08-31',
             'color' => 'BLUE',
         ]);
-
-
-        Goal::create([
-            'user_id' => 2,
-            'title' => 'Passzív jövedelem forrás kiépítése',
-            'deadline' => '2026-12-01',
-            'color' => 'TEAL',
-        ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'Maraton lefutása',
@@ -95,28 +77,107 @@ class GoalSeeder extends Seeder
             'color' => 'RED',
         ]);
 
-
+        // first8
         Goal::create([
-            'user_id' => 2,
-            'title' => 'Nyilvános előadás megtartása szakmai témában',
-            'deadline' => '2026-10-15',
-            'color' => 'DEEP_PURPLE',
+            'user_id' => 3,
+            'title' => 'A fehér cél címe',
+            'deadline' => '2027-05-14',
+            'color' => 'WHITE',
         ]);
-
-
         Goal::create([
-            'user_id' => 2,
-            'title' => 'Napi 7 óra alvás 60 napon keresztül',
-            'deadline' => '2026-06-30',
+            'user_id' => 3,
+            'title' => 'A narancssárga cél címe',
+            'deadline' => '2026-11-22',
+            'color' => 'ORANGE',
+        ]);
+        Goal::create([
+            'user_id' => 3,
+            'title' => 'A magenta cél címe',
+            'deadline' => '2028-02-03',
+            'color' => 'MAGENTA',
+        ]);
+        Goal::create([
+            'user_id' => 3,
+            'title' => 'A világoskék cél címe',
+            'deadline' => '2027-08-19',
             'color' => 'LIGHT_BLUE',
         ]);
-
         Goal::create([
-            'user_id' => 2,
-            'title' => 'Új szakmai készség elsajátítása (pl. AI)',
-            'deadline' => '2026-09-01',
+            'user_id' => 3,
+            'title' => 'A sárga cél címe',
+            'deadline' => '2026-12-10',
+            'color' => 'YELLOW',
+        ]);
+        Goal::create([
+            'user_id' => 3,
+            'title' => 'A lime cél címe',
+            'deadline' => '2028-01-27',
+            'color' => 'LIME',
+        ]);
+        Goal::create([
+            'user_id' => 3,
+            'title' => 'A rózsaszín cél címe',
+            'deadline' => '2027-03-06',
+            'color' => 'PINK',
+        ]);
+        Goal::create([
+            'user_id' => 3,
+            'title' => 'A szürke cél címe',
+            'deadline' => '2026-10-15',
+            'color' => 'GRAY',
+        ]);
+
+        // last8
+        Goal::create([
+            'user_id' => 4,
+            'title' => 'A világosszürke cél címe',
+            'deadline' => '2027-06-30',
+            'color' => 'LIGHT_GRAY',
+        ]);
+        Goal::create([
+            'user_id' => 4,
+            'title' => 'A cián cél címe',
+            'deadline' => '2028-03-12',
             'color' => 'CYAN',
         ]);
+        Goal::create([
+            'user_id' => 4,
+            'title' => 'A lila cél címe',
+            'deadline' => '2026-09-28',
+            'color' => 'PURPLE',
+        ]);
+        Goal::create([
+            'user_id' => 4,
+            'title' => 'A kék cél címe',
+            'deadline' => '2027-11-05',
+            'color' => 'BLUE',
+        ]);
+        Goal::create([
+            'user_id' => 4,
+            'title' => 'A barna cél címe',
+            'deadline' => '2028-06-17',
+            'color' => 'BROWN',
+        ]);
+        Goal::create([
+            'user_id' => 4,
+            'title' => 'A zöld cél címe',
+            'deadline' => '2026-08-21',
+            'color' => 'GREEN',
+        ]);
+        Goal::create([
+            'user_id' => 4,
+            'title' => 'A piros cél címe',
+            'deadline' => '2027-01-13',
+            'color' => 'RED',
+        ]);
+        Goal::create([
+            'user_id' => 4,
+            'title' => 'A fekete cél címe',
+            'deadline' => '2028-07-09',
+            'color' => 'BLACK',
+        ]);
+
+
 
 
 

@@ -26,12 +26,12 @@
 - ✅ backend: putUserGoals controller és route (frontenden majd ki kell szedni a getUserGoals válaszából az id-ket és f_id-ket)
 - ✅ backend: néhány végpont valójában PUT, ezt megváltoztatni
 - ❌ backend: tesztadatok átdolgozása (seederek), ami:
-    - Bemutat két embert: egy reál beállítottságú, és egy humán beállítottságú.
-    - A reál beállítottságú esszéit és céljait mi írjuk meg, hogy ennek a folyamatát bemutassuk.
-    - A humán beállítottságú esszéi és céljai már kész vannak, hogy bemutassuk milyen mindennapi használatban az app.
-    - Mind a kettőben demonstrálni kell a 3 féle Task típust (és a célok színét és ikonját).
-    - Egy felhasználó akinek sok teljesített célja, nem teljesített célja, és céltól független feladata van.
-    - Két felhasználó, akinél tesztelem a 16 cél színt.
+    - ❌ Bemutat két embert: egy reál beállítottságú, és egy humán beállítottságú.
+    - ❌ A reál beállítottságú esszéit és céljait mi írjuk meg, hogy ennek a folyamatát bemutassuk.
+    - ❌ A humán beállítottságú esszéi és céljai már kész vannak, hogy bemutassuk milyen mindennapi használatban az app.
+    - ❌ Demonstrálni kell a 3 féle Task típust (és a célok színét és ikonját).
+    - ❌ Egy felhasználó akinek sok teljesített célja, nem teljesített célja, és céltól független feladata van.
+    - ❌ Két felhasználó, akinél tesztelem a 16 cél színt.
 - ✅ frontend: a felhasználó céljainak lekérdezése és eltárolása a UserContext-ben. (ki kell szedni a válaszból az id-ket és f_id-ket)
 - ❌ frontend: UserGoals komponens megjeleníti a felhasználó lekérdezett céljait.
 - ❌ 

@@ -13,14 +13,14 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // dávid ...
+        // marci ...
         
         User::create([
-            'name' => 'dorina',
-            'password' => 'dorina',
+            'name' => 'anna',
+            'password' => 'anna',
             
-            'dont_want_essay' => 'Dorina "mit nem akarok" esszéje.😔 Ez majd egy teljesen megírt esszé lesz.',
-            'want_essay' => 'Dorina "mit akarok" esszéje.🤗  Ez majd egy teljesen megírt esszé lesz.',
+            'dont_want_essay' => 'Anna "mit nem akarok" esszéje.😔 Ez majd egy teljesen megírt esszé lesz.',
+            'want_essay' => 'Anna "mit akarok" esszéje.🤗  Ez majd egy teljesen megírt esszé lesz.',
         ]);
 
         User::create([
