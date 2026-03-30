@@ -31,7 +31,7 @@
     - ❌ A humán beállítottságú esszéi és céljai már kész vannak, hogy bemutassuk milyen mindennapi használatban az app.
     - ❌ Demonstrálni kell a 3 féle Task típust (és a célok színét és ikonját).
     - ❌ Egy felhasználó akinek sok teljesített célja, nem teljesített célja, és céltól független feladata van.
-    - ❌ Két felhasználó, akinél tesztelem a 16 cél színt.
+    - ✅ Két felhasználó, akinél tesztelem a 16 cél színt.
 - ✅ frontend: a felhasználó céljainak lekérdezése és eltárolása a UserContext-ben. (ki kell szedni a válaszból az id-ket és f_id-ket)
 - ❌ frontend: UserGoals komponens megjeleníti a felhasználó lekérdezett céljait.
 - ❌ 

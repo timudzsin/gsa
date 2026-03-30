@@ -13,7 +13,53 @@ class TaskSeeder extends Seeder
      */
     public function run(): void
     {
-        /*         Task::create([
+        // anna: Emma Stone önbizalma
+        Task::create([
+            'goal_id' => 1,
+            'user_id' => 1,
+
+            'description' => 'Szembesülni 1 dologgal ami zavar',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 1,
+        ]);
+
+        // anna: C1 angol nyelvvizsga
+        Task::create([
+            'goal_id' => 2,
+            'user_id' => 1,
+
+            'description' => '1 óra tanulás',
+
+            'type' => 'on_certain_days_of_the_week',
+            'is_on_monday' => true,
+
+            'is_on_friday' => true,
+            'is_on_saturday' => true,
+            'is_on_sunday' => true,
+        ]);
+
+        // anna: 2 hónapig heti 2 edzés
+        Task::create([
+            'goal_id' => 3,
+            'user_id' => 1,
+
+            'description' => '1 óra tanulás',
+
+            'type' => 'on_certain_days_of_the_week',
+            'is_on_monday' => true,
+            
+            'is_on_friday' => true,
+            'is_on_saturday' => true,
+            'is_on_sunday' => true,
+        ]);
+
+
+
+
+
+
+        Task::create([
             'goal_id' => 1,
             'user_id' => 1,
 
@@ -37,9 +83,8 @@ class TaskSeeder extends Seeder
             'user_id' => 1,
 
             'description' => '150 g protein',
-            
+
             'type' => 'daily',
         ]);
- */
     }
 }

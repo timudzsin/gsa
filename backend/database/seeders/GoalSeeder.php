@@ -17,20 +17,23 @@ class GoalSeeder extends Seeder
         Goal::create([
             'user_id' => 1,
             'title' => 'Emma Stone önbizalma',
-            'deadline' => '2026-11-01',
-            'color' => 'LIME',
+            'deadline' => '2027-01-15',
+            'color' => 'LIGHT_BLUE',
+            'icon_url' => 'confidence.svg',
         ]);
         Goal::create([
             'user_id' => 1,
             'title' => 'C1 angol nyelvvizsga',
             'deadline' => '2026-08-26',
             'color' => 'BLUE',
+            'icon_url' => 'language.svg',
         ]);
         Goal::create([
             'user_id' => 1,
-            'title' => '2 hónapig minden nap 10 perc meditáció',
-            'deadline' => '2026-06-1',
-            'color' => 'LIGHT_BLUE',
+            'title' => '2 hónapig heti 2 edzés',
+            'deadline' => '2026-06-15',
+            'color' => 'RED',
+            'icon_url' => 'fitness.svg',
         ]);
 
         // alexios
@@ -39,42 +42,77 @@ class GoalSeeder extends Seeder
             'title' => '5 millió Ft megtakarítás',
             'deadline' => '2026-12-31',
             'color' => 'GREEN',
+            'icon_url' => 'savings.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'Heti 7 edzés 6 hónapon át',
             'deadline' => '2026-10-01',
             'color' => 'RED',
+            'icon_url' => 'workout.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'Saját vállalkozás bevételének megduplázása',
             'deadline' => '2026-12-31',
             'color' => 'ORANGE',
+            'icon_url' => 'business-growth.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => '10 könyv elolvasása önfejlesztés témában',
             'deadline' => '2026-11-30',
             'color' => 'PURPLE',
+            'icon_url' => 'books.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'Testzsír százalék 15% alá csökkentése',
             'deadline' => '2026-09-15',
             'color' => 'LIME',
+            'icon_url' => 'body-fat.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'LinkedIn hálózat bővítése 500 új kapcsolattal',
             'deadline' => '2026-08-31',
             'color' => 'BLUE',
+            'icon_url' => 'network.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'Maraton lefutása',
             'deadline' => '2026-10-10',
             'color' => 'RED',
+            'icon_url' => 'marathon.svg',
+        ]);
+
+        Goal::create([
+            'user_id' => 2,
+            'title' => 'Napi 10 000 lépés 3 hónapon keresztül',
+            'deadline' => '2025-12-31',
+            'is_completed' => true,
+            'rank' => 80,
+            'color' => 'GREEN',
+            'icon_url' => 'steps.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => '3 hónapos vésztartalék felépítése',
+            'deadline' => '2025-11-30',
+            'is_completed' => true,
+            'rank' => 90,
+            'color' => 'BLUE',
+            'icon_url' => 'savings.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => 'Alap weboldal elkészítése a vállalkozáshoz',
+            'deadline' => '2026-02-15',
+            'is_completed' => true,
+            'rank' => 85,
+            'color' => 'ORANGE',
+            'icon_url' => 'website.svg',
         ]);
 
         // first8
