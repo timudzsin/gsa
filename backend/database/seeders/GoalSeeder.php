@@ -30,11 +30,22 @@ class GoalSeeder extends Seeder
         ]);
         Goal::create([
             'user_id' => 1,
-            'title' => '2 hónapig heti 2 edzés',
+            'title' => '2 hónapon át napi 30 perc olvasás',
             'deadline' => '2026-06-15',
-            'color' => 'RED',
-            'icon_url' => 'fitness.svg',
+            'color' => 'WHITE',
+            'icon_url' => 'book.svg',
         ]);
+        Goal::create([
+            'user_id' => 1,
+            'title' => 'B2 angol nyelvvizsga',
+            'deadline' => '2026-01-25',
+            'is_completed' => true,
+            'rank' => 21,
+            'color' => 'YELLOW',
+            'icon_url' => 'language.svg',
+        ]);
+
+
 
         // alexios
         Goal::create([
@@ -115,6 +126,8 @@ class GoalSeeder extends Seeder
             'icon_url' => 'website.svg',
         ]);
 
+
+
         // first8
         Goal::create([
             'user_id' => 3,
@@ -165,6 +178,8 @@ class GoalSeeder extends Seeder
             'color' => 'GRAY',
         ]);
 
+
+
         // last8
         Goal::create([
             'user_id' => 4,
@@ -214,27 +229,5 @@ class GoalSeeder extends Seeder
             'deadline' => '2028-07-09',
             'color' => 'BLACK',
         ]);
-
-
-
-
-
-        /*         Goal::create([
-            'user_id' => 2,
-
-            'title' => 'Opel Astra',
-            'deadline' => '2026-10-31',
-
-            'icon_url' => 'directions_car.svg',
-        ]);
-        Goal::create([
-            'user_id' => 2,
-
-            'title' => '+2 kg izom',
-            'deadline' => '2027-01-01',
-
-            'color' => 'RED',
-        ]);
- */
     }
 }

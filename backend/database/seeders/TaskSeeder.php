@@ -39,52 +39,39 @@ class TaskSeeder extends Seeder
             'is_on_sunday' => true,
         ]);
 
-        // anna: 2 hónapig heti 2 edzés
+        // anna: 2 hónapon át napi 30 perc olvasás
         Task::create([
             'goal_id' => 3,
             'user_id' => 1,
 
-            'description' => '1 óra tanulás',
-
-            'type' => 'on_certain_days_of_the_week',
-            'is_on_monday' => true,
-            
-            'is_on_friday' => true,
-            'is_on_saturday' => true,
-            'is_on_sunday' => true,
-        ]);
-
-
-
-
-
-
-        Task::create([
-            'goal_id' => 1,
-            'user_id' => 1,
-
-            'description' => 'munka',
-
-            'type' => 'on_certain_days_of_the_week',
-            'is_on_saturday' => true,
-            'is_on_sunday' => true,
-        ]);
-        Task::create([
-            'goal_id' => 2,
-            'user_id' => 1,
-
-            'description' => 'edzés',
-
-            'type' => 'x_times_per_week',
-            'times_per_week' => 3,
-        ]);
-        Task::create([
-            'goal_id' => 2,
-            'user_id' => 1,
-
-            'description' => '150 g protein',
+            'description' => '30 perc olvasás',
 
             'type' => 'daily',
         ]);
+
+        // anna: B2 angol nyelvvizsga
+        Task::create([
+            'goal_id' => 4,
+            'user_id' => 1,
+
+            'description' => '45 perc tanulás',
+
+            'type' => 'on_certain_days_of_the_week',
+            'is_on_saturday' => true,
+            'is_on_sunday' => true,
+        ]);
+
+        // anna: Céltól független feladat
+        Task::create([
+            'user_id' => 1,
+
+            'description' => 'Fogmosás',
+
+            'type' => 'daily',
+        ]);
+
+
+
+
     }
 }
