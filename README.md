@@ -50,7 +50,8 @@
     - ✅ last8 8 színes teszt céllal
 - ✅ frontend: a felhasználó céljainak lekérdezése és eltárolása a UserContext-ben. (ki kell szedni a válaszból az id-ket és f_id-ket)
 - ✅ backend: getUserNotCompletedGoals route
-- ❌ backend: getUserCompletedGoals route
+- ✅ backend: getUserCompletedGoals route
+- ❌ frontend: UserContext-ben, szétválasztva lekérdezni a nem teljesített és teljesített célokat.
 - ❌ frontend: UserGoals komponens megjeleníti a felhasználó lekérdezett céljait.
 - ❌ 
 - ❌ 

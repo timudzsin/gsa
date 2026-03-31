@@ -24,14 +24,19 @@ Route::put('/user-dont-want-essay', [UserController::class, 'putUserDontWantEssa
 Route::get('/user-want-essay', [UserController::class, 'getUserWantEssay'])->middleware('auth:sanctum');
 Route::put('/user-want-essay', [UserController::class, 'putUserWantEssay'])->middleware('auth:sanctum');
 
-// user Goals
+// user Not completed goals
 Route::get('/user-not-completed-goals', [GoalController::class, 'getUserNotCompletedGoals'])->middleware('auth:sanctum');
 
+// user Completed goals
+Route::get('/user-completed-goals', [GoalController::class, 'getUserCompletedGoals'])->middleware('auth:sanctum');
 
 
 
 
 
+
+
+// régi végpontok
 Route::get('/user-goals', [GoalController::class, 'getUserGoals'])->middleware('auth:sanctum');
 Route::put('/user-goals', [GoalController::class, 'putUserGoals'])->middleware('auth:sanctum');
 
