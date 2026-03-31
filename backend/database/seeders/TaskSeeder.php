@@ -49,7 +49,7 @@ class TaskSeeder extends Seeder
             'type' => 'daily',
         ]);
 
-        // anna: B2 angol nyelvvizsga
+        // anna: B2 angol nyelvvizsga (teljesített)
         Task::create([
             'goal_id' => 4,
             'user_id' => 1,
@@ -72,6 +72,192 @@ class TaskSeeder extends Seeder
 
 
 
+        // alexios: 5 millió Ft megtakarítás
+        Task::create([
+            'goal_id' => 5,
+            'user_id' => 2,
 
+            'description' => 'Heti költések áttekintése',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 1,
+        ]);
+
+        // alexios: Heti 7 edzés 6 hónapon át
+        Task::create([
+            'goal_id' => 6,
+            'user_id' => 2,
+
+            'description' => 'Edzés megtartása',
+
+            'type' => 'daily',
+        ]);
+
+        // alexios: Saját vállalkozás bevételének megduplázása
+        Task::create([
+            'goal_id' => 7,
+            'user_id' => 2,
+
+            'description' => 'Új ügyfelek megkeresése',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 3,
+        ]);
+
+        // alexios: 10 könyv elolvasása önfejlesztés témában
+        Task::create([
+            'goal_id' => 8,
+            'user_id' => 2,
+
+            'description' => '30 perc olvasás',
+
+            'type' => 'daily',
+        ]);
+
+        // alexios: Testzsír százalék 15% alá csökkentése
+        Task::create([
+            'goal_id' => 9,
+            'user_id' => 2,
+
+            'description' => 'Kalóriák nyomon követése',
+
+            'type' => 'daily',
+        ]);
+        Task::create([
+            'goal_id' => 9,
+            'user_id' => 2,
+
+            'description' => 'Mérlegelés és testösszetétel figyelése',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 2,
+        ]);
+
+        // alexios: LinkedIn hálózat bővítése 500 új kapcsolattal
+        Task::create([
+            'goal_id' => 10,
+            'user_id' => 2,
+
+            'description' => '5 új kapcsolat felvétele',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 3,
+        ]);
+        Task::create([
+            'goal_id' => 10,
+            'user_id' => 2,
+
+            'description' => 'Üzenetek küldése potenciális kapcsolatoknak',
+
+            'type' => 'on_certain_days_of_the_week',
+            'is_on_tuesday' => true,
+            'is_on_wednesday' => true,
+            'is_on_thursday' => true,
+        ]);
+
+        // alexios: Maraton lefutása
+        Task::create([
+            'goal_id' => 11,
+            'user_id' => 2,
+
+            'description' => 'Futóedzés',
+
+            'type' => 'on_certain_days_of_the_week',
+            'is_on_monday' => true,
+            'is_on_wednesday' => true,
+            'is_on_saturday' => true,
+        ]);
+        Task::create([
+            'goal_id' => 11,
+            'user_id' => 2,
+
+            'description' => 'Hosszú futás',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 1,
+        ]);
+
+        // alexios: Napi 10 000 lépés 3 hónapon keresztül (completed)
+        Task::create([
+            'goal_id' => 12,
+            'user_id' => 2,
+
+            'description' => '10 000 lépés',
+
+            'type' => 'daily',
+        ]);
+
+        // alexios: 3 hónapos vésztartalék felépítése (completed)
+        Task::create([
+            'goal_id' => 13,
+            'user_id' => 2,
+
+            'description' => 'Heti megtakarítás félretétele',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 1,
+        ]);
+        Task::create([
+            'goal_id' => 13,
+            'user_id' => 2,
+
+            'description' => 'Kiadások csökkentése (nem szükséges vásárlások kerülése)',
+
+            'type' => 'daily',
+        ]);
+
+        // alexios: Alap weboldal elkészítése a vállalkozáshoz (completed)
+        Task::create([
+            'goal_id' => 14,
+            'user_id' => 2,
+
+            'description' => 'Weboldal fejlesztése',
+
+            'type' => 'on_certain_days_of_the_week',
+            'is_on_monday' => true,
+            'is_on_wednesday' => true,
+            'is_on_sunday' => true,
+        ]);
+        Task::create([
+            'goal_id' => 14,
+            'user_id' => 2,
+
+            'description' => 'Weboldal funkciók tesztelése és hibajavítás',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 2,
+        ]);
+
+        // alexios: Céltól független feladatok
+        Task::create([
+            'user_id' => 2,
+
+            'description' => 'Napi tervezés',
+
+            'type' => 'daily',
+        ]);
+        Task::create([
+            'user_id' => 2,
+
+            'description' => 'Rendrakás az íróasztalon',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 2,
+        ]);
+        Task::create([
+            'user_id' => 2,
+
+            'description' => '25 perc Takarítás',
+
+            'type' => 'x_times_per_week',
+            'times_per_week' => 1,
+        ]);
+        Task::create([
+            'user_id' => 2,
+
+            'description' => 'Gyógyszert bevenni',
+
+            'type' => 'daily',
+        ]);
     }
 }
