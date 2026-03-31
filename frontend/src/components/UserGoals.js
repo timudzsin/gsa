@@ -26,7 +26,7 @@ export default function UserGoals() {
 				.filter((goal) => !goal.is_completed)
 				.map((goal, index) => (
 					<div key={index} className={`goal ${goal.color}`}>
-						<img className="goal-icon" src={`/goal_icons/${goal.icon_url}`} alt="goal-icon" />
+						<img className="goal-icon" src={`/goal_icons/${goal.icon_url}`} alt={`${goal.icon_url}`} />
 						<p className="goal-title">{goal.title}</p>
 						<p className="goal-deadline">{getDaysLeft(goal.deadline)}<br></br>nap maradt</p>
 					</div>
