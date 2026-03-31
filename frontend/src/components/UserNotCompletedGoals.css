@@ -19,23 +19,28 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-    justify-content: center;
+	justify-content: center;
 
-    text-align: center;
+	text-align: center;
 }
-.UserNotCompletedGoals > .goal > .goal-icon {
+.UserNotCompletedGoals > .goal > .goal-icon > svg{
 	width: 50px;
 	height: 50px;
+    fill: hsl(0, 0%, 95%);
 }
 .UserNotCompletedGoals > .goal > .goal-title {
-    font-size: 22px;
-    font-weight: 500;
+	font-size: 22px;
+	font-weight: 550;
 
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 .UserNotCompletedGoals > .goal > .goal-deadline {
-    font-size: 14px;
-    color: hsl(0, 0%, 85%);
+	font-size: 14px;
+	color: hsl(0, 0%, 80%);
+}
+.UserNotCompletedGoals > .goal > .goal-deadline > .goal-deadline-days {
+	font-size: 16px;
+	color: hsl(0, 0%, 85%);
 }
 
 
@@ -43,50 +48,62 @@
 
 
 .UserNotCompletedGoals > .WHITE {
-    background-color: hsl(167, 100%, 98%);
+	background-color: hsl(167, 100%, 98%);
+}
+.UserNotCompletedGoals > .WHITE > .goal-icon > svg{
+    fill: hsl(0, 0%, 5%);
+}
+.UserNotCompletedGoals > .WHITE > .goal-title {
+    color: hsl(0, 0%, 5%);
+}
+.UserNotCompletedGoals > .WHITE > .goal-deadline {
+	color: hsl(0, 0%, 20%);
+}
+.UserNotCompletedGoals > .WHITE > .goal-deadline > .goal-deadline-days {
+	color: hsl(0, 0%, 20%);
 }
 .UserNotCompletedGoals > .ORANGE {
-    background-color: hsl(28, 93%, 53%);
+	background-color: hsl(28, 93%, 42.4%);
 }
 .UserNotCompletedGoals > .MAGENTA {
-    background-color: hsl(305, 52%, 54%);
+	background-color: hsl(305, 52%, 43.2%);
 }
 .UserNotCompletedGoals > .LIGHT_BLUE {
-    background-color: hsl(195, 67%, 54%);
+	background-color: hsl(195, 67%, 43.2%);
 }
 .UserNotCompletedGoals > .YELLOW {
-    background-color: hsl(48, 99%, 62%);
+	background-color: hsl(48, 99%, 49.6%);
 }
 .UserNotCompletedGoals > .LIME {
-    background-color: hsl(85, 73%, 45%);
+	background-color: hsl(85, 73%, 36%);
 }
 .UserNotCompletedGoals > .PINK {
-    background-color: hsl(343, 81%, 75%);
+	background-color: hsl(343, 81%, 60%);
 }
 .UserNotCompletedGoals > .GRAY {
-    background-color: hsl(196, 8%, 30%);
+	background-color: hsl(196, 8%, 24%);
 }
 .UserNotCompletedGoals > .LIGHT_GRAY {
-    background-color: hsl(60, 3%, 60%);
+	background-color: hsl(60, 3%, 48%);
 }
 .UserNotCompletedGoals > .CYAN {
-    background-color: hsl(180, 75%, 35%);
+	background-color: hsl(180, 75%, 28%);
 }
 .UserNotCompletedGoals > .PURPLE {
-    background-color: hsl(279, 57%, 46%);
+	background-color: hsl(279, 57%, 36.8%);
 }
 .UserNotCompletedGoals > .BLUE {
-    background-color: hsl(236, 48%, 45%);
+	background-color: hsl(236, 48%, 36%);
 }
 .UserNotCompletedGoals > .BROWN {
-    background-color: hsl(25, 45%, 35%);
+	background-color: hsl(25, 45%, 28%);
 }
 .UserNotCompletedGoals > .GREEN {
-    background-color: hsl(78, 70%, 29%);
+	background-color: hsl(78, 70%, 23.2%);
 }
 .UserNotCompletedGoals > .RED {
-    background-color: hsl(4, 64%, 42%);
+	background-color: hsl(4, 64%, 33.6%);
 }
 .UserNotCompletedGoals > .BLACK {
-    background-color: hsl(240, 7%, 12%);
+	background-color: hsl(240, 7%, 9.6%);
 }
