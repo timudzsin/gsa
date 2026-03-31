@@ -8,6 +8,8 @@ export const UserProvider = ({ children }) => {
 	const [userDontWantEssay, setUserDontWantEssay] = useState("");
 	const [userWantEssay, setUserWantEssay] = useState("");
 	const [userGoals, setUserGoals] = useState([]);
+	const [userNotCompletedGoals, setUserNotCompletedGoals] = useState([]);
+	const [userCompletedGoals, setUserCompletedGoals] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 
@@ -19,20 +21,27 @@ export const UserProvider = ({ children }) => {
 	// Felhasználó összes adatának lekérése.
 	function fetchAllUserData() {
 		setLoading(true);
-		Promise.all([getMe(), getUserDontWantEssay(), getUserWantEssay(), getUserGoals()])
-			.then(([userData, dontWantEssayData, wantEssayData, goalsData]) => {
+		Promise.all([
+			getMe(),
+			getUserDontWantEssay(),
+			getUserWantEssay(),
+			getUserNotCompletedGoals(),
+			getUserCompletedGoals(),
+		])
+			.then(([userData, dontWantEssayData, wantEssayData, notCompletedGoalsData, completedGoalsData]) => {
 				setUserName(userData.name);
 				setUserDontWantEssay(dontWantEssayData);
 				setUserWantEssay(wantEssayData);
-				setUserGoals(goalsData);
+				setUserNotCompletedGoals(notCompletedGoalsData);
+				setUserCompletedGoals(completedGoalsData);
 
 				// Segítség: Ki van bejelentkezve?
 				console.log("bejelentkezve:\n" + userData.name);
+                console.log(completedGoalsData);
 			})
 			.catch((err) => console.error(err))
 			.finally(() => setLoading(false));
 	}
-
 
 
 	function getMe() {
@@ -46,7 +55,6 @@ export const UserProvider = ({ children }) => {
 				return null;
 			});
 	}
-
 
 
 	function getUserDontWantEssay() {
@@ -66,7 +74,6 @@ export const UserProvider = ({ children }) => {
 	}
 
 
-
 	function getUserWantEssay() {
 		return axios
 			.get("http://localhost:8000/api/user-want-essay", {
@@ -84,10 +91,17 @@ export const UserProvider = ({ children }) => {
 	}
 
 
-
-	function getUserGoals() {
+	function getUserNotCompletedGoals() {
 		return axios
-			.get("http://localhost:8000/api/user-goals", {
+			.get("http://localhost:8000/api/user-not-completed-goals", {
+				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+			})
+			.then((res) => cleanGoals(res.data.goals));
+	}
+
+	function getUserCompletedGoals() {
+		return axios
+			.get("http://localhost:8000/api/user-completed-goals", {
 				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 			})
 			.then((res) => cleanGoals(res.data.goals));
@@ -124,8 +138,6 @@ export const UserProvider = ({ children }) => {
 		}));
 	}
 
-
-
 	return (
 		<UserContext.Provider
 			value={{
@@ -139,8 +151,7 @@ export const UserProvider = ({ children }) => {
 				setUserWantEssay,
 				putUserWantEssay,
 
-                userGoals,
-                setUserGoals,
+				userNotCompletedGoals,
 			}}
 		>
 			{children}

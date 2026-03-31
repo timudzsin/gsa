@@ -1,10 +1,10 @@
 import React from "react";
-import UserGoals from "../components/UserGoals";
+import UserNotCompletedGoals from "../components/UserNotCompletedGoals";
 
 export default function UserGoalsPage() {
 	return (
 		<div className="UserGoalsPage">
-			<UserGoals></UserGoals>
+			<UserNotCompletedGoals></UserNotCompletedGoals>
 		</div>
 	);
 }
