@@ -52,7 +52,7 @@
 - ✅ backend: getUserNotCompletedGoals route
 - ✅ backend: getUserCompletedGoals route
 - ✅ frontend: UserContext-ben, szétválasztva lekérdezni a nem teljesített és teljesített célokat.
-- ❌ frontend: A célok színeinek css-ét javítani olyanra mint az ios shortcuts app-ban
+- ✅ frontend: A célok színeinek css-ét javítani olyanra mint az ios shortcuts app-ban
 - ❌ frontend: UserGoals komponens megjeleníti a felhasználó lekérdezett céljait.
 - ❌ 
 - ❌ 

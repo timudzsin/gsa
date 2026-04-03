@@ -172,8 +172,8 @@ A vállalkozásom bevételének megduplázása és az alap weboldal létrehozás
 
 
         User::create([
-            'name' => 'last8',
-            'password' => 'last8',
+            'name' => 'last7',
+            'password' => 'last7',
         ]);
     }
 }
