@@ -7,7 +7,6 @@ export const UserProvider = ({ children }) => {
 	const [userName, setUserName] = useState(null);
 	const [userDontWantEssay, setUserDontWantEssay] = useState("");
 	const [userWantEssay, setUserWantEssay] = useState("");
-	const [userGoals, setUserGoals] = useState([]);
 	const [userNotCompletedGoals, setUserNotCompletedGoals] = useState([]);
 	const [userCompletedGoals, setUserCompletedGoals] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -141,17 +140,21 @@ export const UserProvider = ({ children }) => {
 	return (
 		<UserContext.Provider
 			value={{
-				loading,
-
+                userName,
+                
 				userDontWantEssay,
 				setUserDontWantEssay,
-				putUserDontWantEssay,
 
+				putUserDontWantEssay,
+                
 				userWantEssay,
 				setUserWantEssay,
+                
 				putUserWantEssay,
-
+                
 				userNotCompletedGoals,
+				
+                loading,
 			}}
 		>
 			{children}

@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import UserNavbar from "../components/UserNavbar";
 import "./UserPage.css";
 import { UserProvider } from "../contexts/UserContext";
+import UserLogoutAndInfoButton from "../components/UserLogoutAndInfoButton";
 
 export default function UserPage() {
 	//const { loading } = useContext(UserContext);
@@ -11,6 +12,7 @@ export default function UserPage() {
 	return (
 		<div className="UserPage">
 			<UserProvider>
+				<UserLogoutAndInfoButton></UserLogoutAndInfoButton>
 				<Outlet></Outlet>
 				<UserNavbar></UserNavbar>
 			</UserProvider>

@@ -66,12 +66,12 @@ class GoalSeeder extends Seeder
             'user_id' => 2,
             'title' => 'Saját vállalkozás bevételének megduplázása',
             'deadline' => '2026-12-31',
-            'color' => 'ORANGE',
+            'color' => 'MAGENTA',
             'icon_url' => 'business-growth.svg',
         ]);
         Goal::create([
             'user_id' => 2,
-            'title' => '10 könyv elolvasása önfejlesztés témában',
+            'title' => '2 könyv elolvasása önfejlesztés témában, és még 3 könyv elolvasása önfejlesztés témában, és még 4 könyv elolvasása önfejlesztés témában',
             'deadline' => '2026-11-30',
             'color' => 'PURPLE',
             'icon_url' => 'books.svg',
@@ -80,7 +80,7 @@ class GoalSeeder extends Seeder
             'user_id' => 2,
             'title' => 'Testzsír százalék 15% alá csökkentése',
             'deadline' => '2026-09-15',
-            'color' => 'LIME',
+            'color' => 'BEIGE',
             'icon_url' => 'body-fat.svg',
         ]);
         Goal::create([
@@ -94,7 +94,7 @@ class GoalSeeder extends Seeder
             'user_id' => 2,
             'title' => 'Maraton lefutása',
             'deadline' => '2026-10-10',
-            'color' => 'RED',
+            'color' => 'CORAL',
             'icon_url' => 'marathon.svg',
         ]);
 
@@ -122,7 +122,7 @@ class GoalSeeder extends Seeder
             'deadline' => '2026-02-15',
             'is_completed' => true,
             'rank' => 85,
-            'color' => 'ORANGE',
+            'color' => 'CORAL',
             'icon_url' => 'website.svg',
         ]);
 

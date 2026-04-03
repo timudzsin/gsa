@@ -6,6 +6,14 @@ import InlineSVG from "./InlineSVG";
 export default function UserNotCompletedGoals() {
 	const { loading, userNotCompletedGoals } = useContext(UserContext);
 
+	function truncateTitle(title) {
+		const maxLength = 40;
+		if (title.length > maxLength) {
+			return title.slice(0, maxLength - 3) + "...";
+		}
+		return title;
+	}
+
 	function getDaysLeft(deadline) {
 		const today = new Date();
 		const endDate = new Date(deadline);
@@ -23,13 +31,8 @@ export default function UserNotCompletedGoals() {
 		<div className="UserNotCompletedGoals">
 			{userNotCompletedGoals.map((goal, index) => (
 				<div key={index} className={`goal ${goal.color}`}>
-{/* 					<img
-						className="goal-icon"
-						src={`/goal_icons/${goal.icon_url}`}
-						alt={`${goal.icon_url}`}
-					/>
- */}					<InlineSVG className="goal-icon" src={`/goal_icons/${goal.icon_url}`} />{" "}
-					<p className="goal-title">{goal.title}</p>
+					<p className="goal-title">{truncateTitle(goal.title)}</p>
+					<InlineSVG className="goal-icon" src={`/goal_icons/${goal.icon_url}`} />
 					<p className="goal-deadline">
 						<span className="goal-deadline-days">{getDaysLeft(goal.deadline)}</span>
 						<br></br>nap maradt
