@@ -55,6 +55,7 @@
 - ✅ frontend: A célok színeinek css-ét javítani olyanra mint az ios shortcuts app-ban
 - ✅ frontend: Célon belüli elemek elrendezésének változtatása
 - ✅ frontend: user ↩️ Kilépés és ℹ️ Információ gomb alap
+- ✅ frontend: user ↩️ Kilépés popup
 - ❌ frontend: UserGoals komponens megjeleníti a felhasználó lekérdezett céljait.
 - ❌ 
 - ❌ 

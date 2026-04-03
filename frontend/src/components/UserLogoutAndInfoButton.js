@@ -13,7 +13,7 @@ export default function UserLogoutAndInfoButton() {
 
 	function handleLogout() {
 		localStorage.removeItem("token");
-		navigate("/");
+		navigate("/login");
 	}
 
 	return (
@@ -33,27 +33,63 @@ export default function UserLogoutAndInfoButton() {
 			</div>
 
 			{/* Logout popup */}
-			{showLogout && createPortal(
-				<div className="UserLogoutAndInfoButton-logoutPopup">
-					<div className="UserLogoutAndInfoButton-logoutPopup-content">
-						<p>Biztosan ki akarsz lépni?</p>
-						<button onClick={handleLogout}>Igen</button>
-						<button onClick={() => setShowLogout(false)}>Nem</button>
-					</div>
-				</div>,
-                document.body
-			)}
+			{showLogout &&
+				createPortal(
+					<div className="UserLogoutAndInfoButton-logoutPopup">
+						<div className="UserLogoutAndInfoButton-logoutPopup-content">
+							<p className="UserLogoutAndInfoButton-logoutPopup-content-text">
+								Biztos kilépsz{" "}
+								<span className="UserLogoutAndInfoButton-logoutPopup-content-text-span">
+									{userName}
+								</span>
+								?
+							</p>
+							<button
+								className="UserLogoutAndInfoButton-logoutPopup-content-no"
+								onClick={() => setShowLogout(false)}
+							>
+								Mégse
+							</button>
+							<button
+								className="UserLogoutAndInfoButton-logoutPopup-content-yes"
+								onClick={handleLogout}
+							>
+								Kilépés
+							</button>
+						</div>
+					</div>,
+					document.body,
+				)}
 
 			{/* Info popup */}
-			{showInfo && createPortal(
-				<div className="UserLogoutAndInfoButton-infoPopup">
-					<div className="UserLogoutAndInfoButton-infoPopup-content">
-						<p>Itt lesz majd a hosszabb leírásod...</p>
-						<button onClick={() => setShowInfo(false)}>Bezárás</button>
-					</div>
-				</div>,
-                document.body
-			)}
+			{showInfo &&
+				createPortal(
+					<div className="UserLogoutAndInfoButton-infoPopup">
+						<div className="UserLogoutAndInfoButton-infoPopup-content">
+							<p>
+								Itt lesz majd a hosszabb leírásod... dsfgsdgdssfgdsfsg
+								sdgsdgdsgdsgdsgdsg dsgsdgfdsgd sgfdsgfdsfgds fsd gfds gsd fd gsdg dsgdsg
+								dsfgsdgsdg osdhursodhgudshg
+								sduhsu ghdsughdsuogrus dhgoféksajdfskj ffjaésldfjsaélkfdj asédl kjfs falsesafs af
+								asfd asfdsa fdsafasfasdfasfsadf saf sad fsafsafdsaf sad fsafsaf sadf afa sad a
+								hosszabb leírásod... dsfgsdgdssfgdsfsg
+								sdgsdgdsgdsgdsgdsgd sgsdgfdsgdsgfdsgfdsfgds fsd gfds gsd fd gsdg dsgdsg
+								dsfgsdgsdg osdhur a hosszabb leírásod... dsfgsdgdssfgdsfsg
+								sdgsdgds gdsgdsgdsgds gsdgfdsgdsgfdsgfdsfgds fsd gfds gsd fd gsdg dsgdsg
+								dsfgsdgsdg osdhur a hosszabb leírásod... dsfgsdgdssfgdsfsg
+								sdgsdgdsgdsgdsgds gdsgsdgfdsgdsgfd sgfdsfgds fsd gfds gsd fd gsdg dsgdsg
+								dsfgsdgsdg osdhur 
+                                sdg osdhur a hosszabb leírásod... dsfgsdgdssfgdsfsg
+								sdgsdgds gdsgdsgdsgds gsdgfdsgdsgfdsgfdsfgds fsd gfds gsd fd gsdg dsgdsg
+								dsfgsdgsdg osdhur a hosszabb leírásod... dsfgsdgdssfgdsfsg
+								sdgsdgdsgdsgdsgds gdsgsdgfdsgdsgfd sgfdsfgds fsd gfds gsd fd gsdg dsgdsg
+								dsfgsdgsdg osdhur
+							</p>
+							<button onClick={() => setShowInfo(false)}>Bezárás</button>
+						</div>
+					</div>,
+					document.body,
+				)}
 		</>
 	);
 }

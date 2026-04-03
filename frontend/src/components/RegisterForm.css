@@ -1,20 +1,20 @@
 .RegisterForm {
+	background-color: hsl(0, 0%, 15%);
+	border-radius: 25px;
+	padding: 17px;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
-	padding: 10px;
-
-	border-radius: 20px;
-	background-color: hsl(0, 0%, 10%);
 }
 
 .RegisterForm > input {
-	width: 200px;
-	height: 35px;
+	width: 240px;
+	height: 38px;
 
 	border-radius: 1000000000000000px;
-	background-color: hsl(0, 0%, 20%);
+	background-color: hsl(0, 0%, 30%);
 
 	border: none;
 	font-size: 22px;
@@ -22,15 +22,15 @@
 }
 
 .RegisterForm > button {
-	width: 200px;
-	height: 40px;
+	width: 240px;
+	height: 42px;
     margin-top: 10px;
 
 	border-radius: 10000000000000000px;
-	background-color: hsl(210, 70%, 40%);
+    background-color: hsl(205, 99%, 50%);
 
 	border: none;
-	font-size: 26px;
-	font-weight: 600;
+	font-size: 22px;
+	font-weight: 450;
 	text-align: center;
 }
