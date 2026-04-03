@@ -66,24 +66,32 @@ export default function UserLogoutAndInfoButton() {
 				createPortal(
 					<div className="UserLogoutAndInfoButton-infoPopup">
 						<div className="UserLogoutAndInfoButton-infoPopup-content">
+							<h1>Lorem ipsum dolor sit amet consectetur</h1>
 							<p>
-								Itt lesz majd a hosszabb leírásod... dsfgsdgdssfgdsfsg
-								sdgsdgdsgdsgdsgdsg dsgsdgfdsgd sgfdsgfdsfgds fsd gfds gsd fd gsdg dsgdsg
-								dsfgsdgsdg osdhursodhgudshg
-								sduhsu ghdsughdsuogrus dhgoféksajdfskj ffjaésldfjsaélkfdj asédl kjfs falsesafs af
-								asfd asfdsa fdsafasfasdfasfsadf saf sad fsafsafdsaf sad fsafsaf sadf afa sad a
-								hosszabb leírásod... dsfgsdgdssfgdsfsg
-								sdgsdgdsgdsgdsgdsgd sgsdgfdsgdsgfdsgfdsfgds fsd gfds gsd fd gsdg dsgdsg
-								dsfgsdgsdg osdhur a hosszabb leírásod... dsfgsdgdssfgdsfsg
-								sdgsdgds gdsgdsgdsgds gsdgfdsgdsgfdsgfdsfgds fsd gfds gsd fd gsdg dsgdsg
-								dsfgsdgsdg osdhur a hosszabb leírásod... dsfgsdgdssfgdsfsg
-								sdgsdgdsgdsgdsgds gdsgsdgfdsgdsgfd sgfdsfgds fsd gfds gsd fd gsdg dsgdsg
-								dsfgsdgsdg osdhur 
-                                sdg osdhur a hosszabb leírásod... dsfgsdgdssfgdsfsg
-								sdgsdgds gdsgdsgdsgds gsdgfdsgdsgfdsgfdsfgds fsd gfds gsd fd gsdg dsgdsg
-								dsfgsdgsdg osdhur a hosszabb leírásod... dsfgsdgdssfgdsfsg
-								sdgsdgdsgdsgdsgds gdsgsdgfdsgdsgfd sgfdsfgds fsd gfds gsd fd gsdg dsgdsg
-								dsfgsdgsdg osdhur
+								Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
+								sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
+								convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus
+								fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada
+								lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti
+								sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+							</p>
+							<h1>Lorem ipsum dolor sit amet consectetur</h1>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
+								sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
+								convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus
+								fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada
+								lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti
+								sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+							</p>
+							<h1>Lorem ipsum dolor sit amet consectetur</h1>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
+								sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
+								convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus
+								fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada
+								lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti
+								sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
 							</p>
 							<button onClick={() => setShowInfo(false)}>Bezárás</button>
 						</div>

@@ -56,6 +56,7 @@
 - ✅ frontend: Célon belüli elemek elrendezésének változtatása
 - ✅ frontend: user ↩️ Kilépés és ℹ️ Információ gomb alap
 - ✅ frontend: user ↩️ Kilépés popup
+- ✅ frontend: user ℹ️ Információ popup (placeholder szöveggel)
 - ❌ frontend: UserGoals komponens megjeleníti a felhasználó lekérdezett céljait.
 - ❌ 
 - ❌ 
