@@ -5,6 +5,7 @@ import InlineSVG from "./InlineSVG";
 
 export default function UserNotCompletedGoals() {
 	const { loading, userNotCompletedGoals } = useContext(UserContext);
+    console.log(userNotCompletedGoals);
 
 	function truncateTitle(title) {
 		const maxLength = 40;
@@ -30,7 +31,7 @@ export default function UserNotCompletedGoals() {
 	return (
 		<div className="UserNotCompletedGoals">
 			{userNotCompletedGoals.map((goal, index) => (
-				<div key={index} className={`goal ${goal.color}`}>
+				<div key={goal.id} className={`goal ${goal.color}`}>
 					<p className="goal-title">{truncateTitle(goal.title)}</p>
 					<InlineSVG className="goal-icon" src={`/goal_icons/${goal.icon_url}`} />
 					<p className="goal-deadline">

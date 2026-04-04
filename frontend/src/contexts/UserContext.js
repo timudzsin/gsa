@@ -11,36 +11,30 @@ export const UserProvider = ({ children }) => {
 	const [userCompletedGoals, setUserCompletedGoals] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-
 	useEffect(() => {
 		fetchAllUserData();
 	}, []);
 
 
+
 	// Felhasználó összes adatának lekérése.
 	function fetchAllUserData() {
 		setLoading(true);
-		Promise.all([
-			getMe(),
-			getUserDontWantEssay(),
-			getUserWantEssay(),
-			getUserNotCompletedGoals(),
-			getUserCompletedGoals(),
-		])
+		Promise.all([getMe(), getUserDontWantEssay(), getUserWantEssay(), getUserNotCompletedGoals(), getUserCompletedGoals()])
 			.then(([userData, dontWantEssayData, wantEssayData, notCompletedGoalsData, completedGoalsData]) => {
 				setUserName(userData.name);
 				setUserDontWantEssay(dontWantEssayData);
 				setUserWantEssay(wantEssayData);
 				setUserNotCompletedGoals(notCompletedGoalsData);
 				setUserCompletedGoals(completedGoalsData);
-
-                console.log(notCompletedGoalsData);
 			})
 			.catch((err) => console.error(err))
 			.finally(() => setLoading(false));
 	}
 
 
+
+    // User
 	function getMe() {
 		return axios
 			.get("http://localhost:8000/api/me", {
@@ -54,6 +48,8 @@ export const UserProvider = ({ children }) => {
 	}
 
 
+
+    // Nem akarok esszé
 	function getUserDontWantEssay() {
 		return axios
 			.get("http://localhost:8000/api/user-dont-want-essay", {
@@ -70,7 +66,9 @@ export const UserProvider = ({ children }) => {
 	}
 
 
-	function getUserWantEssay() {
+
+    // Akarok esszé
+    function getUserWantEssay() {
 		return axios
 			.get("http://localhost:8000/api/user-want-essay", {
 				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -86,70 +84,46 @@ export const UserProvider = ({ children }) => {
 	}
 
 
+
+    // Nem teljesített célok
 	function getUserNotCompletedGoals() {
 		return axios
 			.get("http://localhost:8000/api/user-not-completed-goals", {
 				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 			})
-			.then((res) => cleanGoals(res.data.goals));
+			.then((res) => res.data.goals);
 	}
+
+
+
+    // Teljesített célok
 	function getUserCompletedGoals() {
 		return axios
 			.get("http://localhost:8000/api/user-completed-goals", {
 				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 			})
-			.then((res) => cleanGoals(res.data.goals));
-	}
-	function cleanGoals(goals) {
-		return goals.map((goal) => ({
-			title: goal.title,
-			deadline: goal.deadline,
-			is_completed: goal.is_completed,
-			rank: goal.rank,
-			color: goal.color,
-			icon_url: goal.icon_url,
-
-			motivations: goal.motivations?.map((m) => ({
-				description: m.description,
-			})),
-
-			tasks: goal.tasks?.map((task) => ({
-				description: task.description,
-				type: task.type,
-				rank: task.rank,
-
-				is_on_monday: task.is_on_monday,
-				is_on_tuesday: task.is_on_tuesday,
-				is_on_wednesday: task.is_on_wednesday,
-				is_on_thursday: task.is_on_thursday,
-				is_on_friday: task.is_on_friday,
-				is_on_saturday: task.is_on_saturday,
-				is_on_sunday: task.is_on_sunday,
-
-				times_per_week: task.times_per_week,
-			})),
-		}));
+			.then((res) => res.data.goals);
 	}
 
     
 	return (
 		<UserContext.Provider
 			value={{
-                userName,
-                
+				userName,
+
 				userDontWantEssay,
 				setUserDontWantEssay,
 
-				putUserDontWantEssay,
-                
 				userWantEssay,
 				setUserWantEssay,
                 
-				putUserWantEssay,
-                
 				userNotCompletedGoals,
-				
-                loading,
+                setUserNotCompletedGoals,
+                
+				putUserDontWantEssay,
+				putUserWantEssay,
+
+				loading,
 			}}
 		>
 			{children}
