@@ -34,9 +34,7 @@ export const UserProvider = ({ children }) => {
 				setUserNotCompletedGoals(notCompletedGoalsData);
 				setUserCompletedGoals(completedGoalsData);
 
-				// Segítség: Ki van bejelentkezve?
-				console.log("bejelentkezve:\n" + userData.name);
-                console.log(completedGoalsData);
+                console.log(notCompletedGoalsData);
 			})
 			.catch((err) => console.error(err))
 			.finally(() => setLoading(false));
@@ -63,7 +61,6 @@ export const UserProvider = ({ children }) => {
 			})
 			.then((res) => res.data.dont_want_essay);
 	}
-
 	function putUserDontWantEssay(x) {
 		return axios.put(
 			"http://localhost:8000/api/user-dont-want-essay",
@@ -80,7 +77,6 @@ export const UserProvider = ({ children }) => {
 			})
 			.then((res) => res.data.want_essay);
 	}
-
 	function putUserWantEssay(x) {
 		return axios.put(
 			"http://localhost:8000/api/user-want-essay",
@@ -97,7 +93,6 @@ export const UserProvider = ({ children }) => {
 			})
 			.then((res) => cleanGoals(res.data.goals));
 	}
-
 	function getUserCompletedGoals() {
 		return axios
 			.get("http://localhost:8000/api/user-completed-goals", {
@@ -105,7 +100,6 @@ export const UserProvider = ({ children }) => {
 			})
 			.then((res) => cleanGoals(res.data.goals));
 	}
-
 	function cleanGoals(goals) {
 		return goals.map((goal) => ({
 			title: goal.title,
@@ -137,6 +131,7 @@ export const UserProvider = ({ children }) => {
 		}));
 	}
 
+    
 	return (
 		<UserContext.Provider
 			value={{

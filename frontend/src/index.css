@@ -39,3 +39,11 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+button {
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+button:active {
+    transform: scale(1.1);
+    filter: brightness(1.3);
+}

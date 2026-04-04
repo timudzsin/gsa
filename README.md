@@ -58,7 +58,7 @@
 - ✅ frontend: user ↩️ Kilépés popup
 - ✅ frontend: user ℹ️ Információ popup (placeholder szöveggel)
 - ✅ frontend: user ↩️ Kilépés és ℹ️ Információ pupup animációk?
-- ❌ frontend: user ↩️ Kilépés és ℹ️ Információ pupup animációk finomítása
+- ✅ frontend: user ↩️ Kilépés és ℹ️ Információ pupup animációk finomítása
 - ❌ frontend: UserGoals komponens megjeleníti a felhasználó lekérdezett céljait.
 - ❌ 
 - ❌ 
