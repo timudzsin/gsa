@@ -9,11 +9,30 @@ export default function UserLogoutAndInfoButton() {
 	const { userName } = useContext(UserContext);
 
 	const [showLogout, setShowLogout] = useState(false);
+	const [closingLogout, setClosingLogout] = useState(false);
+
 	const [showInfo, setShowInfo] = useState(false);
+	const [closingInfo, setClosingInfo] = useState(false);
 
 	function handleLogout() {
 		localStorage.removeItem("token");
 		navigate("/login");
+	}
+
+	function closeLogout() {
+		setClosingLogout(true);
+		setTimeout(() => {
+			setShowLogout(false);
+			setClosingLogout(false);
+		}, 300);
+	}
+
+	function closeInfo() {
+		setClosingInfo(true);
+		setTimeout(() => {
+			setShowInfo(false);
+			setClosingInfo(false);
+		}, 300);
 	}
 
 	return (
@@ -35,25 +54,16 @@ export default function UserLogoutAndInfoButton() {
 			{/* Logout popup */}
 			{showLogout &&
 				createPortal(
-					<div className="UserLogoutAndInfoButton-logoutPopup">
+					<div className={`UserLogoutAndInfoButton-logoutPopup ${closingLogout ? "closing" : ""}`}>
 						<div className="UserLogoutAndInfoButton-logoutPopup-content">
 							<p className="UserLogoutAndInfoButton-logoutPopup-content-text">
-								Biztos kilépsz{" "}
-								<span className="UserLogoutAndInfoButton-logoutPopup-content-text-span">
-									{userName}
-								</span>
-								?
+								Biztos kilépsz
+								<span className="UserLogoutAndInfoButton-logoutPopup-content-text-span"> {userName}</span>?
 							</p>
-							<button
-								className="UserLogoutAndInfoButton-logoutPopup-content-no"
-								onClick={() => setShowLogout(false)}
-							>
+							<button className="UserLogoutAndInfoButton-logoutPopup-content-no" onClick={closeLogout}>
 								Mégse
 							</button>
-							<button
-								className="UserLogoutAndInfoButton-logoutPopup-content-yes"
-								onClick={handleLogout}
-							>
+							<button className="UserLogoutAndInfoButton-logoutPopup-content-yes" onClick={handleLogout}>
 								Kilépés
 							</button>
 						</div>
@@ -64,36 +74,33 @@ export default function UserLogoutAndInfoButton() {
 			{/* Info popup */}
 			{showInfo &&
 				createPortal(
-					<div className="UserLogoutAndInfoButton-infoPopup">
+					<div className={`UserLogoutAndInfoButton-infoPopup ${closingInfo ? "closing" : ""}`}>
 						<div className="UserLogoutAndInfoButton-infoPopup-content">
 							<h1>Lorem ipsum dolor sit amet consectetur</h1>
 							<p>
-								Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
-								sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
-								convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus
-								fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada
-								lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti
-								sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+								Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque
+								sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+								Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia
+								integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per
+								conubia nostra inceptos himenaeos.
 							</p>
 							<h1>Lorem ipsum dolor sit amet consectetur</h1>
 							<p>
-								Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
-								sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
-								convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus
-								fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada
-								lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti
-								sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+								Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque
+								sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+								Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia
+								integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per
+								conubia nostra inceptos himenaeos.
 							</p>
 							<h1>Lorem ipsum dolor sit amet consectetur</h1>
 							<p>
-								Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
-								sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
-								convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus
-								fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada
-								lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti
-								sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+								Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque
+								sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+								Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia
+								integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per
+								conubia nostra inceptos himenaeos.
 							</p>
-							<button onClick={() => setShowInfo(false)}>Bezárás</button>
+							<button onClick={closeInfo}>Bezárás</button>
 						</div>
 					</div>,
 					document.body,
