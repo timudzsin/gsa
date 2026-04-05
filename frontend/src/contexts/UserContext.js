@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
 
 
 
-    // User
+	// User
 	function getMe() {
 		return axios
 			.get("http://localhost:8000/api/me", {
@@ -49,7 +49,7 @@ export const UserProvider = ({ children }) => {
 
 
 
-    // Nem akarok esszé
+	// Don't want essay
 	function getUserDontWantEssay() {
 		return axios
 			.get("http://localhost:8000/api/user-dont-want-essay", {
@@ -67,8 +67,8 @@ export const UserProvider = ({ children }) => {
 
 
 
-    // Akarok esszé
-    function getUserWantEssay() {
+	// Want essay
+	function getUserWantEssay() {
 		return axios
 			.get("http://localhost:8000/api/user-want-essay", {
 				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -85,7 +85,7 @@ export const UserProvider = ({ children }) => {
 
 
 
-    // Nem teljesített célok
+	// Not completed goals
 	function getUserNotCompletedGoals() {
 		return axios
 			.get("http://localhost:8000/api/user-not-completed-goals", {
@@ -93,10 +93,23 @@ export const UserProvider = ({ children }) => {
 			})
 			.then((res) => res.data.goals);
 	}
+	function patchUserNotCompletedGoal(goalId, payload) {
+		return axios
+			.patch(`http://localhost:8000/api/user-not-completed-goal/${goalId}`, payload, {
+				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+			})
+			.then((res) => {
+				const updatedGoal = res.data.goal;
+                // lokális állapot (userNotCompletedGoals state) szinkronizálása
+				setUserNotCompletedGoals((prev) => prev.map((goal) => (goal.id === updatedGoal.id ? updatedGoal : goal)));
+
+				return updatedGoal;
+			});
+	}
 
 
 
-    // Teljesített célok
+	// Completed goals
 	function getUserCompletedGoals() {
 		return axios
 			.get("http://localhost:8000/api/user-completed-goals", {
@@ -105,10 +118,12 @@ export const UserProvider = ({ children }) => {
 			.then((res) => res.data.goals);
 	}
 
-    
+
+
 	return (
 		<UserContext.Provider
 			value={{
+				loading,
 				userName,
 
 				userDontWantEssay,
@@ -116,14 +131,13 @@ export const UserProvider = ({ children }) => {
 
 				userWantEssay,
 				setUserWantEssay,
-                
+
 				userNotCompletedGoals,
-                setUserNotCompletedGoals,
-                
+				setUserNotCompletedGoals,
+
 				putUserDontWantEssay,
 				putUserWantEssay,
-
-				loading,
+                patchUserNotCompletedGoal,
 			}}
 		>
 			{children}

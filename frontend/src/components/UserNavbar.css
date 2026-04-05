@@ -40,4 +40,5 @@
 .UserNavbar a p {
     color: hsl(0, 50%, 100%);
     font-size: 12px;
+    user-select: none;
 }

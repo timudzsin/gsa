@@ -59,7 +59,7 @@ code {
 
 
 button {
-    transition: transform 0.1s ease-in-out, filter 0.1s ease-in-out;
+    transition: transform 0.15s ease-in-out, filter 0.15s ease-in-out;
 }
 button:hover {
     cursor: pointer;

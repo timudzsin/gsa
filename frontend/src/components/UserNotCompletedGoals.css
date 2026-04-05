@@ -12,7 +12,7 @@
     padding-right: 5px;
 }
 
-.UserNotCompletedGoals > .goal {
+.UserNotCompletedGoals > .notCompletedGoal {
 	border-radius: 30px;
 
 	display: grid;
@@ -24,9 +24,20 @@
 
 	text-align: center;
 }
+.UserNotCompletedGoals > .notCompletedGoal {
+    transition: transform 0.15s ease-in-out, filter 0.15s ease-in-out;
+}
+.UserNotCompletedGoals > .notCompletedGoal:hover {
+    cursor: pointer;
+}
+.UserNotCompletedGoals > .notCompletedGoal:active {
+    transform: scale(1.04);
+    filter: brightness(1.11);
+}
 
-.UserNotCompletedGoals > .goal > .goal-title {
+.UserNotCompletedGoals > .notCompletedGoal > .notCompletedGoal-title {
 	grid-area: title;
+    user-select: none;
 	font-size: 22px;
 	font-weight: 550;
 	color: hsl(0, 0%, 100%);
@@ -37,22 +48,24 @@
 	align-items: center;
 }
 
-.UserNotCompletedGoals > .goal > .goal-icon > svg {
+.UserNotCompletedGoals > .notCompletedGoal > .notCompletedGoal-icon > svg {
 	grid-area: icon;
 	width: 55px;
 	height: 55px;
 	fill: hsl(0, 0%, 100%);
 	color: hsl(0, 0%, 100%);
 }
-.UserNotCompletedGoals > .goal > .goal-icon {
+.UserNotCompletedGoals > .notCompletedGoal > .notCompletedGoal-icon {
+    user-select: none;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
-.UserNotCompletedGoals > .goal > .goal-deadline {
+.UserNotCompletedGoals > .notCompletedGoal > .notCompletedGoal-deadline {
 	grid-area: deadline;
+    user-select: none;
 	font-size: 14px;
 	color: hsla(0, 0%, 100%, 0.8);
 
@@ -61,7 +74,7 @@
 	justify-content: center;
 	align-items: center;
 }
-.UserNotCompletedGoals > .goal > .goal-deadline > .goal-deadline-days {
+.UserNotCompletedGoals > .notCompletedGoal > .notCompletedGoal-deadline > .notCompletedGoal-deadline-days {
 	font-size: 20px;
 	font-weight: 350;
 	color: hsla(0, 0%, 100%, 0.8);
@@ -171,6 +184,78 @@
 	border: 2px solid hsl(34.5, 23.9%, 71.4%);
 	border-top: 2px solid hsl(34.5, 23.9%, 81.4%);
 }
+
+
+
+
+.UserNotCompletedGoals-editGoalPopup {
+	position: fixed;
+	inset: 0;
+	z-index: 20;
+	background: hsla(0, 0%, 0%, 0.7);
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+
+	animation: fadeIn 0.2s ease-out forwards;
+}
+.UserNotCompletedGoals-editGoalPopup.closing {
+	animation: fadeOut 0.2s ease-out forwards;
+}
+.UserEditNotCompletedGoalPopup {
+	background-color: hsl(0, 0%, 14%);
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	width: 100%;
+	height: calc(100vh - 25px);
+    overflow-y: auto;
+
+	animation: slideUp 0.2s ease-out forwards;
+}
+.UserNotCompletedGoals-editGoalPopup.closing .UserEditNotCompletedGoalPopup {
+	animation: slideDown 0.2s ease-out forwards;
+}
+
+
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(20vh);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+@keyframes slideDown {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(20vh);
+	}
+}
+
+
+
+
+
 
 /*
 
