@@ -41,6 +41,7 @@ class GoalController extends Controller
 
 
 
+
     public function patchUserNotCompletedGoal(Request $request, Goal $goal)
     {
         // A kérés JSON-re kényszerítése
@@ -54,24 +55,23 @@ class GoalController extends Controller
             ], 403);
         }
 
-        $data = $request->validate([
+        // Validáció   (a goal id  route paraméterből jön)
+        $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'deadline' => ['nullable', 'date'],
-            'rank' => ['nullable', 'integer'],
+            'deadline' => ['required', 'date'],
+            'rank' => ['required', 'integer'],
             'color' => ['required', 'string', 'max:50'],
-            'icon_url' => ['nullable', 'string', 'max:255'],
-            'is_completed' => ['sometimes', 'boolean'],
+            'icon_url' => ['required', 'string', 'max:255'],
 
-            'motivations' => ['nullable', 'array'],
+            'motivations' => ['required', 'array'],
             'motivations.*.id' => ['nullable', 'integer'],
-            'motivations.*.description' => ['required', 'string', 'max:1000'],
+            'motivations.*.description' => ['required', 'string', 'max:255'],
 
-            'tasks' => ['nullable', 'array'],
+            'tasks' => ['required', 'array'],
             'tasks.*.id' => ['nullable', 'integer'],
-            'tasks.*.description' => ['required', 'string', 'max:1000'],
-            'tasks.*.type' => ['required', Rule::in(['daily', 'x_times_per_week', 'on_certain_days_of_the_week'])],
-            'tasks.*.rank' => ['nullable', 'integer'],
-            'tasks.*.times_per_week' => ['nullable', 'integer', 'min:1', 'max:7'],
+            'tasks.*.description' => ['required', 'string', 'max:255'],
+            'tasks.*.type' => ['required', Rule::in(['daily', 'on_certain_days_of_the_week', 'x_times_per_week'])],
+            'tasks.*.rank' => ['required', 'integer'],
             'tasks.*.is_on_monday' => ['nullable', 'boolean'],
             'tasks.*.is_on_tuesday' => ['nullable', 'boolean'],
             'tasks.*.is_on_wednesday' => ['nullable', 'boolean'],
@@ -79,47 +79,71 @@ class GoalController extends Controller
             'tasks.*.is_on_friday' => ['nullable', 'boolean'],
             'tasks.*.is_on_saturday' => ['nullable', 'boolean'],
             'tasks.*.is_on_sunday' => ['nullable', 'boolean'],
+            'tasks.*.times_per_week' => ['nullable', 'integer', 'min:1'],
         ]);
 
-        DB::transaction(function () use ($goal, $data) {
+        // Minden adatbázis-módosítást tranzakcióba teszünk, ha valami rossz, rollback
+        DB::transaction(function () use ($goal, $validated) {
+            // Cél rekord frissítése
             $goal->update([
-                'title' => $data['title'],
-                'deadline' => $data['deadline'] ?? null,
-                'rank' => $data['rank'] ?? $goal->rank,
-                'color' => $data['color'],
-                'icon_url' => $data['icon_url'] ?? null,
-                'is_completed' => $data['is_completed'] ?? $goal->is_completed,
+                'title' => $validated['title'],
+                'deadline' => $validated['deadline'],
+                'rank' => $validated['rank'],
+                'color' => $validated['color'],
+                'icon_url' => $validated['icon_url'],
             ]);
 
-            $keptMotivationIds = [];
-            foreach (($data['motivations'] ?? []) as $motivationData) {
-                if (!empty($motivationData['id'])) {
-                    $motivation = $goal->motivations()->where('id', $motivationData['id'])->firstOrFail();
-                    $motivation->update([
-                        'description' => $motivationData['description'],
-                    ]);
-                    $keptMotivationIds[] = $motivation->id;
-                } else {
-                    $motivation = $goal->motivations()->create([
-                        'description' => $motivationData['description'],
-                    ]);
-                    $keptMotivationIds[] = $motivation->id;
-                }
-            }
-
-            if (!empty($data['motivations'])) {
-                $goal->motivations()->whereNotIn('id', $keptMotivationIds)->delete();
+            /*
+                Motivációk szinkronizálása:
+                - amelyikhez van id backenden, azt frissítjük
+                - amelyikhez nincs id backenden, azt új rekordként létrehozzuk
+                - amelyik eltűnt a frontendről, azt töröljük
+            */
+            $incomingMotivations = collect($validated['motivations']);
+            $incomingMotivationIds = $incomingMotivations->pluck('id')->filter()->values()->all();
+            // Amelyik motivácó eltűnt a frontend-ről, azt töröljük
+            if (count($incomingMotivationIds) > 0) {
+                $goal->motivations()->whereNotIn('id', $incomingMotivationIds)->delete();
             } else {
                 $goal->motivations()->delete();
             }
 
-            $keptTaskIds = [];
-            foreach (($data['tasks'] ?? []) as $taskData) {
-                $payload = [
+            foreach ($incomingMotivations as $motivationData) {
+                if (!empty($motivationData['id'])) {
+                    // Létező motiváció frissítése
+                    $goal->motivations()
+                        ->where('id', $motivationData['id'])
+                        ->update([
+                            'description' => $motivationData['description'],
+                        ]);
+                } else {
+                    // Új motiváció létrehozása ha nincs ilyen id
+                    $goal->motivations()->create([
+                        'description' => $motivationData['description'],
+                    ]);
+                }
+            }
+
+            /*
+                Taskok szinkronizálása ugyanígy:
+                - meglévők frissítése
+                - újak létrehozása
+                - töröltek eltávolítása
+            */
+            $incomingTasks = collect($validated['tasks']);
+            $incomingTaskIds = $incomingTasks->pluck('id')->filter()->values()->all();
+            // Törölt task eltávolítása
+            if (count($incomingTaskIds) > 0) {
+                $goal->tasks()->whereNotIn('id', $incomingTaskIds)->delete();
+            } else {
+                $goal->tasks()->delete();
+            }
+
+            foreach ($incomingTasks as $taskData) {
+                $taskPayload = [
                     'description' => $taskData['description'],
                     'type' => $taskData['type'],
-                    'rank' => $taskData['rank'] ?? 100,
-                    'times_per_week' => $taskData['times_per_week'] ?? null,
+                    'rank' => $taskData['rank'],
                     'is_on_monday' => $taskData['is_on_monday'] ?? null,
                     'is_on_tuesday' => $taskData['is_on_tuesday'] ?? null,
                     'is_on_wednesday' => $taskData['is_on_wednesday'] ?? null,
@@ -127,37 +151,36 @@ class GoalController extends Controller
                     'is_on_friday' => $taskData['is_on_friday'] ?? null,
                     'is_on_saturday' => $taskData['is_on_saturday'] ?? null,
                     'is_on_sunday' => $taskData['is_on_sunday'] ?? null,
+                    'times_per_week' => $taskData['times_per_week'] ?? null,
+                    'user_id' => $goal->user_id,
                 ];
 
                 if (!empty($taskData['id'])) {
-                    $task = $goal->tasks()->where('id', $taskData['id'])->firstOrFail();
-                    $task->update($payload);
-                    $keptTaskIds[] = $task->id;
+                    // Létező task frissítése
+                    $goal->tasks()
+                        ->where('id', $taskData['id'])
+                        ->update($taskPayload);
                 } else {
-                    $task = $goal->tasks()->create($payload + [
-                        'user_id' => $goal->user_id,
-                    ]);
-                    $keptTaskIds[] = $task->id;
+                    // Új task létrehozása
+                    $goal->tasks()->create($taskPayload);
                 }
-            }
-
-            if (!empty($data['tasks'])) {
-                $goal->tasks()->whereNotIn('id', $keptTaskIds)->delete();
-            } else {
-                $goal->tasks()->delete();
             }
         });
 
-        $goal->load(['motivations', 'tasks']);
-
+        // A frissített célt visszaadjuk, együtt a kapcsolt motivációkkal és taskokkal.
         return response()->json([
-            'message' => 'A cél sikeresen frissítve lett.',
-            'goal' => $goal,
+            'message' => 'A cél sikeresen frissítve',
+            'goal' => $goal->fresh(['motivations', 'tasks']),
         ], 200);
     }
 
 
 
+
+
+
+
+    
     public function getUserCompletedGoals(Request $request)
     {
         // A kérés JSON-re kényszerítése

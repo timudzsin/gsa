@@ -61,7 +61,7 @@
 - ✅ frontend: user ↩️ Kilépés és ℹ️ Információ pupup animációk finomítása
 - ✅ frontend: Egy jó UI font keresése.
 - ✅ frontend: UserNotCompletedGoals komponens megjeleníti a felhasználó lekérdezett nem teljesített céljait.
-- ❌ backend: patch user-not-completed-goal route.
+- ✅ backend: patch '/user-not-completed-goal/{goal}'
 - ❌ frontend: A célokat popup ablakkal lehet szerkeszteni.
 - ❌ 
 - ❌ 
