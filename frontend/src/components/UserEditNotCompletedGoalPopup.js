@@ -190,19 +190,40 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 				</div>
 
 				{/* MOTIVATIONS */}
-				<h3>Motivációk</h3>
+				<h3 className="UserEditNotCompletedGoalPopup-motivations-label">Motivációk</h3>
 				<div className="UserEditNotCompletedGoalPopup-motivations">
 					{motivations.map((m, i) => (
-						<div key={i} className="row">
-							<input value={m.description} onChange={(e) => updateMotivation(i, e.target.value)} />
-							<button onClick={() => removeMotivation(i)} type="button">
-								X
-							</button>
-						</div>
+						<React.Fragment key={i}>
+							<div className="row">
+								<textarea
+									value={m.description}
+									onChange={(e) => {
+										updateMotivation(i, e.target.value);
+										e.target.style.height = "auto";
+										e.target.style.height = e.target.scrollHeight + "px";
+									}}
+									rows={1}
+									spellCheck={false}
+								/>
+								<button onClick={() => removeMotivation(i)} type="button">
+									<svg viewBox="0 -960 960 960">
+										<path d="M280-120q-33 0-56.5-23.5T200-200v-520q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h160q0-17 11.5-28.5T400-840h160q17 0 28.5 11.5T600-800h160q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720v520q0 33-23.5 56.5T680-120H280Zm148.5-171.5Q440-303 440-320v-280q0-17-11.5-28.5T400-640q-17 0-28.5 11.5T360-600v280q0 17 11.5 28.5T400-280q17 0 28.5-11.5Zm160 0Q600-303 600-320v-280q0-17-11.5-28.5T560-640q-17 0-28.5 11.5T520-600v280q0 17 11.5 28.5T560-280q17 0 28.5-11.5Z" />
+									</svg>
+								</button>
+							</div>
+							{i < motivations.length - 1 && <hr className="motivation-divider" />}
+						</React.Fragment>
 					))}
-					<button onClick={addMotivation} type="button">
-						+ motiváció
-					</button>
+					{motivations.length < 3 && (
+						<>
+							{motivations.length >= 1 && <hr className="motivation-divider" />}
+							<button onClick={addMotivation} type="button">
+								<svg viewBox="0 -960 960 960">
+									<path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z" />
+								</svg>
+							</button>
+						</>
+					)}
 				</div>
 
 				{/* TASKS */}
