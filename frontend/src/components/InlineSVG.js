@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function InlineSVG({ src, className }) {
+export default function InlineSVG({ src, className, onClick }) {
 	const [content, setContent] = useState("");
 
 	useEffect(() => {
@@ -21,5 +21,5 @@ export default function InlineSVG({ src, className }) {
 			});
 	}, [src]);
 
-	return <span className={className} dangerouslySetInnerHTML={{ __html: content }} />;
+	return <span className={className} onClick={onClick} dangerouslySetInnerHTML={{ __html: content }} />;
 }

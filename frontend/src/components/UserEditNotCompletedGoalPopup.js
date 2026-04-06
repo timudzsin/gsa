@@ -142,6 +142,7 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 						}}
 						rows={1}
 						spellCheck={false}
+                        placeholder={"Pontosan mit akarok elérni?"}
 					/>
 				</div>
 
@@ -204,6 +205,7 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 									}}
 									rows={1}
 									spellCheck={false}
+                                    placeholder={"Miért akarom elérni a célt?"}
 								/>
 								<button onClick={() => removeMotivation(i)} type="button">
 									<svg viewBox="0 -960 960 960">
@@ -227,57 +229,78 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 				</div>
 
 				{/* TASKS */}
-				<h3>Feladatok</h3>
+				<h3 className="UserEditNotCompletedGoalPopup-tasks-label">Feladatok</h3>
 				<div className="UserEditNotCompletedGoalPopup-tasks">
 					{tasks.map((t, i) => (
 						<div key={i} className="task">
-							<input value={t.description} onChange={(e) => updateTask(i, "description", e.target.value)} />
-							<select value={t.type} onChange={(e) => updateTask(i, "type", e.target.value)}>
-								<option value="daily">Minden nap</option>
-								<option value="on_certain_days_of_the_week">A hét bizonyos napjain</option>
-								<option value="x_times_per_week">Heti X-szer</option>
-							</select>
-							{t.type === "x_times_per_week" && (
-								<input
-									type="number"
-									min={1}
-									max={7}
-									step={1}
-									value={t.times_per_week ?? ""}
-									onChange={(e) => updateTask(i, "times_per_week", parseInt(e.target.value))}
+							<div className="task-description">
+								<textarea
+									value={t.description}
+									onChange={(e) => {
+										updateTask(i, "description", e.target.value);
+										e.target.style.height = "auto";
+										e.target.style.height = e.target.scrollHeight + "px";
+									}}
+									rows={1}
+									spellCheck={false}
+                                    placeholder={"Mit kell csinálnom?"}
 								/>
-							)}
-							{t.type === "on_certain_days_of_the_week" && (
-								<div>
-									<label>
-										<input
-											type="checkbox"
-											checked={!!t.is_on_monday}
-											onChange={(e) => updateTask(i, "is_on_monday", e.target.checked)}
-										/>
-										Hétfő
-									</label>
+							</div>
+							<hr className="task-divider" />
+							<div className="task-type">
+								<label>Típus</label>
+								<select value={t.type} onChange={(e) => updateTask(i, "type", e.target.value)}>
+									<option value="daily">Minden nap</option>
+									<option value="on_certain_days_of_the_week">A hét bizonyos napjain</option>
+									<option value="x_times_per_week">Heti X-szer</option>
+								</select>
+							</div>
+							<hr className="task-divider" />
+							<div className="task-typeOptions">
+								{t.type === "x_times_per_week" && (
+									<input
+										type="number"
+										min={1}
+										max={7}
+										step={1}
+										value={t.times_per_week ?? ""}
+										onChange={(e) => updateTask(i, "times_per_week", parseInt(e.target.value))}
+									/>
+								)}
+								{t.type === "on_certain_days_of_the_week" && (
+									<div>
+										<label>
+											<input
+												type="checkbox"
+												checked={!!t.is_on_monday}
+												onChange={(e) => updateTask(i, "is_on_monday", e.target.checked)}
+											/>
+											Hétfő
+										</label>
 
-									<label>
-										<input
-											type="checkbox"
-											checked={!!t.is_on_tuesday}
-											onChange={(e) => updateTask(i, "is_on_tuesday", e.target.checked)}
-										/>
-										Kedd
-									</label>
+										<label>
+											<input
+												type="checkbox"
+												checked={!!t.is_on_tuesday}
+												onChange={(e) => updateTask(i, "is_on_tuesday", e.target.checked)}
+											/>
+											Kedd
+										</label>
 
-									{/* stb... */}
-								</div>
-							)}
+										{/* stb... */}
+									</div>
+								)}
+							</div>
 							<button onClick={() => removeTask(i)} type="button">
 								X
 							</button>
 						</div>
 					))}
 
-					<button onClick={addTask} type="button">
-						+ feladat
+					<button className="addTaskButton" onClick={addTask} type="button">
+						<svg viewBox="0 -960 960 960">
+							<path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z" />
+						</svg>
 					</button>
 				</div>
 			</form>

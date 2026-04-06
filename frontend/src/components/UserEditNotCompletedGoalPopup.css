@@ -140,7 +140,7 @@
 }
 .UserEditNotCompletedGoalPopup-bannerAndTitle {
 	margin-top: 20px;
-	border-radius: 30px;
+	border-radius: 35px;
 }
 .UserEditNotCompletedGoalPopup-banner {
 	min-height: 80px;
@@ -159,15 +159,21 @@
 	padding: 7px;
 	overflow: hidden;
 	resize: none;
-	border-radius: 30px;
+	border-radius: 35px;
 	border: none;
-	background-color: hsl(0, 0%, 20%);
+	background-color: hsl(0, 0%, 24%);
 	border-top: 1.5px solid hsl(0, 0%, 75%);
-	border-bottom: 1.5px solid hsl(0, 0%, 35%);
+	border-bottom: 1.5px solid hsl(0, 0%, 40%);
 	text-align: center;
-	font-size: 26px;
-	font-weight: 475;
+	font-size: 28px;
+	font-weight: 575;
 }
+.UserEditNotCompletedGoalPopup-title::placeholder {
+    color: hsl(0, 0%, 40%);
+    font-weight: 400;
+    font-size: 24px;
+}
+
 
 /* ===== BANNER POPUP ===== */
 .UserEditNotCompletedGoalPopup-bannerPopup {
@@ -208,14 +214,14 @@
 .UserEditNotCompletedGoalPopup-motivations > .row {
 	font-size: 18px;
 	padding-right: 8px;
-    margin-bottom: 3px;
+	margin-bottom: 3px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
-.UserEditNotCompletedGoalPopup-motivations > .row > textarea{
+.UserEditNotCompletedGoalPopup-motivations > .row > textarea {
 	background-color: hsl(0, 0%, 20%);
-    border: none;
+	border: none;
 	font-size: 20px;
 	overflow: hidden;
 	resize: none;
@@ -223,25 +229,28 @@
 	padding-left: 17px;
 	padding-right: 17px;
 	border-radius: 23.5px;
-    width: 88%;
+	width: 88%;
 }
-.UserEditNotCompletedGoalPopup-motivations > .row > button{
+.UserEditNotCompletedGoalPopup-motivations > .row > textarea::placeholder {
+    color: hsl(0, 0%, 35%);
+}
+.UserEditNotCompletedGoalPopup-motivations > .row > button {
 	background-color: transparent;
-    width: 30px;
-    height: 30px;
-    border: none;
+	width: 30px;
+	height: 30px;
+	border: none;
 	display: flex;
 	justify-content: center; /* horizontal centering */
 	align-items: center; /* vertical centering */
 }
-.UserEditNotCompletedGoalPopup-motivations > .row > button > svg{
+.UserEditNotCompletedGoalPopup-motivations > .row > button > svg {
 	fill: hsl(359, 99%, 63%);
-    width: 28px;
-    height: 28px;
+	width: 28px;
+	height: 28px;
 }
 .motivation-divider {
 	border: none;
-	border-top: 1px solid hsl(0, 0%, 45%);
+	border-top: 1px solid hsl(0, 0%, 40%);
 	margin: 0 17px 0 17px; /* vagy 8px, ha kell kis tér */
 }
 .UserEditNotCompletedGoalPopup-motivations > button {
@@ -257,5 +266,72 @@
 .UserEditNotCompletedGoalPopup-motivations > button > svg {
 	width: 32px;
 	height: 32px;
+	fill: hsl(0, 0%, 70%);
+}
+
+/* TASKS */
+.UserEditNotCompletedGoalPopup-tasks-label {
+	margin-top: 25px;
+	padding-left: 17px;
+	font-size: 20px;
+}
+.UserEditNotCompletedGoalPopup-tasks > .task {
+	background-color: hsl(0, 0%, 20%);
+	border-radius: 23.5px;
+	font-size: 18px;
+}
+.task > .task-description > textarea {
+	background-color: hsl(0, 0%, 20%);
+	border: none;
+	font-size: 20px;
+	overflow: hidden;
+	resize: none;
+	padding: 11px;
+	padding-left: 17px;
+	padding-right: 17px;
+	border-radius: 23.5px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	width: 100%;
+}
+.task > .task-description > textarea::placeholder {
+    color: hsl(0, 0%, 35%);
+}
+.task > .task-divider {
+	border: none;
+	border-top: 1px solid hsl(0, 0%, 40%);
+	margin: 0 17px 0 17px; /* vagy 8px, ha kell kis tér */
+}
+.task > .task-type {
+	padding: 11px;
+	padding-left: 17px;
+	padding-right: 17px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.task > .task-type > select {
+	background-color: hsl(0, 0%, 20%);
+	border: none;
+	font-size: 20px;
+	color: hsl(0, 0%, 70%);
+}
+
+.addTaskButton {
+	display: block;
+	margin: auto;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+	width: 50px;
+	height: 50px;
+	background-color: hsl(0, 0%, 20%);
+	border: none;
+	border-radius: 9999px;
+}
+.addTaskButton > svg {
+	width: 40px;
+	height: 40px;
 	fill: hsl(0, 0%, 70%);
 }
