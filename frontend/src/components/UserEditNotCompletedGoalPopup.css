@@ -1,8 +1,185 @@
-.UserEditNotCompletedGoalPopup{
-    background-color: hsl(160, 80%, 40%);
+.UserEditNotCompletedGoalPopup {
+	padding: 12px;
 }
 
+/* HEADER */
+.UserEditNotCompletedGoalPopup-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.UserEditNotCompletedGoalPopup-x {
+	background-color: hsl(0, 0%, 20%);
+	border: 1.5px solid hsl(0, 0%, 30%);
+	border-radius: 9999px;
+	height: 45px;
+	width: 45px;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+}
+.UserEditNotCompletedGoalPopup-x > svg {
+	fill: hsl(0, 0%, 100%);
+	height: 38px;
+	width: 38px;
+}
+.UserEditNotCompletedGoalPopup-editGoalText {
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+	text-align: center;
+    font-size: 18px;
+    font-weight: 350;
+}
+.UserEditNotCompletedGoalPopup-v {
+	background-color: hsl(205, 99%, 50%);
+	border: 1.5px solid hsl(205, 99%, 75%);
+	border-radius: 9999px;
+	height: 45px;
+	width: 45px;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+}
+.UserEditNotCompletedGoalPopup-v > svg {
+	fill: hsl(0, 0%, 100%);
+	height: 38px;
+	width: 38px;
+}
 
+/* BANNER és TITLE */
+.UserEditNotCompletedGoalPopup .RED {
+	background-color: hsl(0, 63.2%, 63.3%);
+	background: linear-gradient(0deg, hsl(0, 63.2%, 53.3%), hsl(0, 63.2%, 63.3%));
+	border: 2px solid hsl(0, 63.2%, 73.3%);
+	border-top: 2px solid hsl(0, 63.2%, 83.3%);
+}
+.UserEditNotCompletedGoalPopup .CORAL {
+	background-color: hsl(13.2, 77.2%, 66.1%);
+	background: linear-gradient(0deg, hsl(13.2, 77.2%, 56.1%), hsl(13.2, 77.2%, 66.1%));
+	border: 2px solid hsl(13.2, 77.2%, 76.1%);
+	border-top: 2px solid hsl(13.2, 77.2%, 86.1%);
+}
+.UserEditNotCompletedGoalPopup .ORANGE {
+	background-color: hsl(32.1, 74.2%, 62.1%);
+	background: linear-gradient(0deg, hsl(32.1, 74.2%, 52.1%), hsl(32.1, 74.2%, 62.1%));
+	border: 2px solid hsl(32.1, 74.2%, 72.1%);
+	border-top: 2px solid hsl(32.1, 74.2%, 82.1%);
+}
+.UserEditNotCompletedGoalPopup .YELLOW {
+	background-color: hsl(48.2, 71.2%, 56.5%);
+	background: linear-gradient(0deg, hsl(48.2, 71.2%, 46.5%), hsl(48.2, 71.2%, 56.5%));
+	border: 2px solid hsl(48.2, 71.2%, 66.5%);
+	border-top: 2px solid hsl(48.2, 71.2%, 76.5%);
+}
+.UserEditNotCompletedGoalPopup .GREEN {
+	background-color: hsl(120, 41.6%, 55.7%);
+	background: linear-gradient(0deg, hsl(120, 41.6%, 45.7%), hsl(120, 41.6%, 55.7%));
+	border: 2px solid hsl(120, 41.6%, 65.7%);
+	border-top: 2px solid hsl(120, 41.6%, 75.7%);
+}
+.UserEditNotCompletedGoalPopup .CYAN {
+	background-color: hsl(164.4, 46%, 55.7%);
+	background: linear-gradient(0deg, hsl(164.4, 46%, 45.7%), hsl(164.4, 46%, 55.7%));
+	border: 2px solid hsl(164.4, 46%, 65.7%);
+	border-top: 2px solid hsl(164.4, 46%, 75.7%);
+}
+.UserEditNotCompletedGoalPopup .LIGHT-BLUE {
+	background-color: hsl(201.1, 68%, 69.7%);
+	background: linear-gradient(0deg, hsl(201.1, 68%, 59.7%), hsl(201.1, 68%, 69.7%));
+	border: 2px solid hsl(201.1, 68%, 79.7%);
+	border-top: 2px solid hsl(201.1, 68%, 89.7%);
+}
+.UserEditNotCompletedGoalPopup .BLUE {
+	background-color: hsl(216.2, 90.6%, 61.3%);
+	background: linear-gradient(0deg, hsl(216.2, 90.6%, 51.3%), hsl(216.2, 90.6%, 61.3%));
+	border: 2px solid hsl(216.2, 90.6%, 71.3%);
+	border-top: 2px solid hsl(216.2, 90.6%, 81.3%);
+}
+.UserEditNotCompletedGoalPopup .INDIGO {
+	background-color: hsl(227.1, 46.1%, 52.4%);
+	background: linear-gradient(0deg, hsl(227.1, 46.1%, 42.4%), hsl(227.1, 46.1%, 52.4%));
+	border: 2px solid hsl(227.1, 46.1%, 62.4%);
+	border-top: 2px solid hsl(227.1, 46.1%, 72.4%);
+}
+.UserEditNotCompletedGoalPopup .PURPLE {
+	background-color: hsl(263.7, 36.9%, 49.7%);
+	background: linear-gradient(0deg, hsl(263.7, 36.9%, 39.7%), hsl(263.7, 36.9%, 49.7%));
+	border: 2px solid hsl(263.7, 36.9%, 59.7%);
+	border-top: 2px solid hsl(263.7, 36.9%, 69.7%);
+}
+.UserEditNotCompletedGoalPopup .MAGENTA {
+	background-color: hsl(272, 51.5%, 63.2%);
+	background: linear-gradient(0deg, hsl(272, 51.5%, 53.2%), hsl(272, 51.5%, 63.2%));
+	border: 2px solid hsl(272, 51.5%, 73.2%);
+	border-top: 2px solid hsl(272, 51.5%, 83.2%);
+}
+.UserEditNotCompletedGoalPopup .PINK {
+	background-color: hsl(315.5, 54.9%, 68.2%);
+	background: linear-gradient(0deg, hsl(315.5, 54.9%, 58.2%), hsl(315.5, 54.9%, 68.2%));
+	border: 2px solid hsl(315.5, 54.9%, 78.2%);
+	border-top: 2px solid hsl(315.5, 54.9%, 88.2%);
+}
+.UserEditNotCompletedGoalPopup .GRAY {
+	background-color: hsl(210, 7.7%, 54.3%);
+	background: linear-gradient(0deg, hsl(210, 7.7%, 44.3%), hsl(210, 7.7%, 54.3%));
+	border: 2px solid hsl(210, 7.7%, 64.3%);
+	border-top: 2px solid hsl(210, 7.7%, 74.3%);
+}
+.UserEditNotCompletedGoalPopup .SAGE {
+	background-color: hsl(120, 9.9%, 62.3%);
+	background: linear-gradient(0deg, hsl(120, 9.9%, 52.3%), hsl(120, 9.9%, 62.3%));
+	border: 2px solid hsl(120, 9.9%, 72.3%);
+	border-top: 2px solid hsl(120, 9.9%, 82.3%);
+}
+.UserEditNotCompletedGoalPopup .BEIGE {
+	background-color: hsl(34.5, 23.9%, 61.4%);
+	background: linear-gradient(0deg, hsl(34.5, 23.9%, 51.4%), hsl(34.5, 23.9%, 61.4%));
+	border: 2px solid hsl(34.5, 23.9%, 71.4%);
+	border-top: 2px solid hsl(34.5, 23.9%, 81.4%);
+}
+.UserEditNotCompletedGoalPopup-bannerAndTitle {
+	margin-top: 15px;
+	border-radius: 30px;
+}
+.UserEditNotCompletedGoalPopup-banner {
+	min-height: 80px;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+}
+.UserEditNotCompletedGoalPopup-banner svg {
+	fill: hsl(0, 0%, 100%);
+	height: 70px;
+	width: 70px;
+}
+.UserEditNotCompletedGoalPopup-title {
+	width: 100%;
+	transform: scaleX(1.01) translateY(2.5px);
+	padding: 7px;
+	overflow: hidden;
+	resize: none;
+	border-radius: 30px;
+	border: none;
+	background-color: hsl(0, 0%, 25%);
+	text-align: center;
+	font-size: 26px;
+	font-weight: 475;
+}
 
+/* ===== BANNER POPUP ===== */
+.UserEditNotCompletedGoalPopup-bannerPopup {
+	background-color: rgb(243, 150, 29);
+}
 
-
+/* DEADLINE */
+.UserEditNotCompletedGoalPopup-deadline {
+	margin-top: 15px;
+	background-color: hsl(0, 0%, 25%);
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 9999px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}

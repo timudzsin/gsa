@@ -203,7 +203,7 @@
 	animation: fadeOut 0.2s ease-out forwards;
 }
 .UserEditNotCompletedGoalPopup {
-	background-color: hsl(0, 0%, 14%);
+	background-color: hsl(0, 0%, 10%);
 	border-top-left-radius: 30px;
 	border-top-right-radius: 30px;
 	width: 100%;

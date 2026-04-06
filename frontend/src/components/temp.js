@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./UserEditNotCompletedGoalPopup.css";
 
-export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave }) {
+export default function EditGoalModal({ goal, onClose, onSave }) {
 	const [title, setTitle] = useState("");
 	const [deadline, setDeadline] = useState("");
 	const [rank, setRank] = useState(100);
@@ -23,9 +22,11 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 	function addMotivation() {
 		setMotivations((prev) => [...prev, { description: "" }]);
 	}
+
 	function updateMotivation(index, value) {
 		setMotivations((prev) => prev.map((item, i) => (i === index ? { ...item, description: value } : item)));
 	}
+
 	function removeMotivation(index) {
 		setMotivations((prev) => prev.filter((_, i) => i !== index));
 	}
@@ -48,9 +49,11 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 			},
 		]);
 	}
+
 	function updateTask(index, field, value) {
 		setTasks((prev) => prev.map((item, i) => (i === index ? { ...item, [field]: value } : item)));
 	}
+
 	function removeTask(index) {
 		setTasks((prev) => prev.filter((_, i) => i !== index));
 	}
@@ -86,111 +89,114 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 	}
 
 	return (
-		<div className="UserEditNotCompletedGoalPopup">
-			<h2>Cél szerkesztése</h2>
-			<form onSubmit={handleSubmit}>
-				<label>Cím</label>
-				<input value={title} onChange={(e) => setTitle(e.target.value)} />
+		<div className="modal-overlay">
+			<div className="modal">
+				<h2>Cél szerkesztése</h2>
 
-				<label>Határidő</label>
-				<input type="date" value={deadline} onChange={(e) => setDeadline(e.target.value)} />
+				<form onSubmit={handleSubmit}>
+					<label>Cím</label>
+					<input value={title} onChange={(e) => setTitle(e.target.value)} />
 
-				<label>Rank</label>
-				<input type="number" value={rank} onChange={(e) => setRank(parseInt(e.target.value, 10))} />
+					<label>Határidő</label>
+					<input type="date" value={deadline} onChange={(e) => setDeadline(e.target.value)} />
 
-				<label>Szín</label>
-				<input value={color} onChange={(e) => setColor(e.target.value)} />
+					<label>Rank</label>
+					<input type="number" value={rank} onChange={(e) => setRank(parseInt(e.target.value, 10))} />
 
-				<label>Ikon fájl neve</label>
-				<input value={iconUrl} onChange={(e) => setIconUrl(e.target.value)} />
+					<label>Szín</label>
+					<input value={color} onChange={(e) => setColor(e.target.value)} />
 
-				<hr />
+					<label>Ikon fájl neve</label>
+					<input value={iconUrl} onChange={(e) => setIconUrl(e.target.value)} />
 
-				<h3>Motivációk</h3>
-				{motivations.map((motivation, index) => (
-					<div key={motivation.id ?? index}>
-						<input value={motivation.description} onChange={(e) => updateMotivation(index, e.target.value)} />
-						<button type="button" onClick={() => removeMotivation(index)}>
-							Törlés
-						</button>
-					</div>
-				))}
-				<button type="button" onClick={addMotivation}>
-					+ Motiváció
-				</button>
+					<hr />
 
-				<hr />
+					<h3>Motivációk</h3>
+					{motivations.map((motivation, index) => (
+						<div key={motivation.id ?? index}>
+							<input value={motivation.description} onChange={(e) => updateMotivation(index, e.target.value)} />
+							<button type="button" onClick={() => removeMotivation(index)}>
+								Törlés
+							</button>
+						</div>
+					))}
+					<button type="button" onClick={addMotivation}>
+						+ Motiváció
+					</button>
 
-				<h3>Taskok</h3>
-				{tasks.map((task, index) => (
-					<div key={task.id ?? index} style={{ marginBottom: "16px" }}>
-						<input
-							placeholder="Leírás"
-							value={task.description}
-							onChange={(e) => updateTask(index, "description", e.target.value)}
-						/>
+					<hr />
 
-						<select value={task.type} onChange={(e) => updateTask(index, "type", e.target.value)}>
-							<option value="daily">daily</option>
-							<option value="on_certain_days_of_the_week">on_certain_days_of_the_week</option>
-							<option value="x_times_per_week">x_times_per_week</option>
-						</select>
+					<h3>Taskok</h3>
+					{tasks.map((task, index) => (
+						<div key={task.id ?? index} style={{ marginBottom: "16px" }}>
+							<input
+								placeholder="Leírás"
+								value={task.description}
+								onChange={(e) => updateTask(index, "description", e.target.value)}
+							/>
 
-						<input
-							type="number"
-							value={task.rank}
-							onChange={(e) => updateTask(index, "rank", parseInt(e.target.value, 10))}
-						/>
+							<select value={task.type} onChange={(e) => updateTask(index, "type", e.target.value)}>
+								<option value="daily">daily</option>
+								<option value="on_certain_days_of_the_week">on_certain_days_of_the_week</option>
+								<option value="x_times_per_week">x_times_per_week</option>
+							</select>
 
-						{task.type === "on_certain_days_of_the_week" && (
-							<div>
-								<label>
-									<input
-										type="checkbox"
-										checked={!!task.is_on_monday}
-										onChange={(e) => updateTask(index, "is_on_monday", e.target.checked)}
-									/>
-									Hétfő
-								</label>
-
-								<label>
-									<input
-										type="checkbox"
-										checked={!!task.is_on_friday}
-										onChange={(e) => updateTask(index, "is_on_friday", e.target.checked)}
-									/>
-									Péntek
-								</label>
-							</div>
-						)}
-
-						{task.type === "x_times_per_week" && (
 							<input
 								type="number"
-								placeholder="Hányszor egy héten"
-								value={task.times_per_week ?? ""}
-								onChange={(e) => updateTask(index, "times_per_week", parseInt(e.target.value, 10))}
+								value={task.rank}
+								onChange={(e) => updateTask(index, "rank", parseInt(e.target.value, 10))}
 							/>
-						)}
 
-						<button type="button" onClick={() => removeTask(index)}>
-							Task törlése
-						</button>
-					</div>
-				))}
-				<button type="button" onClick={addTask}>
-					+ Task
-				</button>
+							{task.type === "on_certain_days_of_the_week" && (
+								<div>
+									<label>
+										<input
+											type="checkbox"
+											checked={!!task.is_on_monday}
+											onChange={(e) => updateTask(index, "is_on_monday", e.target.checked)}
+										/>
+										Hétfő
+									</label>
 
-				<hr />
+									<label>
+										<input
+											type="checkbox"
+											checked={!!task.is_on_friday}
+											onChange={(e) => updateTask(index, "is_on_friday", e.target.checked)}
+										/>
+										Péntek
+									</label>
+								</div>
+							)}
 
-				<div style={{ display: "flex", gap: "8px" }}>
-					<button type="button" onClick={onClose}>
-						Mégse
+							{task.type === "x_times_per_week" && (
+								<input
+									type="number"
+									placeholder="Hányszor egy héten"
+									value={task.times_per_week ?? ""}
+									onChange={(e) => updateTask(index, "times_per_week", parseInt(e.target.value, 10))}
+								/>
+							)}
+
+							<button type="button" onClick={() => removeTask(index)}>
+								Task törlése
+							</button>
+						</div>
+					))}
+					<button type="button" onClick={addTask}>
+						+ Task
 					</button>
-					<button type="submit">Mentés</button>
-				</div>
-			</form>
+
+					<hr />
+
+					<div style={{ display: "flex", gap: "8px" }}>
+						<button type="button" onClick={onClose}>
+							Mégse
+						</button>
+						<button type="submit">Mentés</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 }
