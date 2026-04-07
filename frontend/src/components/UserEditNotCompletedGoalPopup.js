@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef, useLayoutEffect } from "react";
 import "./UserEditNotCompletedGoalPopup.css";
 import InlineSVG from "./InlineSVG";
 import ICONS from "../icons.json";
@@ -44,6 +44,8 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 	const [showBannerPopup, setShowBannerPopup] = useState(false);
 	const [closingBannerPopup, setClosingBannerPopup] = useState(false);
 
+	const formRef = useRef(null);
+
 	const shuffledIcons = useMemo(() => {
 		const arr = [...ICONS];
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -62,6 +64,16 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 		setMotivations(goal.motivations || []);
 		setTasks(goal.tasks || []);
 	}, [goal]);
+
+	useLayoutEffect(() => {
+		if (!formRef.current) return;
+
+		const textareas = formRef.current.querySelectorAll("textarea");
+		textareas.forEach((el) => {
+			el.style.height = "auto";
+			el.style.height = el.scrollHeight + "px";
+		});
+	}, [title, motivations, tasks]);
 
 	function handleBannerPopupAnimationEnd() {
 		if (closingBannerPopup) {
@@ -105,8 +117,66 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 		setTasks((prev) => prev.filter((_, i) => i !== index));
 	}
 
+	const isFormValid = useMemo(() => {
+		const hasTitle = title.trim() !== "";
+
+		const hasValidMotivation = motivations.length > 0 && motivations.every((m) => m.description.trim() !== "");
+
+		const hasValidTask = tasks.length > 0 && tasks.every((t) => t.description.trim() !== "");
+
+		return hasTitle && hasValidMotivation && hasValidTask;
+	}, [title, motivations, tasks]);
+
+	const isChanged = useMemo(() => {
+		if (!goal) return false;
+
+		const normalize = (g) => ({
+			title: g.title?.trim() || "",
+			deadline: g.deadline || "",
+			color: g.color || "GRAY",
+			icon_url: g.icon_url || "target.svg",
+			rank: g.rank ?? 100,
+
+			motivations: (g.motivations || []).map((m) => ({
+				description: m.description.trim(),
+			})),
+
+			tasks: (g.tasks || []).map((t) => ({
+				description: t.description.trim(),
+				type: t.type,
+				rank: t.rank,
+				is_on_monday: t.is_on_monday ?? false,
+				is_on_tuesday: t.is_on_tuesday ?? false,
+				is_on_wednesday: t.is_on_wednesday ?? false,
+				is_on_thursday: t.is_on_thursday ?? false,
+				is_on_friday: t.is_on_friday ?? false,
+				is_on_saturday: t.is_on_saturday ?? false,
+				is_on_sunday: t.is_on_sunday ?? false,
+				times_per_week: t.times_per_week ?? null,
+			})),
+		});
+
+		const original = normalize(goal);
+
+		const current = normalize({
+			title,
+			deadline,
+			color,
+			icon_url: iconUrl,
+			rank,
+			motivations,
+			tasks,
+		});
+
+		return JSON.stringify(original) !== JSON.stringify(current);
+	}, [goal, title, deadline, color, iconUrl, rank, motivations, tasks]);
+
+	const canSubmit = isFormValid && isChanged;
+
 	function handleSubmit(e) {
 		e.preventDefault();
+
+		if (!isFormValid || !isChanged) return;
 
 		onSave({
 			title,
@@ -137,7 +207,7 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 
 	return (
 		<div className="UserEditNotCompletedGoalPopup">
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} ref={formRef}>
 				{/* HEADER */}
 				<div className="UserEditNotCompletedGoalPopup-headerOverlay">
 					<button className="UserEditNotCompletedGoalPopup-x" type="button" onClick={onClose}>
@@ -146,7 +216,7 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 						</svg>
 					</button>
 					<h2 className="UserEditNotCompletedGoalPopup-editGoalText">Cél Szerkesztése</h2>
-					<button className="UserEditNotCompletedGoalPopup-v" type="submit">
+					<button className="UserEditNotCompletedGoalPopup-v" type="submit" disabled={!canSubmit}>
 						<svg viewBox="0 -960 960 960">
 							<path d="m382-354 339-339q12-12 28-12t28 12q12 12 12 28.5T777-636L410-268q-12 12-28 12t-28-12L182-440q-12-12-11.5-28.5T183-497q12-12 28.5-12t28.5 12l142 143Z" />
 						</svg>

@@ -61,6 +61,10 @@
 	align-items: center; /* vertical centering */
 	box-shadow: 0 0 8px 8px hsla(0, 0%, 10%, 0.3);
 }
+.UserEditNotCompletedGoalPopup-v:disabled {
+	pointer-events: none;
+	opacity: 0.3;
+}
 .UserEditNotCompletedGoalPopup-v > svg {
 	fill: hsl(0, 0%, 100%);
 	height: 38px;
