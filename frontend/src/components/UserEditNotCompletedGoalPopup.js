@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./UserEditNotCompletedGoalPopup.css";
 import InlineSVG from "./InlineSVG";
+import ICONS from "../icons.json";
 
 const COLORS = [
 	"RED",
@@ -9,7 +10,7 @@ const COLORS = [
 	"YELLOW",
 	"GREEN",
 	"CYAN",
-	"LIGHT_BLUE",
+	"LIGHT-BLUE",
 	"BLUE",
 	"INDIGO",
 	"PURPLE",
@@ -19,7 +20,7 @@ const COLORS = [
 	"SAGE",
 	"BEIGE",
 ];
-const ICONS = ["target.svg", "directions_car.svg", "orbit.svg", "person_celebrate.svg"];
+//const ICONS = ["target.svg", "directions_car.svg", "orbit.svg", "person_celebrate.svg"];
 const days = [
 	{ key: "is_on_monday", label: "H" },
 	{ key: "is_on_tuesday", label: "K" },
@@ -42,6 +43,15 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 
 	const [showBannerPopup, setShowBannerPopup] = useState(false);
 	const [closingBannerPopup, setClosingBannerPopup] = useState(false);
+
+	const shuffledIcons = useMemo(() => {
+		const arr = [...ICONS];
+		for (let i = arr.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[arr[i], arr[j]] = [arr[j], arr[i]];
+		}
+		return arr;
+	}, []);
 
 	useEffect(() => {
 		setTitle(goal.title || "");
@@ -122,7 +132,7 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 		<div className="UserEditNotCompletedGoalPopup">
 			<form onSubmit={handleSubmit}>
 				{/* HEADER */}
-				<div className="UserEditNotCompletedGoalPopup-header">
+				<div className="UserEditNotCompletedGoalPopup-headerOverlay">
 					<button className="UserEditNotCompletedGoalPopup-x" type="button" onClick={onClose}>
 						<svg viewBox="0 -960 960 960">
 							<path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
@@ -159,35 +169,38 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 				{showBannerPopup && (
 					<div className="UserEditNotCompletedGoalPopup-bannerPopup">
 						<div className="UserEditNotCompletedGoalPopup-bannerPopup-content">
-							<div className={`preview ${color}`}>
-								<InlineSVG className="preview-icon" src={`/goal_icons/${iconUrl}`} />
-							</div>
+							<div className="UserEditNotCompletedGoalPopup-bannerPopup-content-scrollable">
+                                <div className="UserEditNotCompletedGoalPopup-bannerPopup-overlay"></div>
+								<div className={`preview ${color}`}>
+									<InlineSVG className="preview-icon" src={`/goal_icons/${iconUrl}`} />
+								</div>
 
-							<button className="doneButton" type="button" onClick={() => setShowBannerPopup(false)}>
-								Kész
-							</button>
+								<button className="doneButton" type="button" onClick={() => setShowBannerPopup(false)}>
+									<svg viewBox="0 -960 960 960">
+										<path d="m382-354 339-339q12-12 28-12t28 12q12 12 12 28.5T777-636L410-268q-12 12-28 12t-28-12L182-440q-12-12-11.5-28.5T183-497q12-12 28.5-12t28.5 12l142 143Z" />
+									</svg>
+								</button>
 
-							<h3>Szín kiválasztása</h3>
-							<div className="colorList">
-								{COLORS.map((c) => (
-									<div
-										key={c}
-										className={`colorItem ${c} ${color === c ? "selected" : ""}`}
-										onClick={() => setColor(c)}
-									/>
-								))}
-							</div>
+								<div className="colorList">
+									{COLORS.map((c) => (
+										<div
+											key={c}
+											className={`colorItem ${c} ${color === c ? "selected" : ""}`}
+											onClick={() => setColor(c)}
+										/>
+									))}
+								</div>
 
-							<h3>Ikon kiválasztása</h3>
-							<div className="iconList">
-								{ICONS.map((icon) => (
-									<InlineSVG
-										key={icon}
-										className={`iconItem ${iconUrl === icon ? "selected" : ""}`}
-										src={`/goal_icons/${icon}`}
-										onClick={() => setIconUrl(icon)}
-									/>
-								))}
+								<div className="iconList">
+									{shuffledIcons.map((icon) => (
+										<InlineSVG
+											key={icon}
+											className={`iconItem ${iconUrl === icon ? "selected" : ""}`}
+											src={`/goal_icons/${icon}`}
+											onClick={() => setIconUrl(icon)}
+										/>
+									))}
+								</div>
 							</div>
 						</div>
 					</div>

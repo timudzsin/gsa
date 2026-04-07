@@ -208,7 +208,7 @@
 	border-top-right-radius: 30px;
 	width: 100%;
 	height: calc(100vh - 25px);
-    overflow-y: auto;
+    overflow: hidden;
 
 	animation: slideUp 0.2s ease-out forwards;
 }
