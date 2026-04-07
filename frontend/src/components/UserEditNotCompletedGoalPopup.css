@@ -169,11 +169,10 @@
 	font-weight: 575;
 }
 .UserEditNotCompletedGoalPopup-title::placeholder {
-    color: hsl(0, 0%, 40%);
-    font-weight: 400;
-    font-size: 24px;
+	color: hsl(0, 0%, 40%);
+	font-weight: 400;
+	font-size: 24px;
 }
-
 
 /* ===== BANNER POPUP ===== */
 .UserEditNotCompletedGoalPopup-bannerPopup {
@@ -184,7 +183,7 @@
 .UserEditNotCompletedGoalPopup-deadline {
 	margin-top: 40px;
 	background-color: hsl(0, 0%, 20%);
-	padding: 11px;
+	padding: 7px;
 	padding-left: 17px;
 	padding-right: 17px;
 	font-size: 20px;
@@ -195,6 +194,7 @@
 }
 .UserEditNotCompletedGoalPopup-deadline > input {
 	background-color: hsl(0, 0%, 20%);
+	height: 40px;
 	border: none;
 	font-size: 20px;
 	color: hsl(0, 0%, 70%);
@@ -232,7 +232,7 @@
 	width: 88%;
 }
 .UserEditNotCompletedGoalPopup-motivations > .row > textarea::placeholder {
-    color: hsl(0, 0%, 35%);
+	color: hsl(0, 0%, 35%);
 }
 .UserEditNotCompletedGoalPopup-motivations > .row > button {
 	background-color: transparent;
@@ -279,6 +279,7 @@
 	background-color: hsl(0, 0%, 20%);
 	border-radius: 23.5px;
 	font-size: 18px;
+	margin-bottom: 13px;
 }
 .task > .task-description > textarea {
 	background-color: hsl(0, 0%, 20%);
@@ -293,11 +294,12 @@
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 	width: 100%;
+    text-align: center;
 }
 .task > .task-description > textarea::placeholder {
-    color: hsl(0, 0%, 35%);
+	color: hsl(0, 0%, 35%);
 }
-.task > .task-divider {
+.task-divider {
 	border: none;
 	border-top: 1px solid hsl(0, 0%, 40%);
 	margin: 0 17px 0 17px; /* vagy 8px, ha kell kis tér */
@@ -316,6 +318,90 @@
 	border: none;
 	font-size: 20px;
 	color: hsl(0, 0%, 70%);
+	text-align: right;
+	cursor: pointer;
+}
+.task-typeOptions-x_times_per_week {
+	padding: 5px;
+	padding-left: 17px;
+	padding-right: 17px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.task-typeOptions-x_times_per_week > input {
+	background-color: hsl(0, 0%, 20%);
+	border: none;
+	font-size: 20px;
+	color: hsl(0, 0%, 70%);
+	width: 70px;
+	height: 37px;
+	text-align: right;
+	padding-right: 15px;
+	-webkit-appearance: none;
+	margin: 0;
+	-moz-appearance: textfield;
+}
+.task-typeOptions-x_times_per_week > input::placeholder {
+	color: hsl(0, 0%, 35%);
+}
+.task-typeOptions-on_certain_days_of_the_week-checkboxes {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 11px;
+	padding-left: 17px;
+	padding-right: 17px;
+}
+.day-checkbox input {
+	display: none;
+}
+/* ez lesz a "checkbox kinézet" */
+.day-checkbox span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+    background-color: hsl(0, 0%, 30%);
+	color: hsl(0, 0%, 70%);
+	cursor: pointer;
+	transition: transform 0.15s ease-in-out, filter 0.15s ease-in-out;
+	font-size: 17px;
+    overflow: hidden;
+    user-select: none;
+}
+/* checked állapot */
+.day-checkbox input:checked + span {
+	background-color: hsl(205, 99%, 50%);
+	color: hsl(0, 0%, 100%);
+    font-size: 19px;
+    font-weight: 600;
+}
+.day-checkbox span:active {
+    transform: scale(1.1);
+    filter: brightness(1.3);
+}
+
+
+
+
+.removeTaskButton {
+	background-color: transparent;
+	width: 55px;
+	height: 55px;
+	margin: auto;
+	border: none;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+}
+.removeTaskButton > svg {
+	fill: hsl(359, 99%, 63%);
+	width: 32px;
+	height: 32px;
 }
 
 .addTaskButton {

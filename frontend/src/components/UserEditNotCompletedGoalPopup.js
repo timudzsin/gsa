@@ -20,6 +20,15 @@ const COLORS = [
 	"BEIGE",
 ];
 const ICONS = ["target.svg", "directions_car.svg", "orbit.svg", "person_celebrate.svg"];
+const days = [
+	{ key: "is_on_monday", label: "H" },
+	{ key: "is_on_tuesday", label: "K" },
+	{ key: "is_on_wednesday", label: "Sze" },
+	{ key: "is_on_thursday", label: "Cs" },
+	{ key: "is_on_friday", label: "P" },
+	{ key: "is_on_saturday", label: "Szo" },
+	{ key: "is_on_sunday", label: "V" },
+];
 
 export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave }) {
 	const [title, setTitle] = useState("");
@@ -142,7 +151,7 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 						}}
 						rows={1}
 						spellCheck={false}
-                        placeholder={"Pontosan mit akarok elérni?"}
+						placeholder={"Pontosan mit akarok elérni?"}
 					/>
 				</div>
 
@@ -205,13 +214,15 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 									}}
 									rows={1}
 									spellCheck={false}
-                                    placeholder={"Miért akarom elérni a célt?"}
+									placeholder={"Miért akarom elérni a célt?"}
 								/>
-								<button onClick={() => removeMotivation(i)} type="button">
-									<svg viewBox="0 -960 960 960">
-										<path d="M280-120q-33 0-56.5-23.5T200-200v-520q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h160q0-17 11.5-28.5T400-840h160q17 0 28.5 11.5T600-800h160q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720v520q0 33-23.5 56.5T680-120H280Zm148.5-171.5Q440-303 440-320v-280q0-17-11.5-28.5T400-640q-17 0-28.5 11.5T360-600v280q0 17 11.5 28.5T400-280q17 0 28.5-11.5Zm160 0Q600-303 600-320v-280q0-17-11.5-28.5T560-640q-17 0-28.5 11.5T520-600v280q0 17 11.5 28.5T560-280q17 0 28.5-11.5Z" />
-									</svg>
-								</button>
+								{motivations.length >= 2 && (
+									<button onClick={() => removeMotivation(i)} type="button">
+										<svg viewBox="0 -960 960 960">
+											<path d="M280-120q-33 0-56.5-23.5T200-200v-520q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h160q0-17 11.5-28.5T400-840h160q17 0 28.5 11.5T600-800h160q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720v520q0 33-23.5 56.5T680-120H280Zm148.5-171.5Q440-303 440-320v-280q0-17-11.5-28.5T400-640q-17 0-28.5 11.5T360-600v280q0 17 11.5 28.5T400-280q17 0 28.5-11.5Zm160 0Q600-303 600-320v-280q0-17-11.5-28.5T560-640q-17 0-28.5 11.5T520-600v280q0 17 11.5 28.5T560-280q17 0 28.5-11.5Z" />
+										</svg>
+									</button>
+								)}
 							</div>
 							{i < motivations.length - 1 && <hr className="motivation-divider" />}
 						</React.Fragment>
@@ -243,57 +254,73 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 									}}
 									rows={1}
 									spellCheck={false}
-                                    placeholder={"Mit kell csinálnom?"}
+									placeholder={"Mit kell csinálnom?"}
 								/>
 							</div>
 							<hr className="task-divider" />
 							<div className="task-type">
-								<label>Típus</label>
+								<label>Mikor</label>
 								<select value={t.type} onChange={(e) => updateTask(i, "type", e.target.value)}>
 									<option value="daily">Minden nap</option>
-									<option value="on_certain_days_of_the_week">A hét bizonyos napjain</option>
 									<option value="x_times_per_week">Heti X-szer</option>
+									<option value="on_certain_days_of_the_week">A hét bizonyos napjain</option>
 								</select>
 							</div>
-							<hr className="task-divider" />
 							<div className="task-typeOptions">
 								{t.type === "x_times_per_week" && (
-									<input
-										type="number"
-										min={1}
-										max={7}
-										step={1}
-										value={t.times_per_week ?? ""}
-										onChange={(e) => updateTask(i, "times_per_week", parseInt(e.target.value))}
-									/>
+									<>
+										<hr className="task-divider" />
+										<div className="task-typeOptions-x_times_per_week">
+											<label>X</label>
+											<input
+												type="number"
+												min={1}
+												max={6}
+												step={1}
+												value={t.times_per_week ?? ""}
+												onChange={(e) => {
+													let value = parseInt(e.target.value);
+
+													if (isNaN(value)) {
+														updateTask(i, "times_per_week", "");
+														return;
+													}
+
+													if (value > 6) value = 6;
+													if (value < 1) value = 1;
+
+													updateTask(i, "times_per_week", value);
+												}}
+												placeholder={"X"}
+											/>
+										</div>
+									</>
 								)}
 								{t.type === "on_certain_days_of_the_week" && (
 									<div>
-										<label>
-											<input
-												type="checkbox"
-												checked={!!t.is_on_monday}
-												onChange={(e) => updateTask(i, "is_on_monday", e.target.checked)}
-											/>
-											Hétfő
-										</label>
-
-										<label>
-											<input
-												type="checkbox"
-												checked={!!t.is_on_tuesday}
-												onChange={(e) => updateTask(i, "is_on_tuesday", e.target.checked)}
-											/>
-											Kedd
-										</label>
-
-										{/* stb... */}
+										<hr className="task-divider" />
+										<div className="task-typeOptions-on_certain_days_of_the_week-checkboxes">
+											{days.map((day) => (
+												<label key={day.key} className="day-checkbox">
+													<input
+														type="checkbox"
+														checked={t[day.key] === true}
+														onChange={(e) => updateTask(i, day.key, e.target.checked)}
+													/>
+													<span>{day.label}</span>
+												</label>
+											))}
+										</div>
 									</div>
 								)}
 							</div>
-							<button onClick={() => removeTask(i)} type="button">
-								X
-							</button>
+							{tasks.length >= 2 && (
+								<button className="removeTaskButton" onClick={() => removeTask(i)} type="button">
+									<svg viewBox="0 -960 960 960">
+										<path d="M280-120q-33 0-56.5-23.5T200-200v-520q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h160q0-17 11.5-28.5T400-840h160q17 0 28.5 11.5T600-800h160q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720v520q0 33-23.5 56.5T680-120H280Zm148.5-171.5Q440-303 440-320v-280q0-17-11.5-28.5T400-640q-17 0-28.5 11.5T360-600v280q0 17 11.5 28.5T400-280q17 0 28.5-11.5Zm160 0Q600-303 600-320v-280q0-17-11.5-28.5T560-640q-17 0-28.5 11.5T520-600v280q0 17 11.5 28.5T560-280q17 0 28.5-11.5Z" />
+									</svg>
+								</button>
+							)}
 						</div>
 					))}
 
