@@ -63,6 +63,13 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 		setTasks(goal.tasks || []);
 	}, [goal]);
 
+	function handleBannerPopupAnimationEnd() {
+		if (closingBannerPopup) {
+			setShowBannerPopup(false);
+			setClosingBannerPopup(false);
+		}
+	}
+
 	function addMotivation() {
 		setMotivations((prev) => [...prev, { description: "" }]);
 	}
@@ -167,15 +174,18 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 
 				{/* ===== BANNER POPUP ===== */}
 				{showBannerPopup && (
-					<div className="UserEditNotCompletedGoalPopup-bannerPopup">
+					<div
+						className={`UserEditNotCompletedGoalPopup-bannerPopup ${closingBannerPopup ? "closing" : ""}`}
+						onAnimationEnd={handleBannerPopupAnimationEnd}
+					>
 						<div className="UserEditNotCompletedGoalPopup-bannerPopup-content">
 							<div className="UserEditNotCompletedGoalPopup-bannerPopup-content-scrollable">
-                                <div className="UserEditNotCompletedGoalPopup-bannerPopup-overlay"></div>
+								<div className="UserEditNotCompletedGoalPopup-bannerPopup-overlay"></div>
 								<div className={`preview ${color}`}>
 									<InlineSVG className="preview-icon" src={`/goal_icons/${iconUrl}`} />
 								</div>
 
-								<button className="doneButton" type="button" onClick={() => setShowBannerPopup(false)}>
+								<button className="doneButton" type="button" onClick={() => setClosingBannerPopup(true)}>
 									<svg viewBox="0 -960 960 960">
 										<path d="m382-354 339-339q12-12 28-12t28 12q12 12 12 28.5T777-636L410-268q-12 12-28 12t-28-12L182-440q-12-12-11.5-28.5T183-497q12-12 28.5-12t28.5 12l142 143Z" />
 									</svg>

@@ -1,9 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function InlineSVG({ src, className, onClick }) {
 	const [content, setContent] = useState("");
+	const [visible, setVisible] = useState(false);
+	const ref = useRef();
+
+	// Saját lazy load (Intersection Observer)
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setVisible(true);
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.1 },
+		);
+
+		if (ref.current) observer.observe(ref.current);
+
+		return () => observer.disconnect();
+	}, []);
 
 	useEffect(() => {
+		if (!visible) return;
+
 		fetch(src)
 			.then((res) => res.text())
 			.then((data) => {
@@ -19,7 +40,7 @@ export default function InlineSVG({ src, className, onClick }) {
 				const fallback = src.split("/").pop().replace(".svg", "");
 				setContent(fallback);
 			});
-	}, [src]);
+	}, [visible, src]);
 
-	return <span className={className} onClick={onClick} dangerouslySetInnerHTML={{ __html: content }} />;
+	return <span ref={ref} className={className} onClick={onClick} dangerouslySetInnerHTML={{ __html: content }} />;
 }
