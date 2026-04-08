@@ -62,7 +62,15 @@
 - ✅ frontend: Egy jó UI font keresése.
 - ✅ frontend: UserNotCompletedGoals komponens megjeleníti a felhasználó lekérdezett nem teljesített céljait.
 - ✅ backend: patch '/user-not-completed-goal/{goal}'
-- ❌ frontend: A célokat popup ablakkal lehet szerkeszteni.
+- ✅ frontend: A célokat popup ablakkal lehet szerkeszteni.
+- ❌ frontend: lehet új célokat létrehozni.
+- ❌ backend: lehet új célokat létrehozni.
+- ❌ backend: A nem teljesített célokat lehet teljesíteni.
+- ❌ frontend: A nem teljesített célokat lehet teljesíteni.
+- ❌ frontend: A nem teljesített célokat lehet törölni.
+- ❌ 
+- ❌ 
+- ❌ 
 - ❌ 
 - ❌ 
 - ❌ 
@@ -72,7 +80,6 @@
 - ❌ 
 - ❌ dokumentáció: dokumentáció elkezdése a sablon alapján
 - ❌ 
-- ❌ frontend: Oldalak közötti animált váltás.
 - ❌ 
 - ❌ 
 - ❌ 

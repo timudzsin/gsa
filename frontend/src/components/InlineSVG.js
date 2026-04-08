@@ -14,7 +14,7 @@ export default function InlineSVG({ src, className, onClick }) {
 					observer.disconnect();
 				}
 			},
-			{ threshold: 0.1 },
+			{ threshold: 0.05 },
 		);
 
 		if (ref.current) observer.observe(ref.current);

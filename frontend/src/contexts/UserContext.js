@@ -15,8 +15,6 @@ export const UserProvider = ({ children }) => {
 		fetchAllUserData();
 	}, []);
 
-
-
 	// Felhasználó összes adatának lekérése.
 	function fetchAllUserData() {
 		setLoading(true);
@@ -32,8 +30,6 @@ export const UserProvider = ({ children }) => {
 			.finally(() => setLoading(false));
 	}
 
-
-
 	// User
 	function getMe() {
 		return axios
@@ -46,8 +42,6 @@ export const UserProvider = ({ children }) => {
 				return null;
 			});
 	}
-
-
 
 	// Don't want essay
 	function getUserDontWantEssay() {
@@ -65,8 +59,6 @@ export const UserProvider = ({ children }) => {
 		);
 	}
 
-
-
 	// Want essay
 	function getUserWantEssay() {
 		return axios
@@ -83,8 +75,6 @@ export const UserProvider = ({ children }) => {
 		);
 	}
 
-
-
 	// Not completed goals
 	function getUserNotCompletedGoals() {
 		return axios
@@ -100,14 +90,12 @@ export const UserProvider = ({ children }) => {
 			})
 			.then((res) => {
 				const updatedGoal = res.data.goal;
-                // lokális állapot (userNotCompletedGoals state) szinkronizálása
+				// lokális állapot (userNotCompletedGoals state) szinkronizálása
 				setUserNotCompletedGoals((prev) => prev.map((goal) => (goal.id === updatedGoal.id ? updatedGoal : goal)));
 
 				return updatedGoal;
 			});
 	}
-
-
 
 	// Completed goals
 	function getUserCompletedGoals() {
@@ -117,8 +105,6 @@ export const UserProvider = ({ children }) => {
 			})
 			.then((res) => res.data.goals);
 	}
-
-
 
 	return (
 		<UserContext.Provider
@@ -137,7 +123,7 @@ export const UserProvider = ({ children }) => {
 
 				putUserDontWantEssay,
 				putUserWantEssay,
-                patchUserNotCompletedGoal,
+				patchUserNotCompletedGoal,
 			}}
 		>
 			{children}
