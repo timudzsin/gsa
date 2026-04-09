@@ -108,34 +108,49 @@
 	top: 12px;
 	left: 12px;
 }
+.UserTrophyAndAddGoalButton-trophyPopup-content-completedGoalsText {
+    position: absolute;
+	z-index: 22;
+	top: 22px;
+	left: 50%;
+	transform: translateX(-50%);
+
+	font-size: 18px;
+	font-weight: 350;
+	user-select: none;
+	background-color: hsla(0, 0%, 10%, 0.25);
+	box-shadow: 0 0 12px 12px hsla(0, 0%, 10%, 0.25);
+	border-radius: 6px;
+}
 .UserTrophyAndAddGoalButton-trophyPopup-content-back > svg {
 	fill: hsl(0, 0%, 100%);
 	height: 28px;
 	width: 28px;
 }
 .UserCompletedGoals {
-    background-color: rgba(0, 0, 255, 0.521);
+    background-color: transparent;
 }
 .UserCompletedGoals > .completedGoal {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 	border-radius: 30px;
-    padding: 10px;
+    padding: 5px;
     
 	text-align: center;
 }
 
 .UserCompletedGoals > .completedGoal > .completedGoal-completionDate {
     user-select: none;
-	font-size: 18px;
-	color: hsla(0, 0%, 100%, 1);
+	font-size: 20px;
+	color: hsl(0, 0%, 100%);
 }
 .UserCompletedGoals > .completedGoal > .completedGoal-icon > svg {
-	width: 65px;
-	height: 65px;
+	width: 75px;
+	height: 75px;
 	fill: hsl(0, 0%, 100%);
 	color: hsl(0, 0%, 100%);
 }
 .UserCompletedGoals > .completedGoal > .completedGoal-icon {
+    margin: 5px;
     font-size: 46px;
     font-weight: 750;
     user-select: none;
@@ -147,12 +162,8 @@
     user-select: none;
 	font-size: 22px;
 	font-weight: 550;
-	color: hsl(0, 0%, 95%);
+	color: hsl(0, 0%, 100%);
 }
-
-
-
-
 
 
 

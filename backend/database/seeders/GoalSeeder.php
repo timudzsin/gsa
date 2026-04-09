@@ -19,21 +19,21 @@ class GoalSeeder extends Seeder
             'title' => 'Emma Stone önbizalma',
             'deadline' => '2027-01-15',
             'color' => 'LIGHT_BLUE',
-            'icon_url' => 'confidence.svg',
+            'icon_url' => 'person_celebrate.svg',
         ]);
         Goal::create([
             'user_id' => 1,
             'title' => 'C1 angol nyelvvizsga',
             'deadline' => '2026-08-26',
             'color' => 'BLUE',
-            'icon_url' => 'language.svg',
+            'icon_url' => 'brand_family_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 1,
             'title' => '2 hónapon át napi 30 perc olvasás',
             'deadline' => '2026-06-15',
             'color' => 'WHITE',
-            'icon_url' => 'book.svg',
+            'icon_url' => 'book_2_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 1,
@@ -42,7 +42,7 @@ class GoalSeeder extends Seeder
             'is_completed' => true,
             'rank' => 21,
             'color' => 'YELLOW',
-            'icon_url' => 'language.svg',
+            'icon_url' => 'brand_family_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
 
 
@@ -102,6 +102,7 @@ class GoalSeeder extends Seeder
             'user_id' => 2,
             'title' => 'Napi 10 000 lépés 3 hónapon keresztül',
             'deadline' => '2025-12-31',
+            'updated_at' => '2025-12-31 14:30:00', // aznap
             'is_completed' => true,
             'rank' => 80,
             'color' => 'GREEN',
@@ -111,6 +112,7 @@ class GoalSeeder extends Seeder
             'user_id' => 2,
             'title' => '3 hónapos vésztartalék felépítése',
             'deadline' => '2025-11-30',
+            'updated_at' => '2025-11-08 09:15:00', // 22 nappal előtte
             'is_completed' => true,
             'rank' => 90,
             'color' => 'BLUE',
@@ -120,10 +122,91 @@ class GoalSeeder extends Seeder
             'user_id' => 2,
             'title' => 'Alap weboldal elkészítése a vállalkozáshoz',
             'deadline' => '2026-02-15',
+            'updated_at' => '2026-01-28 16:45:00', // 18 nappal előtte
             'is_completed' => true,
             'rank' => 85,
             'color' => 'CORAL',
             'icon_url' => 'public_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => 'Első félmaraton teljesítése',
+            'deadline' => '2025-09-20',
+            'updated_at' => '2025-09-05 08:20:00', // 15 nappal előtte
+            'is_completed' => true,
+            'rank' => 78,
+            'color' => 'CORAL',
+            'icon_url' => 'directions_run_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => '100 ügyfél megszerzése a vállalkozásban',
+            'deadline' => '2025-10-31',
+            'updated_at' => '2025-10-12 13:10:00', // 19 nappal előtte
+            'is_completed' => true,
+            'rank' => 92,
+            'color' => 'INDIGO',
+            'icon_url' => 'group_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => '30 napos cukormentes kihívás teljesítése',
+            'deadline' => '2025-08-15',
+            'updated_at' => '2025-08-01 18:00:00', // 14 nappal előtte
+            'is_completed' => true,
+            'rank' => 74,
+            'color' => 'ORANGE',
+            'icon_url' => 'blur_on_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => 'Angol nyelvvizsga B2 szint megszerzése',
+            'deadline' => '2025-06-30',
+            'updated_at' => '2025-06-10 11:45:00', // 20 nappal előtte
+            'is_completed' => true,
+            'rank' => 88,
+            'color' => 'BLUE',
+            'icon_url' => 'public_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => 'Otthoni iroda teljes berendezése',
+            'deadline' => '2025-07-25',
+            'updated_at' => '2025-07-03 15:30:00', // 22 nappal előtte
+            'is_completed' => true,
+            'rank' => 81,
+            'color' => 'SAGE',
+            'icon_url' => 'potted_plant_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => '50 blogcikk publikálása szakmai témában',
+            'deadline' => '2025-12-10',
+            'updated_at' => '2025-11-21 09:00:00', // 19 nappal előtte
+            'is_completed' => true,
+            'rank' => 87,
+            'color' => 'PURPLE',
+            'icon_url' => 'description_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => 'Új laptop vásárlása vállalkozási célra',
+            'deadline' => '2025-05-31',
+            'updated_at' => '2025-05-20 17:40:00', // 11 nappal előtte
+            'is_completed' => true,
+            'rank' => 76,
+            'color' => 'GRAY',
+            'icon_url' => 'memory_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
+        ]);
+        Goal::create([
+            'user_id' => 2,
+            'title' => 'Reggeli rutin kialakítása 60 napon át',
+            'deadline' => '2025-09-30',
+            'updated_at' => '2025-09-09 06:50:00', // 21 nappal előtte
+            'is_completed' => true,
+            'rank' => 83,
+            'color' => 'YELLOW',
+            'icon_url' => 'routine_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
 
 

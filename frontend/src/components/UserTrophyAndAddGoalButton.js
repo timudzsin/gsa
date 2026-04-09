@@ -6,7 +6,6 @@ import InlineSVG from "./InlineSVG";
 
 export default function UserTrophyAndAddGoalButton() {
 	const { userCompletedGoals } = useContext(UserContext);
-	console.log(userCompletedGoals);
 
 	const [showTrophy, setShowTrophy] = useState(false);
 	const [closingTrophy, setClosingTrophy] = useState(false);
@@ -93,14 +92,19 @@ export default function UserTrophyAndAddGoalButton() {
 										<path d="m382-480 294 294q15 15 14.5 35T675-116q-15 15-35 15t-35-15L297-423q-12-12-18-27t-6-30q0-15 6-30t18-27l308-308q15-15 35.5-14.5T676-844q15 15 15 35t-15 35L382-480Z" />
 									</svg>
 								</button>
+								<h2 className="UserTrophyAndAddGoalButton-trophyPopup-content-completedGoalsText">
+									Teljesített Célok
+								</h2>
 								<div className="UserCompletedGoals">
-									{userCompletedGoals.map((goal) => (
-										<div key={goal.id} className={`completedGoal ${goal.color}`}>
-											<p className="completedGoal-completionDate">{formatCompletedDate(goal.updated_at)}</p>
-											<InlineSVG className="completedGoal-icon" src={`/goal_icons/${goal.icon_url}`} />
-											<p className="completedGoal-title">{goal.title}</p>
-										</div>
-									))}
+									{[...userCompletedGoals]
+										.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+										.map((goal) => (
+											<div key={goal.id} className={`completedGoal ${goal.color}`}>
+												<p className="completedGoal-completionDate">{formatCompletedDate(goal.updated_at)}</p>
+												<InlineSVG className="completedGoal-icon" src={`/goal_icons/${goal.icon_url}`} />
+												<p className="completedGoal-title">{goal.title}</p>
+											</div>
+										))}
 								</div>
 							</div>
 						</div>
