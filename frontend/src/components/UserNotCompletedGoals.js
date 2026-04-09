@@ -13,7 +13,7 @@ export default function UserNotCompletedGoals() {
 	const [closingEditNotCompletedGoal, setClosingEditNotCompletedGoal] = useState(false);
 
 	function truncateTitle(title) {
-		const maxLength = 40;
+		const maxLength = 32;
 		if (title.length > maxLength) {
 			return title.slice(0, maxLength - 3) + "...";
 		}

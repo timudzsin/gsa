@@ -109,21 +109,22 @@ export const UserProvider = ({ children }) => {
 	return (
 		<UserContext.Provider
 			value={{
-				loading,
-				userName,
+				loading, // kell a töltés spinnerhez
+				userName, // kell a logout popuphoz
 
-				userDontWantEssay,
-				setUserDontWantEssay,
+				userDontWantEssay, // kell a DontWantEssay komponenshez
+				setUserDontWantEssay, // kell a DontWantEssay komponenshez
 
-				userWantEssay,
-				setUserWantEssay,
+				userWantEssay, // kell a WantEssay komponenshez
+				setUserWantEssay, // kell a WantEssay komponenshez
 
-				userNotCompletedGoals,
-				setUserNotCompletedGoals,
+				userNotCompletedGoals, // kell a nem teljesített célok kilistázásához
 
-				putUserDontWantEssay,
-				putUserWantEssay,
-				patchUserNotCompletedGoal,
+                userCompletedGoals, // kell a teljesített célok kilistázásához
+
+				putUserDontWantEssay, // kell a DontWantEssay komponenshez
+				putUserWantEssay, // kell a WantEssay komponenshez
+				patchUserNotCompletedGoal, // kell a cél szerkesztéséhez
 			}}
 		>
 			{children}

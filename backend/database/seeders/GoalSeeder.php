@@ -53,49 +53,49 @@ class GoalSeeder extends Seeder
             'title' => '5 millió Ft megtakarítás',
             'deadline' => '2026-12-31',
             'color' => 'GREEN',
-            'icon_url' => 'savings.svg',
+            'icon_url' => 'payments_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'Heti 7 edzés 6 hónapon át',
             'deadline' => '2026-10-01',
             'color' => 'RED',
-            'icon_url' => 'workout.svg',
+            'icon_url' => 'fitness_center_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'Saját vállalkozás bevételének megduplázása',
             'deadline' => '2026-12-31',
-            'color' => 'MAGENTA',
-            'icon_url' => 'business-growth.svg',
+            'color' => 'GREEN',
+            'icon_url' => 'paid_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => '2 könyv elolvasása önfejlesztés témában, és még 3 könyv elolvasása önfejlesztés témában, és még 4 könyv elolvasása önfejlesztés témában',
             'deadline' => '2026-11-30',
             'color' => 'PURPLE',
-            'icon_url' => 'books.svg',
+            'icon_url' => 'book_2_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'Testzsír százalék 15% alá csökkentése',
             'deadline' => '2026-09-15',
             'color' => 'BEIGE',
-            'icon_url' => 'body-fat.svg',
+            'icon_url' => 'body_fat_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'LinkedIn hálózat bővítése 500 új kapcsolattal',
             'deadline' => '2026-08-31',
             'color' => 'BLUE',
-            'icon_url' => 'network.svg',
+            'icon_url' => 'diversity_2_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 2,
             'title' => 'Maraton lefutása',
             'deadline' => '2026-10-10',
             'color' => 'CORAL',
-            'icon_url' => 'marathon.svg',
+            'icon_url' => 'directions_run_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
 
         Goal::create([
@@ -105,7 +105,7 @@ class GoalSeeder extends Seeder
             'is_completed' => true,
             'rank' => 80,
             'color' => 'GREEN',
-            'icon_url' => 'steps.svg',
+            'icon_url' => 'directions_walk_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 2,
@@ -114,7 +114,7 @@ class GoalSeeder extends Seeder
             'is_completed' => true,
             'rank' => 90,
             'color' => 'BLUE',
-            'icon_url' => 'savings.svg',
+            'icon_url' => 'payments_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 2,
@@ -123,7 +123,7 @@ class GoalSeeder extends Seeder
             'is_completed' => true,
             'rank' => 85,
             'color' => 'CORAL',
-            'icon_url' => 'website.svg',
+            'icon_url' => 'public_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
 
 

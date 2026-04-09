@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import "./UserTrophyAndAddGoalButton.css";
+import { UserContext } from "../contexts/UserContext";
+import InlineSVG from "./InlineSVG";
 
 export default function UserTrophyAndAddGoalButton() {
+	const { userCompletedGoals } = useContext(UserContext);
+	console.log(userCompletedGoals);
+
 	const [showTrophy, setShowTrophy] = useState(false);
 	const [closingTrophy, setClosingTrophy] = useState(false);
 
@@ -20,6 +25,31 @@ export default function UserTrophyAndAddGoalButton() {
 			setShowAddGoal(false);
 			setClosingAddGoal(false);
 		}
+	}
+
+	function formatCompletedDate(dateString) {
+		const date = new Date(dateString);
+
+		const months = [
+			"Január",
+			"Február",
+			"Március",
+			"Április",
+			"Május",
+			"Június",
+			"Július",
+			"Augusztus",
+			"Szeptember",
+			"Október",
+			"November",
+			"December",
+		];
+
+		const year = date.getFullYear();
+		const month = months[date.getMonth()];
+		const day = date.getDate();
+
+		return `${year} ${month} ${day}`;
 	}
 
 	/*
@@ -54,6 +84,7 @@ export default function UserTrophyAndAddGoalButton() {
 					>
 						<div className="UserTrophyAndAddGoalButton-trophyPopup-content">
 							<div className="UserTrophyAndAddGoalButton-trophyPopup-content-scrollable">
+								<div className="UserTrophyAndAddGoalButton-trophyPopup-content-scrollable-overlay"></div>
 								<button
 									className="UserTrophyAndAddGoalButton-trophyPopup-content-back"
 									onClick={() => setClosingTrophy(true)}
@@ -62,13 +93,15 @@ export default function UserTrophyAndAddGoalButton() {
 										<path d="m382-480 294 294q15 15 14.5 35T675-116q-15 15-35 15t-35-15L297-423q-12-12-18-27t-6-30q0-15 6-30t18-27l308-308q15-15 35.5-14.5T676-844q15 15 15 35t-15 35L382-480Z" />
 									</svg>
 								</button>
-								<h1>
-									User Trophy And AddGoal Button - trophy Popup User Trophy And AddGoal Button - trophy Popup User
-									Trophy And AddGoal Button - trophy Popup User Trophy And AddGoal Button - trophy Popup User Trophy
-									And AddGoal Button - trophy Popup User Trophy And AddGoal Button - trophy Popup User Trophy And
-									AddGoal Button - trophy Popup User Trophy And AddGoal Button - trophy Popup User Trophy And AddGoal
-									Button - trophy Popup User Trophy And AddGoal Button - trophy Popup
-								</h1>
+								<div className="UserCompletedGoals">
+									{userCompletedGoals.map((goal) => (
+										<div key={goal.id} className={`completedGoal ${goal.color}`}>
+											<p className="completedGoal-completionDate">{formatCompletedDate(goal.updated_at)}</p>
+											<InlineSVG className="completedGoal-icon" src={`/goal_icons/${goal.icon_url}`} />
+											<p className="completedGoal-title">{goal.title}</p>
+										</div>
+									))}
+								</div>
 							</div>
 						</div>
 					</div>,
