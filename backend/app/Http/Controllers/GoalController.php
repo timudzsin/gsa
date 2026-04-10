@@ -41,6 +41,97 @@ class GoalController extends Controller
 
 
 
+    public function postUserNotCompletedGoal(Request $request)
+    {
+        // A kérés JSON-re kényszerítése
+        $request->headers->set('Accept', 'application/json');
+
+        // Felhasználó lekérdezése token alapján
+        $user = $request->user();
+        if (!$user) {
+            return response()->json([
+                'message' => 'Nincs bejelentkezett felhasználó ehhez a tokenhez'
+            ], 401);
+        }
+
+        // Validáció
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'deadline' => ['required', 'date'],
+            'rank' => ['required', 'integer'],
+            'color' => ['required', 'string', 'max:50'],
+            'icon_url' => ['required', 'string', 'max:255'],
+
+            'motivations' => ['required', 'array'],
+            'motivations.*.description' => ['required', 'string', 'max:255'],
+
+            'tasks' => ['required', 'array'],
+            'tasks.*.description' => ['required', 'string', 'max:255'],
+            'tasks.*.type' => ['required', Rule::in([
+                'daily',
+                'on_certain_days_of_the_week',
+                'x_times_per_week'
+            ])],
+            'tasks.*.rank' => ['required', 'integer'],
+            'tasks.*.is_on_monday' => ['nullable', 'boolean'],
+            'tasks.*.is_on_tuesday' => ['nullable', 'boolean'],
+            'tasks.*.is_on_wednesday' => ['nullable', 'boolean'],
+            'tasks.*.is_on_thursday' => ['nullable', 'boolean'],
+            'tasks.*.is_on_friday' => ['nullable', 'boolean'],
+            'tasks.*.is_on_saturday' => ['nullable', 'boolean'],
+            'tasks.*.is_on_sunday' => ['nullable', 'boolean'],
+            'tasks.*.times_per_week' => ['nullable', 'integer', 'min:1'],
+        ]);
+
+        $goal = null;
+
+        // Tranzakció
+        DB::transaction(function () use ($validated, $user, &$goal) {
+
+            // Goal létrehozása
+            $goal = $user->goals()->create([
+                'title' => $validated['title'],
+                'deadline' => $validated['deadline'],
+                'rank' => $validated['rank'],
+                'color' => $validated['color'],
+                'icon_url' => $validated['icon_url'],
+                'is_completed' => false,
+            ]);
+
+            // Motivációk létrehozása
+            foreach ($validated['motivations'] as $motivationData) {
+                $goal->motivations()->create([
+                    'description' => $motivationData['description'],
+                ]);
+            }
+
+            // Taskok létrehozása
+            foreach ($validated['tasks'] as $taskData) {
+                $goal->tasks()->create([
+                    'user_id' => $user->id,
+                    'description' => $taskData['description'],
+                    'type' => $taskData['type'],
+                    'rank' => $taskData['rank'],
+                    'is_on_monday' => $taskData['is_on_monday'] ?? null,
+                    'is_on_tuesday' => $taskData['is_on_tuesday'] ?? null,
+                    'is_on_wednesday' => $taskData['is_on_wednesday'] ?? null,
+                    'is_on_thursday' => $taskData['is_on_thursday'] ?? null,
+                    'is_on_friday' => $taskData['is_on_friday'] ?? null,
+                    'is_on_saturday' => $taskData['is_on_saturday'] ?? null,
+                    'is_on_sunday' => $taskData['is_on_sunday'] ?? null,
+                    'times_per_week' => $taskData['times_per_week'] ?? null,
+                ]);
+            }
+        });
+
+        // Válasz
+        return response()->json([
+            'message' => 'A cél sikeresen létrehozva',
+            'goal' => $goal->fresh(['motivations', 'tasks']),
+        ], 201);
+    }
+
+
 
     public function patchUserNotCompletedGoal(Request $request, Goal $goal)
     {
@@ -180,7 +271,9 @@ class GoalController extends Controller
 
 
 
-    
+
+
+
     public function getUserCompletedGoals(Request $request)
     {
         // A kérés JSON-re kényszerítése
@@ -207,6 +300,28 @@ class GoalController extends Controller
             'goals' => $goals
         ], 200);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

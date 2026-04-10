@@ -4,6 +4,10 @@ import "./UserTrophyAndAddGoalButton.css";
 import { UserContext } from "../contexts/UserContext";
 import InlineSVG from "./InlineSVG";
 
+// Cél létrehozásához való dolgok
+import ICONS from "../icons.json";
+
+
 export default function UserTrophyAndAddGoalButton() {
 	const { userCompletedGoals } = useContext(UserContext);
 
@@ -51,13 +55,9 @@ export default function UserTrophyAndAddGoalButton() {
 		return `${year} ${month} ${day}`;
 	}
 
-	/*
-    
-    
-    
-    
-    
-    */
+	// Cél létrehozásához való dolgok
+    console.log(ICONS);
+
 
 	return (
 		<>

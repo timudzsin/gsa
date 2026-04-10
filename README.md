@@ -64,7 +64,7 @@
 - ✅ backend: patch '/user-not-completed-goal/{goal}'
 - ✅ frontend: A célokat popup ablakkal lehet szerkeszteni.
 - ✅ frontend: a teljesített célokat meg lehet nézni, a teljesítésük dátumának sorrendjében.
-- ❌ backend: lehet új célokat létrehozni.
+- ✅ backend: lehet új célokat létrehozni.
 - ❌ frontend: lehet új célokat létrehozni.
 - ❌ backend: A nem teljesített célokat lehet teljesíteni.
 - ❌ frontend: A nem teljesített célokat lehet teljesíteni.

@@ -85,7 +85,7 @@ export const UserProvider = ({ children }) => {
 	}
 	function patchUserNotCompletedGoal(goalId, payload) {
 		return axios
-			.patch(`http://localhost:8000/api/user-not-completed-goal/${goalId}`, payload, {
+			.patch(`http://localhost:8000/api/user-not-completed-goals/${goalId}`, payload, {
 				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 			})
 			.then((res) => {
