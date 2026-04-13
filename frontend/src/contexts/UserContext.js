@@ -83,6 +83,18 @@ export const UserProvider = ({ children }) => {
 			})
 			.then((res) => res.data.goals);
 	}
+	function postUserNotCompletedGoal(payload) {
+		return axios
+			.post("http://localhost:8000/api/user-not-completed-goals", payload, {
+				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+			})
+			.then((res) => {
+				const createdGoal = res.data.goal;
+                // lokális állapot (userNotCompletedGoals state) szinkronizálása
+				setUserNotCompletedGoals((prev) => [createdGoal, ...prev]);
+				return createdGoal;
+			});
+	}
 	function patchUserNotCompletedGoal(goalId, payload) {
 		return axios
 			.patch(`http://localhost:8000/api/user-not-completed-goals/${goalId}`, payload, {
@@ -120,11 +132,13 @@ export const UserProvider = ({ children }) => {
 
 				userNotCompletedGoals, // kell a nem teljesített célok kilistázásához
 
-                userCompletedGoals, // kell a teljesített célok kilistázásához
+				userCompletedGoals, // kell a teljesített célok kilistázásához
 
 				putUserDontWantEssay, // kell a DontWantEssay komponenshez
 				putUserWantEssay, // kell a WantEssay komponenshez
-				patchUserNotCompletedGoal, // kell a cél szerkesztéséhez
+                postUserNotCompletedGoal, // kell célok létrehozásához
+				patchUserNotCompletedGoal, // kell célok szerkesztéséhez
+                                            // kell célok teljesítéséhez
 			}}
 		>
 			{children}

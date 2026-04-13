@@ -305,23 +305,605 @@
 
 
 
+/* HEADER */
+.addGoalPopup-headerOverlay {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	position: absolute;
+	z-index: 21;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 12px;
+
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	background: linear-gradient(to bottom, hsla(0, 0%, 10%, 1), hsla(0, 0%, 8%, 0));
+}
+.addGoalPopup-headerOverlay-x {
+	background-color: hsl(0, 0%, 20%);
+	border: 1.5px solid hsl(0, 0%, 30%);
+	border-radius: 9999px;
+	height: 45px;
+	width: 45px;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+	box-shadow: 0 0 8px 8px hsla(0, 0%, 10%, 0.3);
+}
+.addGoalPopup-headerOverlay-x > svg {
+	fill: hsl(0, 0%, 100%);
+	height: 38px;
+	width: 38px;
+}
+.addGoalPopup-headerOverlay-addGoalText {
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+	text-align: center;
+	font-size: 18px;
+	font-weight: 350;
+	user-select: none;
+	background-color: hsla(0, 0%, 10%, 0.25);
+	box-shadow: 0 0 12px 12px hsla(0, 0%, 10%, 0.25);
+	border-radius: 6px;
+}
+.addGoalPopup-headerOverlay-v {
+	background-color: hsl(205, 99%, 50%);
+	border: 1.5px solid hsl(205, 99%, 75%);
+	border-radius: 9999px;
+	height: 45px;
+	width: 45px;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+	box-shadow: 0 0 8px 8px hsla(0, 0%, 10%, 0.3);
+}
+.addGoalPopup-headerOverlay-v:disabled {
+	pointer-events: none;
+	opacity: 0.3;
+}
+.addGoalPopup-headerOverlay-v > svg {
+	fill: hsl(0, 0%, 100%);
+	height: 38px;
+	width: 38px;
+}
+
+
+
+/* BANNER és TITLE */
+.UserTrophyAndAddGoalButton-addGoalPopup .RED {
+	background-color: hsl(0, 63.2%, 63.3%);
+	background: linear-gradient(0deg, hsl(0, 63.2%, 53.3%), hsl(0, 63.2%, 63.3%));
+	border: 2px solid hsl(0, 63.2%, 73.3%);
+	border-top: 2px solid hsl(0, 63.2%, 83.3%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .CORAL {
+	background-color: hsl(13.2, 77.2%, 66.1%);
+	background: linear-gradient(0deg, hsl(13.2, 77.2%, 56.1%), hsl(13.2, 77.2%, 66.1%));
+	border: 2px solid hsl(13.2, 77.2%, 76.1%);
+	border-top: 2px solid hsl(13.2, 77.2%, 86.1%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .ORANGE {
+	background-color: hsl(32.1, 74.2%, 62.1%);
+	background: linear-gradient(0deg, hsl(32.1, 74.2%, 52.1%), hsl(32.1, 74.2%, 62.1%));
+	border: 2px solid hsl(32.1, 74.2%, 72.1%);
+	border-top: 2px solid hsl(32.1, 74.2%, 82.1%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .YELLOW {
+	background-color: hsl(48.2, 71.2%, 56.5%);
+	background: linear-gradient(0deg, hsl(48.2, 71.2%, 46.5%), hsl(48.2, 71.2%, 56.5%));
+	border: 2px solid hsl(48.2, 71.2%, 66.5%);
+	border-top: 2px solid hsl(48.2, 71.2%, 76.5%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .GREEN {
+	background-color: hsl(120, 41.6%, 55.7%);
+	background: linear-gradient(0deg, hsl(120, 41.6%, 45.7%), hsl(120, 41.6%, 55.7%));
+	border: 2px solid hsl(120, 41.6%, 65.7%);
+	border-top: 2px solid hsl(120, 41.6%, 75.7%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .CYAN {
+	background-color: hsl(164.4, 46%, 55.7%);
+	background: linear-gradient(0deg, hsl(164.4, 46%, 45.7%), hsl(164.4, 46%, 55.7%));
+	border: 2px solid hsl(164.4, 46%, 65.7%);
+	border-top: 2px solid hsl(164.4, 46%, 75.7%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .LIGHT-BLUE {
+	background-color: hsl(201.1, 68%, 69.7%);
+	background: linear-gradient(0deg, hsl(201.1, 68%, 59.7%), hsl(201.1, 68%, 69.7%));
+	border: 2px solid hsl(201.1, 68%, 79.7%);
+	border-top: 2px solid hsl(201.1, 68%, 89.7%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .BLUE {
+	background-color: hsl(216.2, 90.6%, 61.3%);
+	background: linear-gradient(0deg, hsl(216.2, 90.6%, 51.3%), hsl(216.2, 90.6%, 61.3%));
+	border: 2px solid hsl(216.2, 90.6%, 71.3%);
+	border-top: 2px solid hsl(216.2, 90.6%, 81.3%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .INDIGO {
+	background-color: hsl(227.1, 46.1%, 52.4%);
+	background: linear-gradient(0deg, hsl(227.1, 46.1%, 42.4%), hsl(227.1, 46.1%, 52.4%));
+	border: 2px solid hsl(227.1, 46.1%, 62.4%);
+	border-top: 2px solid hsl(227.1, 46.1%, 72.4%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .PURPLE {
+	background-color: hsl(263.7, 36.9%, 49.7%);
+	background: linear-gradient(0deg, hsl(263.7, 36.9%, 39.7%), hsl(263.7, 36.9%, 49.7%));
+	border: 2px solid hsl(263.7, 36.9%, 59.7%);
+	border-top: 2px solid hsl(263.7, 36.9%, 69.7%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .MAGENTA {
+	background-color: hsl(272, 51.5%, 63.2%);
+	background: linear-gradient(0deg, hsl(272, 51.5%, 53.2%), hsl(272, 51.5%, 63.2%));
+	border: 2px solid hsl(272, 51.5%, 73.2%);
+	border-top: 2px solid hsl(272, 51.5%, 83.2%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .PINK {
+	background-color: hsl(315.5, 54.9%, 68.2%);
+	background: linear-gradient(0deg, hsl(315.5, 54.9%, 58.2%), hsl(315.5, 54.9%, 68.2%));
+	border: 2px solid hsl(315.5, 54.9%, 78.2%);
+	border-top: 2px solid hsl(315.5, 54.9%, 88.2%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .GRAY {
+	background-color: hsl(210, 7.7%, 54.3%);
+	background: linear-gradient(0deg, hsl(210, 7.7%, 44.3%), hsl(210, 7.7%, 54.3%));
+	border: 2px solid hsl(210, 7.7%, 64.3%);
+	border-top: 2px solid hsl(210, 7.7%, 74.3%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .SAGE {
+	background-color: hsl(120, 9.9%, 62.3%);
+	background: linear-gradient(0deg, hsl(120, 9.9%, 52.3%), hsl(120, 9.9%, 62.3%));
+	border: 2px solid hsl(120, 9.9%, 72.3%);
+	border-top: 2px solid hsl(120, 9.9%, 82.3%);
+}
+.UserTrophyAndAddGoalButton-addGoalPopup .BEIGE {
+	background-color: hsl(34.5, 23.9%, 61.4%);
+	background: linear-gradient(0deg, hsl(34.5, 23.9%, 51.4%), hsl(34.5, 23.9%, 61.4%));
+	border: 2px solid hsl(34.5, 23.9%, 71.4%);
+	border-top: 2px solid hsl(34.5, 23.9%, 81.4%);
+}
+.addGoalPopup-bannerAndTitle {
+	margin-top: 20px;
+	border-radius: 35px;
+}
+.addGoalPopup-banner {
+	min-height: 80px;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+}
+.addGoalPopup-banner svg {
+	fill: hsl(0, 0%, 100%);
+	height: 70px;
+	width: 70px;
+}
+.addGoalPopup-title {
+	width: 100%;
+	transform: scaleX(1.01) translateY(2.5px);
+	padding: 7px;
+	overflow: hidden;
+	resize: none;
+	border-radius: 35px;
+	border: none;
+	background-color: hsl(0, 0%, 24%);
+	border-top: 1.5px solid hsl(0, 0%, 75%);
+	border-bottom: 1.5px solid hsl(0, 0%, 40%);
+	text-align: center;
+	font-size: 28px;
+	font-weight: 575;
+}
+.addGoalPopup-title::placeholder {
+	color: hsl(0, 0%, 40%);
+	font-weight: 400;
+	font-size: 24px;
+}
+
+
+
+/* ===== BANNER POPUP ===== */
+.addGoalPopup-bannerPopup {
+	position: fixed;
+	inset: 0;
+	z-index: 30;
+	background: hsla(0, 0%, 0%, 0.7);
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+
+	animation: fadeIn 0.2s ease-out forwards;
+}
+.addGoalPopup-bannerPopup.closing {
+	animation: fadeOut 0.2s ease-out forwards;
+}
+.addGoalPopup-bannerPopup-content {
+	background-color: hsl(0, 0%, 10%);
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	width: 100%;
+	height: calc(100vh - 50px);
+	overflow: hidden;
+
+	animation: slideUp 0.2s ease-out forwards;
+}
+.addGoalPopup-bannerPopup.closing .addGoalPopup-bannerPopup-content {
+	animation: slideDown 0.2s ease-out forwards;
+}
+
+.addGoalPopup-bannerPopup-content-scrollable {
+	height: calc(100vh - 50px);
+	overflow-y: auto;
+	padding: 12px;
+	padding-top: 140px;
+}
+.addGoalPopup-bannerPopup-overlay {
+	position: absolute;
+	z-index: 31;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 140px;
+
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	background: linear-gradient(to bottom, hsla(0, 0%, 8%, 1), hsla(0, 0%, 8%, 0));
+}
+.addGoalPopup-bannerPopup-content-scrollable > .preview {
+	position: absolute;
+	z-index: 32;
+	top: 12px;
+	left: 50%;
+	transform: translateX(-50%);
+
+	width: 200px;
+	height: 105px;
+	border-radius: 25px;
+	box-shadow: 0 0 15px 15px hsla(0, 0%, 10%, 0.7);
+
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+}
+.addGoalPopup-bannerPopup-content-scrollable > .preview svg {
+	fill: hsl(0, 0%, 100%);
+	height: 95px;
+	width: 95px;
+}
+.addGoalPopup-bannerPopup-content-scrollable > .doneButton {
+	position: absolute;
+	z-index: 32;
+	top: 12px;
+	right: 12px;
+
+	background-color: hsl(0, 0%, 20%);
+	border: 1.5px solid hsl(0, 0%, 30%);
+	border-radius: 9999px;
+	height: 45px;
+	width: 45px;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+	box-shadow: 0 0 8px 8px hsla(0, 0%, 10%, 0.3);
+}
+.addGoalPopup-bannerPopup-content-scrollable > .doneButton > svg {
+	fill: hsl(0, 0%, 100%);
+	height: 38px;
+	width: 38px;
+}
+.addGoalPopup-bannerPopup .colorList {
+	background-color: hsl(0, 0%, 20%);
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	padding: 17px;
+	gap: 20px;
+	border-radius: 30px;
+}
+.addGoalPopup-bannerPopup .colorList > .colorItem {
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	border: none;
+}
+.addGoalPopup-bannerPopup .colorList > .colorItem.selected {
+	border: 3px solid hsl(0, 0%, 20%);
+	outline: 3px solid hsl(205, 99%, 50%);
+	transform: scale(1.16);
+}
+.addGoalPopup-bannerPopup .colorList > .colorItem:hover {
+	cursor: pointer;
+}
+
+.addGoalPopup-bannerPopup .iconList {
+	margin-top: 20px;
+	background-color: hsl(0, 0%, 20%);
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	padding: 13px;
+	gap: 10px;
+	border-radius: 30px;
+}
+.addGoalPopup-bannerPopup .iconList > .iconItem {
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+	overflow: hidden;
+
+	aspect-ratio: 1/1;
+	border-radius: 10px;
+}
+.addGoalPopup-bannerPopup .iconList > .iconItem > svg {
+	fill: hsl(0, 0%, 70%);
+	height: 46px;
+	width: 46px;
+}
+.addGoalPopup-bannerPopup .iconList > .iconItem.selected {
+	background-color: hsla(205, 99%, 50%, 0.9);
+}
+.addGoalPopup-bannerPopup .iconList > .iconItem.selected > svg {
+	fill: hsl(205, 99%, 95%);
+}
+.addGoalPopup-bannerPopup .iconList > .iconItem:hover {
+	cursor: pointer;
+}
+
+
+
+
+/* DEADLINE */
+.addGoalPopup-deadline {
+	margin-top: 40px;
+	background-color: hsl(0, 0%, 20%);
+	padding: 7px;
+	padding-left: 17px;
+	padding-right: 17px;
+	font-size: 20px;
+	border-radius: 9999px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.addGoalPopup-deadline > input {
+	background-color: hsl(0, 0%, 20%);
+	height: 40px;
+	border: none;
+	font-size: 20px;
+	color: hsl(0, 0%, 70%);
+}
 
 
 
 
 
 
+/* MOTIVATIONS */
+.addGoalPopup-motivations-label {
+	margin-top: 25px;
+	padding-left: 17px;
+	font-size: 20px;
+}
+.addGoalPopup-motivations {
+	background-color: hsl(0, 0%, 20%);
+	border-radius: 23.5px;
+	font-size: 18px;
+}
+.addGoalPopup-motivations > .row {
+	font-size: 18px;
+	padding-right: 8px;
+	margin-bottom: 3px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.addGoalPopup-motivations > .row > textarea {
+	background-color: hsl(0, 0%, 20%);
+	border: none;
+	font-size: 20px;
+	overflow: hidden;
+	resize: none;
+	padding: 11px;
+	padding-left: 17px;
+	padding-right: 17px;
+	border-radius: 23.5px;
+	width: 88%;
+}
+.addGoalPopup-motivations > .row > textarea::placeholder {
+	color: hsl(0, 0%, 35%);
+}
+.addGoalPopup-motivations > .row > button {
+	background-color: transparent;
+	width: 30px;
+	height: 30px;
+	border: none;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+}
+.addGoalPopup-motivations > .row > button > svg {
+	fill: hsl(359, 99%, 63%);
+	width: 28px;
+	height: 28px;
+}
+.motivation-divider {
+	border: none;
+	border-top: 1px solid hsl(0, 0%, 40%);
+	margin: 0 17px 0 17px; /* vagy 8px, ha kell kis tér */
+}
+.addGoalPopup-motivations > button {
+	background-color: hsl(0, 0%, 20%);
+	width: 100%;
+	border: none;
+	border-radius: 23.5px;
+	padding: 5px;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+}
+.addGoalPopup-motivations > button > svg {
+	width: 32px;
+	height: 32px;
+	fill: hsl(0, 0%, 70%);
+}
 
 
 
+/* TASKS */
+.addGoalPopup-tasks-label {
+	margin-top: 25px;
+	padding-left: 17px;
+	font-size: 20px;
+}
+.addGoalPopup-tasks > .task {
+	background-color: hsl(0, 0%, 20%);
+	border-radius: 23.5px;
+	font-size: 18px;
+	margin-bottom: 13px;
+}
+.task > .task-description > textarea {
+	background-color: hsl(0, 0%, 20%);
+	border: none;
+	font-size: 20px;
+	overflow: hidden;
+	resize: none;
+	padding: 11px;
+	padding-left: 17px;
+	padding-right: 17px;
+	border-radius: 23.5px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	width: 100%;
+	text-align: center;
+}
+.task > .task-description > textarea::placeholder {
+	color: hsl(0, 0%, 35%);
+}
+.task-divider {
+	border: none;
+	border-top: 1px solid hsl(0, 0%, 40%);
+	margin: 0 17px 0 17px; /* vagy 8px, ha kell kis tér */
+}
+.task > .task-type {
+	padding: 11px;
+	padding-left: 17px;
+	padding-right: 17px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.task > .task-type > label {
+	user-select: none;
+}
+.task > .task-type > select {
+	background-color: hsl(0, 0%, 20%);
+	border: none;
+	font-size: 20px;
+	color: hsl(0, 0%, 70%);
+	text-align: right;
+	cursor: pointer;
+}
+.task-typeOptions-x_times_per_week {
+	padding: 5px;
+	padding-left: 17px;
+	padding-right: 17px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.task-typeOptions-x_times_per_week > label {
+	user-select: none;
+}
+.task-typeOptions-x_times_per_week > input {
+	background-color: hsl(0, 0%, 20%);
+	border: none;
+	font-size: 20px;
+	color: hsl(0, 0%, 70%);
+	width: 70px;
+	height: 37px;
+	text-align: right;
+	padding-right: 15px;
+	-webkit-appearance: none;
+	margin: 0;
+	-moz-appearance: textfield;
+}
+.task-typeOptions-x_times_per_week > input::placeholder {
+	color: hsl(0, 0%, 35%);
+}
+.task-typeOptions-on_certain_days_of_the_week-checkboxes {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 11px;
+	padding-left: 17px;
+	padding-right: 17px;
+}
+.day-checkbox input {
+	display: none;
+}
+/* ez lesz a "checkbox kinézet" */
+.day-checkbox span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: hsl(0, 0%, 30%);
+	color: hsl(0, 0%, 70%);
+	cursor: pointer;
+	transition:
+		transform 0.15s ease-in-out,
+		filter 0.15s ease-in-out;
+	font-size: 17px;
+	overflow: hidden;
+	user-select: none;
+}
+/* checked állapot */
+.day-checkbox input:checked + span {
+	background-color: hsl(205, 99%, 50%);
+	color: hsl(0, 0%, 100%);
+	font-size: 19px;
+	font-weight: 600;
+}
+.day-checkbox span:active {
+	transform: scale(1.1);
+	filter: brightness(1.3);
+}
 
+.removeTaskButton {
+	background-color: transparent;
+	width: 55px;
+	height: 55px;
+	margin: auto;
+	border: none;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+}
+.removeTaskButton > svg {
+	fill: hsl(359, 99%, 63%);
+	width: 32px;
+	height: 32px;
+}
 
-
-
-
-
-
-
+.addTaskButton {
+	display: block;
+	margin: auto;
+	display: flex;
+	justify-content: center; /* horizontal centering */
+	align-items: center; /* vertical centering */
+	width: 50px;
+	height: 50px;
+	background-color: hsl(0, 0%, 20%);
+	border: none;
+	border-radius: 9999px;
+}
+.addTaskButton > svg {
+	width: 40px;
+	height: 40px;
+	fill: hsl(0, 0%, 70%);
+}
 
 
 
