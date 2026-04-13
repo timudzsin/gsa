@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./UserTrophyAndAddGoalButton.css";
 import { UserContext } from "../contexts/UserContext";
@@ -6,7 +6,32 @@ import InlineSVG from "./InlineSVG";
 
 // Cél létrehozásához való dolgok
 import ICONS from "../icons.json";
-
+const COLORS = [
+	"RED",
+	"CORAL",
+	"ORANGE",
+	"YELLOW",
+	"GREEN",
+	"CYAN",
+	"LIGHT-BLUE",
+	"BLUE",
+	"INDIGO",
+	"PURPLE",
+	"MAGENTA",
+	"PINK",
+	"GRAY",
+	"SAGE",
+	"BEIGE",
+];
+const days = [
+	{ key: "is_on_monday", label: "H" },
+	{ key: "is_on_tuesday", label: "K" },
+	{ key: "is_on_wednesday", label: "Sze" },
+	{ key: "is_on_thursday", label: "Cs" },
+	{ key: "is_on_friday", label: "P" },
+	{ key: "is_on_saturday", label: "Szo" },
+	{ key: "is_on_sunday", label: "V" },
+];
 
 export default function UserTrophyAndAddGoalButton() {
 	const { userCompletedGoals } = useContext(UserContext);
@@ -56,8 +81,33 @@ export default function UserTrophyAndAddGoalButton() {
 	}
 
 	// Cél létrehozásához való dolgok
-    console.log(ICONS);
+	const [title, setTitle] = useState("");
+	const [deadline, setDeadline] = useState(() => {
+		const date = new Date();
+		date.setMonth(date.getMonth() + 1);
 
+		return date.toISOString().split("T")[0];
+	});
+	const [color, setColor] = useState(COLORS[Math.floor(Math.random() * COLORS.length)]);
+	const [iconUrl, setIconUrl] = useState(ICONS[Math.floor(Math.random() * COLORS.length)]);
+	const [rank, setRank] = useState(1);
+
+	const [motivations, setMotivations] = useState([]);
+	const [tasks, setTasks] = useState([]);
+
+	const [showBannerPopup, setShowBannerPopup] = useState(false);
+	const [closingBannerPopup, setClosingBannerPopup] = useState(false);
+
+	const formRef = useRef(null);
+
+	const shuffledIcons = useMemo(() => {
+		const arr = [...ICONS];
+		for (let i = arr.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[arr[i], arr[j]] = [arr[j], arr[i]];
+		}
+		return arr;
+	}, []);
 
 	return (
 		<>
@@ -100,8 +150,13 @@ export default function UserTrophyAndAddGoalButton() {
 										.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
 										.map((goal) => (
 											<div key={goal.id} className={`completedGoal ${goal.color}`}>
-												<p className="completedGoal-completionDate">{formatCompletedDate(goal.updated_at)}</p>
-												<InlineSVG className="completedGoal-icon" src={`/goal_icons/${goal.icon_url}`} />
+												<p className="completedGoal-completionDate">
+													{formatCompletedDate(goal.updated_at)}
+												</p>
+												<InlineSVG
+													className="completedGoal-icon"
+													src={`/goal_icons/${goal.icon_url}`}
+												/>
 												<p className="completedGoal-title">{goal.title}</p>
 											</div>
 										))}
@@ -122,9 +177,12 @@ export default function UserTrophyAndAddGoalButton() {
 						<div className="UserTrophyAndAddGoalButton-addGoalPopup-content">
 							<div className="UserTrophyAndAddGoalButton-addGoalPopup-content-scrollable">
 								<h1>
-									UserTrophyAndAddGoalButton-addGoalPopup UserTrophyAndAddGoalButton-addGoalPopup
-									UserTrophyAndAddGoalButton-addGoalPopup UserTrophyAndAddGoalButton-addGoalPopup
-									UserTrophyAndAddGoalButton-addGoalPopup UserTrophyAndAddGoalButton-addGoalPopup
+									UserTrophyAndAddGoalButton-addGoalPopup
+									UserTrophyAndAddGoalButton-addGoalPopup
+									UserTrophyAndAddGoalButton-addGoalPopup
+									UserTrophyAndAddGoalButton-addGoalPopup
+									UserTrophyAndAddGoalButton-addGoalPopup
+									UserTrophyAndAddGoalButton-addGoalPopup
 								</h1>
 							</div>
 						</div>
