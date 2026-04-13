@@ -341,6 +341,14 @@ class GoalController extends Controller
 
 
 
+
+
+
+
+
+
+
+    // régi dolgok
     public function getUserGoals(Request $request)
     {
         // A kérés JSON-re kényszerítése (hogy ne HTML választ kapjunk, ha nincs beállítva)
