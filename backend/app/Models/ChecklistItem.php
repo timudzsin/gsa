@@ -18,6 +18,7 @@ class ChecklistItem extends Model
         'task_id',
         'description',
         'rank',
+        'is_completed',
     ];
 
     // Kapcsolatok
