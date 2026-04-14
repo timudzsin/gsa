@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('task_id')->references('id')->on('tasks')->cascadeOnDelete();
             $table->boolean('is_completed')->default(false);
             $table->string('description');
+            $table->enum('when', ['today', 'this_week'])->default('today');
+            $table->integer('times_this_week')->nullable()->default(null); 
             $table->integer('rank');
 
             $table->timestamps();

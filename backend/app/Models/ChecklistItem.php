@@ -19,6 +19,8 @@ class ChecklistItem extends Model
         'description',
         'rank',
         'is_completed',
+        'when',
+        'times_this_week',
     ];
 
     // Kapcsolatok

@@ -43,8 +43,7 @@ class ChecklistController extends Controller
 
         // Tranzakció a checklist és szükséges checklist_item-ek létrehozására
         $checklist = null;
-        $createdItems = [];
-        DB::transaction(function () use ($user, $today, &$checklist, &$createdItems) {
+        DB::transaction(function () use ($user, $today, &$checklist) {
             // Checklist létrehozása
             $checklist = Checklist::create([
                 'user_id' => $user->id,
@@ -54,7 +53,7 @@ class ChecklistController extends Controller
             $tasks = Task::where('user_id', $user->id)
                 ->orderBy('rank')
                 ->get();
-            // Segéd változó: mai nap
+            // Segéd változó:  mai nap
             $todayField = match (now()->dayOfWeek) {
                 1 => 'is_on_monday',
                 2 => 'is_on_tuesday',
@@ -64,24 +63,46 @@ class ChecklistController extends Controller
                 6 => 'is_on_saturday',
                 0 => 'is_on_sunday',
             };
+
             // Végigmegyünk a felhasználó task-jain, eldöntjük, hogy kell-e belőle checklist item, és ha kell létrehozzuk
             foreach ($tasks as $task) {
-                $shouldCreate = false;
-                // Kell?
+                // A napi task-okból mindig csinálunk checklist item-et
                 if ($task->type === 'daily') {
-                    $shouldCreate = true;
-                } elseif ($task->type === 'on_certain_days_of_the_week') {
-                    $shouldCreate = (bool) ($task->{$todayField} ?? false);
-                } elseif ($task->type === 'x_times_per_week') {
-                    $shouldCreate = false;
-                }
-                // Létrehozás
-                if ($shouldCreate) {
-                    $createdItems[] = ChecklistItem::create([
+                    ChecklistItem::create([
                         'checklist_id' => $checklist->id,
                         'task_id' => $task->id,
                         'is_completed' => false,
                         'description' => $task->description,
+                        'when' => 'today',                // explicit (default is ez)
+                        'times_this_week' => null,        // explicit
+                        'rank' => $task->rank,
+                    ]);
+                }
+
+                // A hét bizonyos napjain task-okból csak akkor csinálunk checklist item-et, ha a ma igaz
+                elseif ($task->type === 'on_certain_days_of_the_week') {
+                    if ((bool) ($task->{$todayField} ?? false)) {
+                        ChecklistItem::create([
+                            'checklist_id' => $checklist->id,
+                            'task_id' => $task->id,
+                            'is_completed' => false,
+                            'description' => $task->description,
+                            'when' => 'today',
+                            'times_this_week' => null,
+                            'rank' => $task->rank,
+                        ]);
+                    }
+                }
+
+                // A heti X task-okból     egyenlőre mindig létrehozunk checklist item-et
+                elseif ($task->type === 'x_times_per_week') {
+                    ChecklistItem::create([
+                        'checklist_id' => $checklist->id,
+                        'task_id' => $task->id,
+                        'is_completed' => false,
+                        'description' => $task->description,
+                        'when' => 'this_week',                       // <-- új
+                        'times_this_week' => $task->times_per_week,  // <-- új
                         'rank' => $task->rank,
                     ]);
                 }
