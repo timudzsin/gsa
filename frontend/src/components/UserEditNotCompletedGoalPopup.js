@@ -3,6 +3,7 @@ import "./UserEditNotCompletedGoalPopup.css";
 import InlineSVG from "./InlineSVG";
 import ICONS from "../icons.json";
 import { UserContext } from "../contexts/UserContext";
+import { createPortal } from "react-dom";
 
 const COLORS = [
 	"RED",
@@ -45,6 +46,9 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 	const [showBannerPopup, setShowBannerPopup] = useState(false);
 	const [closingBannerPopup, setClosingBannerPopup] = useState(false);
 
+	const [showCompleteGoalPopup, setShowCompleteGoalPopup] = useState(false);
+	const [closingCompleteGoalPopup, setClosingCompleteGoalPopup] = useState(false);
+
 	const formRef = useRef(null);
 
 	const { completeUserNotCompletedGoal } = useContext(UserContext);
@@ -82,6 +86,12 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 		if (closingBannerPopup) {
 			setShowBannerPopup(false);
 			setClosingBannerPopup(false);
+		}
+	}
+	function handleCompleteGoalPopupAnimationEnd() {
+		if (closingCompleteGoalPopup) {
+			setShowCompleteGoalPopup(false);
+			setClosingCompleteGoalPopup(false);
 		}
 	}
 
@@ -208,7 +218,7 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 		});
 	}
 
-	async function handleCompleteGoal() {
+	async function handleConfirmCompleteGoal() {
 		await completeUserNotCompletedGoal(goal.id);
 		onClose();
 	}
@@ -433,11 +443,36 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 				</div>
 
 				{/* COMPLETE gomb */}
-				<div className="UserEditNotCompletedGoalPopup-complete">
-					<button type="button" className="completeGoalButton" onClick={handleCompleteGoal}>
-						Cél teljesítése
-					</button>
-				</div>
+				<button
+					type="button"
+					className="UserEditNotCompletedGoalPopup-completeGoalButton"
+					onClick={() => setShowCompleteGoalPopup(true)}
+				>
+					Cél teljesítése
+				</button>
+				{/* ===== CÉL TELJESÍTÉSE POPUP ===== */}
+				{showCompleteGoalPopup &&
+					createPortal(
+						<div
+							className={`UserEditNotCompletedGoalPopup-completePopup ${closingCompleteGoalPopup ? "closing" : ""}`}
+							onAnimationEnd={handleCompleteGoalPopupAnimationEnd}
+						>
+							<div className="UserEditNotCompletedGoalPopup-completePopup-content">
+								<p>
+									Biztos teljesítetted ezt a célt?
+									<br />
+									<span className="UserEditNotCompletedGoalPopup-completePopup-content-span"> {title}</span>
+								</p>
+								<button className="no" onClick={() => setClosingCompleteGoalPopup(true)}>
+									Mégse
+								</button>
+								<button className="yes" onClick={handleConfirmCompleteGoal}>
+									Teljesítés
+								</button>
+							</div>
+						</div>,
+						document.body,
+					)}
 			</form>
 		</div>
 	);

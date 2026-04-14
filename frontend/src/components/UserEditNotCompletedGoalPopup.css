@@ -626,6 +626,106 @@
 
 
 
+/* COMPLETE GOMB */
+.UserEditNotCompletedGoalPopup-completeGoalButton {
+	height: 50px;
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+	background-color: hsl(205, 99%, 50%);
+	background-color: hsl(0, 0%, 20%);
+	background: linear-gradient(0deg, hsl(0, 0%, 12%), hsl(0, 0%, 20%));
+	border: 2px solid hsl(0, 0%, 22%);
+	border-top: 2px solid hsl(0, 0%, 30%);
+	border-radius: 9999px;
+	font-size: 22px;
+	font-weight: 450;
+}
 
 
 
+
+/* CONFIRM COMPLETE POPUP */
+.UserEditNotCompletedGoalPopup-completePopup {
+	position: fixed;
+	inset: 0;
+	z-index: 30;
+	background: hsla(0, 0%, 0%, 0.7);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	animation: fadeIn 0.2s ease-out forwards;
+}
+.UserEditNotCompletedGoalPopup-completePopup.closing {
+	animation: fadeOut 0.2s ease-out forwards;
+}
+.UserEditNotCompletedGoalPopup-completePopup-content {
+	background-color: hsl(0, 0%, 20%);
+	border-radius: 25px;
+	padding: 17px;
+	width: 90%;
+	text-align: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto;
+	grid-template-areas:
+		"text text"
+		"no yes";
+	gap: 14px;
+
+	animation: popupIn 0.2s ease-out forwards;
+}
+.UserEditNotCompletedGoalPopup-completePopup.closing .UserEditNotCompletedGoalPopup-completePopup-content {
+	animation: popupOut 0.2s ease-out forwards;
+}
+.UserEditNotCompletedGoalPopup-completePopup-content p {
+	grid-area: text;
+	font-size: 22px;
+	font-weight: 325;
+}
+.UserEditNotCompletedGoalPopup-completePopup-content-span {
+	font-weight: 675;
+	color: hsl(0, 0%, 100%);
+}
+.UserEditNotCompletedGoalPopup-completePopup-content .no {
+	grid-area: no;
+	background-color: hsl(0, 0%, 30%);
+	border: none;
+	height: 42px;
+	border-radius: 9999px;
+	font-size: 20px;
+	font-weight: 450;
+}
+.UserEditNotCompletedGoalPopup-completePopup-content .yes {
+	grid-area: yes;
+	background-color: hsl(205, 99%, 50%);
+	border: none;
+	height: 42px;
+	border-radius: 9999px;
+	font-size: 20px;
+	font-weight: 450;
+}
+
+
+
+
+
+@keyframes popupIn {
+	from {
+		transform: scale(0.85);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+@keyframes popupOut {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0.85);
+	}
+}
