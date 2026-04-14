@@ -415,7 +415,7 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 												<label key={day.key} className="day-checkbox">
 													<input
 														type="checkbox"
-														checked={t[day.key] === true}
+														checked={!!t[day.key]}
 														onChange={(e) => updateTask(i, day.key, e.target.checked)}
 													/>
 													<span>{day.label}</span>
