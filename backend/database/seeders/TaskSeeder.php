@@ -242,7 +242,7 @@ class TaskSeeder extends Seeder
             'description' => 'Rendrakás az íróasztalon',
 
             'type' => 'x_times_per_week',
-            'times_per_week' => 2,
+            'times_per_week' => 1,
         ]);
         Task::create([
             'user_id' => 2,
@@ -250,7 +250,7 @@ class TaskSeeder extends Seeder
             'description' => '25 perc Takarítás',
 
             'type' => 'x_times_per_week',
-            'times_per_week' => 1,
+            'times_per_week' => 3,
         ]);
         Task::create([
             'user_id' => 2,
