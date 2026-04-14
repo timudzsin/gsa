@@ -90,7 +90,7 @@ export const UserProvider = ({ children }) => {
 			})
 			.then((res) => {
 				const createdGoal = res.data.goal;
-                // lokális állapot (userNotCompletedGoals state) szinkronizálása
+				// lokális állapot (userNotCompletedGoals state) szinkronizálása
 				setUserNotCompletedGoals((prev) => [createdGoal, ...prev]);
 				return createdGoal;
 			});
@@ -108,6 +108,27 @@ export const UserProvider = ({ children }) => {
 				return updatedGoal;
 			});
 	}
+	function completeUserNotCompletedGoal(goalId) {
+		return axios
+			.patch(
+				`http://localhost:8000/api/user-not-completed-goals/${goalId}/complete`,
+				{},
+				{
+					headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+				},
+			)
+			.then((res) => {
+				const completedGoal = res.data.goal;
+
+				// 1️⃣ eltávolítjuk a nem teljesített listából
+				setUserNotCompletedGoals((prev) => prev.filter((goal) => goal.id !== completedGoal.id));
+
+				// 2️⃣ hozzáadjuk a teljesített listához
+				setUserCompletedGoals((prev) => [completedGoal, ...prev]);
+
+				return completedGoal;
+			});
+	}
 
 	// Completed goals
 	function getUserCompletedGoals() {
@@ -121,24 +142,21 @@ export const UserProvider = ({ children }) => {
 	return (
 		<UserContext.Provider
 			value={{
+				// State-ek
 				loading, // kell a töltés spinnerhez
 				userName, // kell a logout popuphoz
-
 				userDontWantEssay, // kell a DontWantEssay komponenshez
 				setUserDontWantEssay, // kell a DontWantEssay komponenshez
-
 				userWantEssay, // kell a WantEssay komponenshez
 				setUserWantEssay, // kell a WantEssay komponenshez
-
 				userNotCompletedGoals, // kell a nem teljesített célok kilistázásához
-
 				userCompletedGoals, // kell a teljesített célok kilistázásához
-
+				// API hívások
 				putUserDontWantEssay, // kell a DontWantEssay komponenshez
 				putUserWantEssay, // kell a WantEssay komponenshez
-                postUserNotCompletedGoal, // kell célok létrehozásához
+				postUserNotCompletedGoal, // kell célok létrehozásához
 				patchUserNotCompletedGoal, // kell célok szerkesztéséhez
-                                            // kell célok teljesítéséhez
+				completeUserNotCompletedGoal, // kell célok teljesítéséhez
 			}}
 		>
 			{children}

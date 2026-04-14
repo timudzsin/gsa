@@ -50,18 +50,18 @@ export default function UserTrophyAndAddGoalButton() {
 		const date = new Date(dateString);
 
 		const months = [
-			"Január",
-			"Február",
-			"Március",
-			"Április",
-			"Május",
-			"Június",
-			"Július",
-			"Augusztus",
-			"Szeptember",
-			"Október",
-			"November",
-			"December",
+			"január",
+			"február",
+			"március",
+			"április",
+			"május",
+			"június",
+			"július",
+			"augusztus",
+			"szeptember",
+			"október",
+			"november",
+			"december",
 		];
 
 		const year = date.getFullYear();
@@ -273,9 +273,7 @@ export default function UserTrophyAndAddGoalButton() {
 										.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
 										.map((goal) => (
 											<div key={goal.id} className={`completedGoal ${goal.color}`}>
-												<p className="completedGoal-completionDate">
-													{formatCompletedDate(goal.updated_at)}
-												</p>
+												<p className="completedGoal-completionDate">{formatCompletedDate(goal.updated_at)}</p>
 												<InlineSVG className="completedGoal-icon" src={`/goal_icons/${goal.icon_url}`} />
 												<p className="completedGoal-title">{goal.title}</p>
 											</div>
@@ -451,15 +449,10 @@ export default function UserTrophyAndAddGoalButton() {
 
 												<div className="task-type">
 													<label>Mikor</label>
-													<select
-														value={t.type}
-														onChange={(e) => updateTask(i, "type", e.target.value)}
-													>
+													<select value={t.type} onChange={(e) => updateTask(i, "type", e.target.value)}>
 														<option value="daily">Minden nap</option>
 														<option value="x_times_per_week">Heti X-szer</option>
-														<option value="on_certain_days_of_the_week">
-															A hét bizonyos napjain
-														</option>
+														<option value="on_certain_days_of_the_week">A hét bizonyos napjain</option>
 													</select>
 												</div>
 
@@ -503,9 +496,7 @@ export default function UserTrophyAndAddGoalButton() {
 																		<input
 																			type="checkbox"
 																			checked={t[day.key] === true}
-																			onChange={(e) =>
-																				updateTask(i, day.key, e.target.checked)
-																			}
+																			onChange={(e) => updateTask(i, day.key, e.target.checked)}
 																		/>
 																		<span>{day.label}</span>
 																	</label>
@@ -516,11 +507,7 @@ export default function UserTrophyAndAddGoalButton() {
 												</div>
 
 												{tasks.length >= 2 && (
-													<button
-														className="removeTaskButton"
-														onClick={() => removeTask(i)}
-														type="button"
-													>
+													<button className="removeTaskButton" onClick={() => removeTask(i)} type="button">
 														<svg viewBox="0 -960 960 960">
 															<path d="M280-120q-33 0-56.5-23.5T200-200v-520q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h160q0-17 11.5-28.5T400-840h160q17 0 28.5 11.5T600-800h160q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720v520q0 33-23.5 56.5T680-120H280Zm148.5-171.5Q440-303 440-320v-280q0-17-11.5-28.5T400-640q-17 0-28.5 11.5T360-600v280q0 17 11.5 28.5T400-280q17 0 28.5-11.5Zm160 0Q600-303 600-320v-280q0-17-11.5-28.5T560-640q-17 0-28.5 11.5T520-600v280q0 17 11.5 28.5T560-280q17 0 28.5-11.5Z" />
 														</svg>

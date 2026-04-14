@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useState, useRef, useLayoutEffect } from "react";
+import React, { useEffect, useMemo, useState, useRef, useLayoutEffect, useContext } from "react";
 import "./UserEditNotCompletedGoalPopup.css";
 import InlineSVG from "./InlineSVG";
 import ICONS from "../icons.json";
+import { UserContext } from "../contexts/UserContext";
 
 const COLORS = [
 	"RED",
@@ -45,6 +46,8 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 	const [closingBannerPopup, setClosingBannerPopup] = useState(false);
 
 	const formRef = useRef(null);
+
+	const { completeUserNotCompletedGoal } = useContext(UserContext);
 
 	const shuffledIcons = useMemo(() => {
 		const arr = [...ICONS];
@@ -203,6 +206,11 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 				times_per_week: t.times_per_week,
 			})),
 		});
+	}
+
+	async function handleCompleteGoal() {
+		await completeUserNotCompletedGoal(goal.id);
+		onClose();
 	}
 
 	return (
@@ -421,6 +429,13 @@ export default function UserEditNotCompletedGoalPopup({ goal, onClose, onSave })
 						<svg viewBox="0 -960 960 960">
 							<path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z" />
 						</svg>
+					</button>
+				</div>
+
+				{/* COMPLETE gomb */}
+				<div className="UserEditNotCompletedGoalPopup-complete">
+					<button type="button" className="completeGoalButton" onClick={handleCompleteGoal}>
+						Cél teljesítése
 					</button>
 				</div>
 			</form>

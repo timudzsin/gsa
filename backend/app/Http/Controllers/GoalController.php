@@ -267,6 +267,40 @@ class GoalController extends Controller
 
 
 
+    public function completeUserNotCompletedGoal(Request $request, Goal $goal)
+    {
+        // A kérés JSON-re kényszerítése
+        $request->headers->set('Accept', 'application/json');
+
+        // Felhasználó lekérdezése token alapján
+        $user = $request->user();
+        if (!$user || $goal->user_id !== $user->id) {
+            return response()->json([
+                'message' => 'Nincs jogosultságod ennek a célnak a módosításához.'
+            ], 403);
+        }
+
+        // Ha már teljesített, nem kell újra módosítani
+        if ($goal->is_completed) {
+            return response()->json([
+                'message' => 'Ez a cél már teljesített.'
+            ], 200);
+        }
+
+        DB::transaction(function () use ($goal) {
+            $goal->update([
+                'is_completed' => true,
+            ]);
+        });
+
+        return response()->json([
+            'message' => 'A cél sikeresen teljesítetté lett állítva.',
+            'goal' => $goal->fresh(['motivations', 'tasks']),
+        ], 200);
+    }
+
+
+
 
 
 

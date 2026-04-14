@@ -19,6 +19,7 @@ class Goal extends Model
         'deadline',
         'color',
         'icon_url',
+        'is_completed',
     ];
 
     // Kapcsolatok

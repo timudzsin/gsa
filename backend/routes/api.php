@@ -32,7 +32,7 @@ Route::put('/user-want-essay', [UserController::class, 'putUserWantEssay'])->mid
 Route::get('/user-not-completed-goals', [GoalController::class, 'getUserNotCompletedGoals'])->middleware('auth:sanctum'); // N.t. célok lekérdezése
 Route::post('/user-not-completed-goals', [GoalController::class, 'postUserNotCompletedGoal'])->middleware('auth:sanctum'); // Cél létrehozása
 Route::patch('/user-not-completed-goals/{goal}', [GoalController::class, 'patchUserNotCompletedGoal'])->middleware('auth:sanctum'); // Cél szerkesztése
-Route::patch('/user-not-completed-goals/{goal}', [GoalController::class, 'completeUserNotCompletedGoal'])->middleware('auth:sanctum'); // Cél teljesítése
+Route::patch('/user-not-completed-goals/{goal}/complete', [GoalController::class, 'completeUserNotCompletedGoal'])->middleware('auth:sanctum'); // Cél teljesítése
 
 
 // user Completed goals

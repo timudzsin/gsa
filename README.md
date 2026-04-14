@@ -66,8 +66,8 @@
 - ✅ frontend: a teljesített célokat meg lehet nézni, a teljesítésük dátumának sorrendjében.
 - ✅ backend: lehet új célokat létrehozni.
 - ✅ frontend: lehet új célokat létrehozni.
-- ❌ backend: A nem teljesített célokat lehet teljesíteni.
-- ❌ frontend: A nem teljesített célokat lehet teljesíteni.
+- ✅ backend: A nem teljesített célokat lehet teljesíteni.
+- ✅ frontend: A nem teljesített célokat lehet teljesíteni. (confirmation dialog nélkül, és csúnyán)
 - ❌ frontend: Ha nincs teljesített célja a felhasználónak, akkor a TrophyButton nem jelenik meg.
 - ❌ frontend: Ha 8 célja van a felhasználónak, az AddGoalButton nem jelenik meg.
 - ❌ frontend: A navbar ki van emelve ott ahol éppen vagyunk.
