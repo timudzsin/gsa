@@ -18,7 +18,7 @@ class GoalSeeder extends Seeder
             'user_id' => 1,
             'title' => 'Emma Stone önbizalma',
             'deadline' => '2027-01-15',
-            'color' => 'LIGHT_BLUE',
+            'color' => 'LIGHT-BLUE',
             'icon_url' => 'person_celebrate.svg',
         ]);
         Goal::create([
@@ -32,7 +32,7 @@ class GoalSeeder extends Seeder
             'user_id' => 1,
             'title' => '2 hónapon át napi 30 perc olvasás',
             'deadline' => '2026-06-15',
-            'color' => 'WHITE',
+            'color' => 'GREEN',
             'icon_url' => 'book_2_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([

@@ -4,12 +4,16 @@ import axios from "axios";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+	const [loading, setLoading] = useState(true);
 	const [userName, setUserName] = useState(null);
+
 	const [userDontWantEssay, setUserDontWantEssay] = useState("");
 	const [userWantEssay, setUserWantEssay] = useState("");
+
 	const [userNotCompletedGoals, setUserNotCompletedGoals] = useState([]);
 	const [userCompletedGoals, setUserCompletedGoals] = useState([]);
-	const [loading, setLoading] = useState(true);
+
+	const [todaysChecklist, setTodaysChecklist] = useState(null);
 
 	useEffect(() => {
 		fetchAllUserData();
@@ -18,13 +22,22 @@ export const UserProvider = ({ children }) => {
 	// Felhasználó összes adatának lekérése.
 	function fetchAllUserData() {
 		setLoading(true);
-		Promise.all([getMe(), getUserDontWantEssay(), getUserWantEssay(), getUserNotCompletedGoals(), getUserCompletedGoals()])
-			.then(([userData, dontWantEssayData, wantEssayData, notCompletedGoalsData, completedGoalsData]) => {
+		Promise.all([
+			getMe(),
+			getUserDontWantEssay(),
+			getUserWantEssay(),
+			getUserNotCompletedGoals(),
+			getUserCompletedGoals(),
+			getOrCreateTodaysChecklist(),
+		])
+			.then(([userData, dontWantEssayData, wantEssayData, notCompletedGoalsData, completedGoalsData, todaysChecklistData]) => {
 				setUserName(userData.name);
 				setUserDontWantEssay(dontWantEssayData);
 				setUserWantEssay(wantEssayData);
 				setUserNotCompletedGoals(notCompletedGoalsData);
 				setUserCompletedGoals(completedGoalsData);
+				setTodaysChecklist(todaysChecklistData);
+                console.log(todaysChecklistData);
 			})
 			.catch((err) => console.error(err))
 			.finally(() => setLoading(false));
@@ -139,6 +152,23 @@ export const UserProvider = ({ children }) => {
 			.then((res) => res.data.goals);
 	}
 
+	// Checklists
+	function getOrCreateTodaysChecklist() {
+		return axios
+			.post(
+				"http://localhost:8000/api/user-today-checklist",
+				{},
+				{
+					headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+				},
+			)
+			.then((res) => res.data.checklist)
+			.catch((err) => {
+				console.error("Hiba a mai checklist lekérésénél/létrehozásánál:", err);
+				return null;
+			});
+	}
+
 	return (
 		<UserContext.Provider
 			value={{
@@ -151,6 +181,7 @@ export const UserProvider = ({ children }) => {
 				setUserWantEssay, // kell a WantEssay komponenshez
 				userNotCompletedGoals, // kell a nem teljesített célok kilistázásához
 				userCompletedGoals, // kell a teljesített célok kilistázásához
+                todaysChecklist, // kell a UserTodaysChecklist komponenshez
 				// API hívások
 				putUserDontWantEssay, // kell a DontWantEssay komponenshez
 				putUserWantEssay, // kell a WantEssay komponenshez
