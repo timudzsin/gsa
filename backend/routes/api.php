@@ -12,6 +12,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
+
     // Authentikáció
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -19,14 +20,17 @@ Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 
+
     // user Don't want essay
 Route::get('/user-dont-want-essay', [UserController::class, 'getUserDontWantEssay'])->middleware('auth:sanctum');
 Route::put('/user-dont-want-essay', [UserController::class, 'putUserDontWantEssay'])->middleware('auth:sanctum');
 
 
+
     // user Want essay
 Route::get('/user-want-essay', [UserController::class, 'getUserWantEssay'])->middleware('auth:sanctum');
 Route::put('/user-want-essay', [UserController::class, 'putUserWantEssay'])->middleware('auth:sanctum');
+
 
 
     // user Not completed goals
@@ -44,9 +48,14 @@ Route::patch('/user-not-completed-goals/{goal}/complete', [GoalController::class
 Route::get('/user-completed-goals', [GoalController::class, 'getUserCompletedGoals'])->middleware('auth:sanctum');
 
 
+
     // user Checklists
 // Mai checklist létrehozása checklist_item-ekkel
 Route::post('/user-today-checklist', [ChecklistController::class, 'createTodayChecklist'])->middleware('auth:sanctum');
+
+
+
+
 
 
 

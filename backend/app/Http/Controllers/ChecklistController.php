@@ -26,8 +26,10 @@ class ChecklistController extends Controller
             ], 401);
         }
 
-        // Mai nap
+        // Segéd változók
         $today = now()->toDateString();
+        $weekStart = now()->startOfWeek()->toDateString();
+        $weekEnd = now()->endOfWeek()->toDateString();
 
         // Ha már van mai checklist, csak visszaadjuk
         $existingChecklist = Checklist::where('user_id', $user->id)
@@ -43,7 +45,7 @@ class ChecklistController extends Controller
 
         // Tranzakció a checklist és szükséges checklist_item-ek létrehozására
         $checklist = null;
-        DB::transaction(function () use ($user, $today, &$checklist) {
+        DB::transaction(function () use ($user, $today, $weekStart, $weekEnd, &$checklist) {
             // Checklist létrehozása
             $checklist = Checklist::create([
                 'user_id' => $user->id,
@@ -94,17 +96,47 @@ class ChecklistController extends Controller
                     }
                 }
 
-                // A heti X task-okból     egyenlőre mindig létrehozunk checklist item-et
+                // A heti X-szer feladatokból létrehozunk 'this_week' típust annyival amennyivel kell,
+                //  vagy 'today' típust ha ma már muszáj teljesíteni a heti X alaklomhoz.
                 elseif ($task->type === 'x_times_per_week') {
-                    ChecklistItem::create([
-                        'checklist_id' => $checklist->id,
-                        'task_id' => $task->id,
-                        'is_completed' => false,
-                        'description' => $task->description,
-                        'when' => 'this_week',                       // <-- új
-                        'times_this_week' => $task->times_per_week,  // <-- új
-                        'rank' => $task->rank,
-                    ]);
+                    // Ez a task eddig hányszor volt teljesítve ezen a héten
+                    $completedThisWeekCount = ChecklistItem::query()
+                        ->join('checklists', 'checklist_items.checklist_id', '=', 'checklists.id')
+                        ->where('checklists.user_id', $user->id)
+                        ->where('checklist_items.task_id', $task->id)
+                        ->where('checklist_items.is_completed', true)
+                        ->whereDate('checklists.date', '>=', $weekStart)
+                        ->whereDate('checklists.date', '<=', $weekEnd)
+                        ->count();
+                    // Hányszor kell még teljesíteni ezen a héten
+                    $remainingTimesThisWeek = max(0, (int) $task->times_per_week - $completedThisWeekCount);
+                    // Hány nap van még hátra a héten (ma UTÁN)
+                    $remainingDaysInWeek = 6 - now()->dayOfWeek;
+                    if ($remainingTimesThisWeek > 0) {
+                        // ⚠️ Ha több teljesítés kell, mint amennyi nap hátra van → ma kötelező
+                        if ($remainingTimesThisWeek > $remainingDaysInWeek) {
+                            ChecklistItem::create([
+                                'checklist_id' => $checklist->id,
+                                'task_id' => $task->id,
+                                'is_completed' => false,
+                                'description' => $task->description,
+                                'when' => 'today',
+                                'times_this_week' => null,
+                                'rank' => $task->rank,
+                            ]);
+                        } else {
+                            // Létrehozzuk 'when'='this_week'-el és annyi 'times_this_week'-el ahányszor még teljesíteni kell ezen a héten
+                            ChecklistItem::create([
+                                'checklist_id' => $checklist->id,
+                                'task_id' => $task->id,
+                                'is_completed' => false,
+                                'description' => $task->description,
+                                'when' => 'this_week',
+                                'times_this_week' => $remainingTimesThisWeek,
+                                'rank' => $task->rank,
+                            ]);
+                        }
+                    }
                 }
             }
         });
