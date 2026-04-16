@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChecklistController;
+use App\Http\Controllers\ChecklistItemController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -21,19 +22,19 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 
 
-    // user Don't want essay
+    // (user) Don't want essay
 Route::get('/user-dont-want-essay', [UserController::class, 'getUserDontWantEssay'])->middleware('auth:sanctum');
 Route::put('/user-dont-want-essay', [UserController::class, 'putUserDontWantEssay'])->middleware('auth:sanctum');
 
 
 
-    // user Want essay
+    // (user) Want essay
 Route::get('/user-want-essay', [UserController::class, 'getUserWantEssay'])->middleware('auth:sanctum');
 Route::put('/user-want-essay', [UserController::class, 'putUserWantEssay'])->middleware('auth:sanctum');
 
 
 
-    // user Not completed goals
+    // (user) Not completed goals
 // Nem teljesített célok lekérdezése
 Route::get('/user-not-completed-goals', [GoalController::class, 'getUserNotCompletedGoals'])->middleware('auth:sanctum');
 // Cél létrehozása
@@ -43,17 +44,20 @@ Route::patch('/user-not-completed-goals/{goal}', [GoalController::class, 'patchU
 // Cél teljesítése
 Route::patch('/user-not-completed-goals/{goal}/complete', [GoalController::class, 'completeUserNotCompletedGoal'])->middleware('auth:sanctum');
 
-    // user Completed goals
+    // (user) Completed goals
 // Teljesített célok lekérdezése
 Route::get('/user-completed-goals', [GoalController::class, 'getUserCompletedGoals'])->middleware('auth:sanctum');
 
 
 
-    // user Checklists
+    // (user) Checklists
 // Mai checklist létrehozása checklist_item-ekkel
 Route::post('/user-today-checklist', [ChecklistController::class, 'createTodayChecklist'])->middleware('auth:sanctum');
 
 
+
+    // (user) Checklist items
+Route::patch('/checklist-items/{checklistItem}', [ChecklistItemController::class, 'toggle'])->middleware('auth:sanctum');
 
 
 
