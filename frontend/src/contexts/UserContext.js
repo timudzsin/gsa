@@ -19,6 +19,7 @@ export const UserProvider = ({ children }) => {
 		fetchAllUserData();
 	}, []);
 
+	//
 	// Felhasználó összes adatának lekérése.
 	function fetchAllUserData() {
 		setLoading(true);
@@ -30,19 +31,29 @@ export const UserProvider = ({ children }) => {
 			getUserCompletedGoals(),
 			getOrCreateTodaysChecklist(),
 		])
-			.then(([userData, dontWantEssayData, wantEssayData, notCompletedGoalsData, completedGoalsData, todaysChecklistData]) => {
-				setUserName(userData.name);
-				setUserDontWantEssay(dontWantEssayData);
-				setUserWantEssay(wantEssayData);
-				setUserNotCompletedGoals(notCompletedGoalsData);
-				setUserCompletedGoals(completedGoalsData);
-				setTodaysChecklist(todaysChecklistData);
-                console.log(todaysChecklistData);
-			})
+			.then(
+				([
+					userData,
+					dontWantEssayData,
+					wantEssayData,
+					notCompletedGoalsData,
+					completedGoalsData,
+					todaysChecklistData,
+				]) => {
+					setUserName(userData.name);
+					setUserDontWantEssay(dontWantEssayData);
+					setUserWantEssay(wantEssayData);
+					setUserNotCompletedGoals(notCompletedGoalsData);
+					setUserCompletedGoals(completedGoalsData);
+					setTodaysChecklist(todaysChecklistData);
+					console.log(todaysChecklistData);
+				},
+			)
 			.catch((err) => console.error(err))
 			.finally(() => setLoading(false));
 	}
 
+	//
 	// User
 	function getMe() {
 		return axios
@@ -56,6 +67,7 @@ export const UserProvider = ({ children }) => {
 			});
 	}
 
+	//
 	// Don't want essay
 	function getUserDontWantEssay() {
 		return axios
@@ -72,6 +84,7 @@ export const UserProvider = ({ children }) => {
 		);
 	}
 
+	//
 	// Want essay
 	function getUserWantEssay() {
 		return axios
@@ -88,6 +101,7 @@ export const UserProvider = ({ children }) => {
 		);
 	}
 
+	//
 	// Not completed goals
 	function getUserNotCompletedGoals() {
 		return axios
@@ -116,7 +130,9 @@ export const UserProvider = ({ children }) => {
 			.then((res) => {
 				const updatedGoal = res.data.goal;
 				// lokális állapot (userNotCompletedGoals state) szinkronizálása
-				setUserNotCompletedGoals((prev) => prev.map((goal) => (goal.id === updatedGoal.id ? updatedGoal : goal)));
+				setUserNotCompletedGoals((prev) =>
+					prev.map((goal) => (goal.id === updatedGoal.id ? updatedGoal : goal)),
+				);
 
 				return updatedGoal;
 			});
@@ -143,6 +159,7 @@ export const UserProvider = ({ children }) => {
 			});
 	}
 
+	//
 	// Completed goals
 	function getUserCompletedGoals() {
 		return axios
@@ -152,6 +169,7 @@ export const UserProvider = ({ children }) => {
 			.then((res) => res.data.goals);
 	}
 
+	//
 	// Checklists
 	function getOrCreateTodaysChecklist() {
 		return axios
@@ -169,25 +187,78 @@ export const UserProvider = ({ children }) => {
 			});
 	}
 
+	//
+	// Checklist items
+	function toggleTodayChecklistItem(checklistItemId) {
+		// Először elmentjük a jelenlegi állapotot rollbackhez
+		const previousChecklist = todayChecklist;
+
+		if (!previousChecklist) return Promise.resolve(null);
+
+		// Optimista state update
+		const updatedChecklist = {
+			...previousChecklist,
+			checklist_items: previousChecklist.checklist_items.map((item) =>
+				item.id === checklistItemId ? { ...item, is_completed: !item.is_completed } : item,
+			),
+		};
+
+		setTodayChecklist(updatedChecklist);
+
+		// Küldjük az API hívást
+		return axios
+			.patch(
+				`http://localhost:8000/api/checklist-items/${checklistItemId}`,
+				{},
+				{
+					headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+				},
+			)
+			.then((res) => {
+				// Ha akarod, itt a backendből visszakapott itemmel is pontosíthatod a state-et
+				const updatedItem = res.data.checklist_item;
+
+				setTodayChecklist((prev) => {
+					if (!prev) return prev;
+
+					return {
+						...prev,
+						checklist_items: prev.checklist_items.map((item) =>
+							item.id === updatedItem.id ? updatedItem : item,
+						),
+					};
+				});
+
+				return updatedItem;
+			})
+			.catch((err) => {
+				// Hiba esetén rollback
+				setTodayChecklist(previousChecklist);
+				console.error("Hiba a checklist item toggle során:", err);
+				throw err;
+			});
+	}
+
 	return (
 		<UserContext.Provider
 			value={{
 				// State-ek
-				loading, // kell a töltés spinnerhez
+				loading, // kell a töltés spinnerekhez
 				userName, // kell a logout popuphoz
-				userDontWantEssay, // kell a DontWantEssay komponenshez
+				userDontWantEssay,    // kell a DontWantEssay komponenshez
 				setUserDontWantEssay, // kell a DontWantEssay komponenshez
-				userWantEssay, // kell a WantEssay komponenshez
+				userWantEssay,    // kell a WantEssay komponenshez
 				setUserWantEssay, // kell a WantEssay komponenshez
 				userNotCompletedGoals, // kell a nem teljesített célok kilistázásához
-				userCompletedGoals, // kell a teljesített célok kilistázásához
-                todaysChecklist, // kell a UserTodaysChecklist komponenshez
+				userCompletedGoals,    // kell a teljesített célok kilistázásához
+				todaysChecklist, // kell a UserTodaysChecklist komponenshez
 				// API hívások
 				putUserDontWantEssay, // kell a DontWantEssay komponenshez
-				putUserWantEssay, // kell a WantEssay komponenshez
-				postUserNotCompletedGoal, // kell célok létrehozásához
-				patchUserNotCompletedGoal, // kell célok szerkesztéséhez
+				putUserWantEssay,     // kell a WantEssay komponenshez
+				postUserNotCompletedGoal,     // kell célok létrehozásához
+				patchUserNotCompletedGoal,    // kell célok szerkesztéséhez
 				completeUserNotCompletedGoal, // kell célok teljesítéséhez
+                toggleTodayChecklistItem, // kell checklist item-ek kipipálásához/visszaállításához
 			}}
 		>
 			{children}
