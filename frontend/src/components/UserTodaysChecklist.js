@@ -31,12 +31,14 @@ export default function UserTodaysChecklist() {
 							checked={item.is_completed}
 							onChange={() => toggleTodaysChecklistItem(item.id)}
 						/>
-                        <span className="checkmark"></span>
+						<svg className="checkmark" viewBox="0 -960 960 960">
+							<path d="m382-354 339-339q12-12 28-12t28 12q12 12 12 28.5T777-636L410-268q-12 12-28 12t-28-12L182-440q-12-12-11.5-28.5T183-497q12-12 28.5-12t28.5 12l142 143Z" />
+						</svg>
 						{item.description}
 					</label>
 				))}
 			</div>
-			<h2>Ezen a héten</h2>
+			<h2>valamikor a héten</h2>
 			<div className="UserTodaysChecklist-thisWeeksTasks">
 				{thisWeeksItems.map((item) => (
 					<label className="ChecklistItem" key={item.id}>
@@ -45,7 +47,9 @@ export default function UserTodaysChecklist() {
 							checked={item.is_completed}
 							onChange={() => toggleTodaysChecklistItem(item.id)}
 						/>
-                        <span className="checkmark"></span>
+						<svg className="checkmark" viewBox="0 -960 960 960">
+							<path d="m382-354 339-339q12-12 28-12t28 12q12 12 12 28.5T777-636L410-268q-12 12-28 12t-28-12L182-440q-12-12-11.5-28.5T183-497q12-12 28.5-12t28.5 12l142 143Z" />
+						</svg>
 						{item.description}
 					</label>
 				))}
