@@ -189,9 +189,9 @@ export const UserProvider = ({ children }) => {
 
 	//
 	// Checklist items
-	function toggleTodayChecklistItem(checklistItemId) {
+	function toggleTodaysChecklistItem(checklistItemId) {
 		// Először elmentjük a jelenlegi állapotot rollbackhez
-		const previousChecklist = todayChecklist;
+		const previousChecklist = todaysChecklist;
 
 		if (!previousChecklist) return Promise.resolve(null);
 
@@ -203,7 +203,7 @@ export const UserProvider = ({ children }) => {
 			),
 		};
 
-		setTodayChecklist(updatedChecklist);
+		setTodaysChecklist(updatedChecklist);
 
 		// Küldjük az API hívást
 		return axios
@@ -218,7 +218,7 @@ export const UserProvider = ({ children }) => {
 				// Ha akarod, itt a backendből visszakapott itemmel is pontosíthatod a state-et
 				const updatedItem = res.data.checklist_item;
 
-				setTodayChecklist((prev) => {
+				setTodaysChecklist((prev) => {
 					if (!prev) return prev;
 
 					return {
@@ -233,7 +233,7 @@ export const UserProvider = ({ children }) => {
 			})
 			.catch((err) => {
 				// Hiba esetén rollback
-				setTodayChecklist(previousChecklist);
+				setTodaysChecklist(previousChecklist);
 				console.error("Hiba a checklist item toggle során:", err);
 				throw err;
 			});
@@ -258,7 +258,7 @@ export const UserProvider = ({ children }) => {
 				postUserNotCompletedGoal,     // kell célok létrehozásához
 				patchUserNotCompletedGoal,    // kell célok szerkesztéséhez
 				completeUserNotCompletedGoal, // kell célok teljesítéséhez
-                toggleTodayChecklistItem, // kell checklist item-ek kipipálásához/visszaállításához
+                toggleTodaysChecklistItem, // kell a UserTodaysChecklist-ben checklist item-ek kipipálásához/visszaállításához
 			}}
 		>
 			{children}

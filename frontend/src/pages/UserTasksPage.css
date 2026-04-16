@@ -1,0 +1,7 @@
+.UserTasksPage {
+	min-height: calc(100vh - 70px - 85px);
+
+	display: flex;
+	justify-content: center; /* vízszintesen */
+	align-items: center; /* függőlegesen */
+}
