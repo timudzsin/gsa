@@ -46,7 +46,7 @@ export const UserProvider = ({ children }) => {
 					setUserNotCompletedGoals(notCompletedGoalsData);
 					setUserCompletedGoals(completedGoalsData);
 					setTodaysChecklist(todaysChecklistData);
-					console.log(todaysChecklistData);
+                    console.log(todaysChecklistData);
 				},
 			)
 			.catch((err) => console.error(err))

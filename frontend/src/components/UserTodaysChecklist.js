@@ -4,7 +4,6 @@ import "./UserTodaysChecklist.css";
 
 export default function UserTodaysChecklist() {
 	const { todaysChecklist, toggleTodaysChecklistItem } = useContext(UserContext);
-	console.log(todaysChecklist);
 	if (!todaysChecklist) return null;
 
 	// dátum formázás (pl: ápr 16., csütörtök)
