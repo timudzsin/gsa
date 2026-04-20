@@ -211,7 +211,7 @@ class TaskSeeder extends Seeder
             'goal_id' => 14,
             'user_id' => 2,
 
-            'description' => 'Weboldal fejlesztése(completed)',
+            'description' => 'Weboldal fejlesztése(completd)',
 
             'type' => 'on_certain_days_of_the_week',
             'is_on_monday' => true,
