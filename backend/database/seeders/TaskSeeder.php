@@ -182,7 +182,7 @@ class TaskSeeder extends Seeder
             'goal_id' => 12,
             'user_id' => 2,
 
-            'description' => '10 000 lépés',
+            'description' => '10 000 lépés(completed)',
 
             'type' => 'daily',
         ]);
@@ -192,7 +192,7 @@ class TaskSeeder extends Seeder
             'goal_id' => 13,
             'user_id' => 2,
 
-            'description' => 'Heti megtakarítás félretétele',
+            'description' => 'Heti megtakarítás félretétele(completed)',
 
             'type' => 'x_times_per_week',
             'times_per_week' => 1,
@@ -201,7 +201,7 @@ class TaskSeeder extends Seeder
             'goal_id' => 13,
             'user_id' => 2,
 
-            'description' => 'Kiadások csökkentése (nem szükséges vásárlások kerülése)',
+            'description' => 'Kiadások csökkentése (nem szükséges vásárlások kerülése)(completed)',
 
             'type' => 'daily',
         ]);
@@ -211,7 +211,7 @@ class TaskSeeder extends Seeder
             'goal_id' => 14,
             'user_id' => 2,
 
-            'description' => 'Weboldal fejlesztése',
+            'description' => 'Weboldal fejlesztése(completed)',
 
             'type' => 'on_certain_days_of_the_week',
             'is_on_monday' => true,
@@ -222,7 +222,7 @@ class TaskSeeder extends Seeder
             'goal_id' => 14,
             'user_id' => 2,
 
-            'description' => 'Weboldal funkciók tesztelése és hibajavítás',
+            'description' => 'Weboldal funkciók tesztelése és hibajavítás(completed)',
 
             'type' => 'x_times_per_week',
             'times_per_week' => 2,

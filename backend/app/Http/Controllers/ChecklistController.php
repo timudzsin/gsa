@@ -51,8 +51,14 @@ class ChecklistController extends Controller
                 'user_id' => $user->id,
                 'date' => $today,
             ]);
-            // A felhasználó task-jainak lekérdezése
+            // A felhasználó task-jainak lekérdezése (csak nem teljesített célokhoz tartozó, vagy célfüggetlen)
             $tasks = Task::where('user_id', $user->id)
+                ->where(function ($query) {
+                    $query->whereNull('goal_id') // nincs célhoz rendelve
+                        ->orWhereHas('goal', function ($q) {
+                            $q->where('is_completed', false); // nem teljesített célhoz tartozik
+                        });
+                })
                 ->orderBy('rank')
                 ->get();
             // Segéd változó:  mai nap
