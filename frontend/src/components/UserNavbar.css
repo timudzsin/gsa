@@ -9,8 +9,7 @@
 	border-radius: 100000000000000000000000px;
 
 	width: fit-content;
-    padding-left: 10px;
-    padding-right: 10px;
+	padding: 3px;
 
 	display: flex;
 	align-items: center;
@@ -24,8 +23,11 @@
 }
 
 .UserNavbar a {
-    min-width: max(65px, 7.5vw);
-    padding: 5px;
+	padding-left: 17px;
+	padding-right: 17px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-radius: 200px;
 
 	text-decoration: none;
 	display: flex;
@@ -33,12 +35,25 @@
 	align-items: center;
 }
 .UserNavbar a svg {
-    fill: hsl(0, 0%, 100%);
-    height: 38px;
+	fill: hsl(0, 0%, 100%);
+	height: 38px;
 	width: 38px;
 }
 .UserNavbar a p {
-    color: hsl(0, 50%, 100%);
-    font-size: 12px;
-    user-select: none;
+	color: hsl(0, 50%, 100%);
+	font-size: 12px;
+	user-select: none;
+}
+
+
+
+
+.UserNavbar a.active {
+	background-color: hsla(0, 0%, 45%, 0.5);
+}
+.UserNavbar a.active svg {
+	fill: hsl(205, 99%, 60%);
+}
+.UserNavbar a.active p {
+	color: hsl(205, 99%, 60%);
 }

@@ -79,7 +79,7 @@
 - ✅ frontend: UserGoalIndependentTasksButton. 
 - ✅ frontend: Ha nincs teljesített célja a felhasználónak, akkor a TrophyButton nem jelenik meg.
 - ✅ frontend: Ha 8 célja van a felhasználónak, az AddGoalButton nem jelenik meg.
-- ❌ frontend: A navbar ki van emelve ott ahol éppen vagyunk.
+- ✅ frontend: A navbar ki van emelve ott ahol éppen vagyunk.
 - ❌ frontend: A navbar-on nem jelenik meg a célok menü, ha nincs megírva a felhasználó "nem akarok" és "akarok" esszéi.
 - ❌ frontend: A navbar-on nem jelenik meg a feladatok menü, ha nincs célja a felhasználónak.
 - ❌ frontend: Ha a felhasználónak nincsenek céljai, akkor egy szöveget lát: "Ide tűzz ki célokat, amik nem túl nehezek de nem is túl könnyűek, amikell haladsz az a jövőkép felé amit megfogalmaztál a "Mit akarok?" fülön.
