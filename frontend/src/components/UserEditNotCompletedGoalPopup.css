@@ -171,6 +171,7 @@
 	display: flex;
 	justify-content: center; /* horizontal centering */
 	align-items: center; /* vertical centering */
+    cursor: pointer;
 }
 .UserEditNotCompletedGoalPopup-banner svg {
 	fill: hsl(0, 0%, 100%);
