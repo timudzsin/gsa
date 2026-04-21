@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChecklistController;
 use App\Http\Controllers\ChecklistItemController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
 
 
 
@@ -22,15 +24,18 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 
 
+
     // (user) Don't want essay
 Route::get('/user-dont-want-essay', [UserController::class, 'getUserDontWantEssay'])->middleware('auth:sanctum');
 Route::put('/user-dont-want-essay', [UserController::class, 'putUserDontWantEssay'])->middleware('auth:sanctum');
 
 
 
+
     // (user) Want essay
 Route::get('/user-want-essay', [UserController::class, 'getUserWantEssay'])->middleware('auth:sanctum');
 Route::put('/user-want-essay', [UserController::class, 'putUserWantEssay'])->middleware('auth:sanctum');
+
 
 
 
@@ -47,6 +52,16 @@ Route::patch('/user-not-completed-goals/{goal}/complete', [GoalController::class
     // (user) Completed goals
 // Teljesített célok lekérdezése
 Route::get('/user-completed-goals', [GoalController::class, 'getUserCompletedGoals'])->middleware('auth:sanctum');
+    
+
+
+    
+    // (user) Goal independent tasks
+// Céltól független taskok lekérdezése
+Route::get('/user-goal-independent-tasks', [TaskController::class, 'getUserGoalIndependentTasks'])->middleware('auth:sanctum');
+// Céltól független taskok szinkronizálása
+Route::patch('/user-goal-independent-tasks', [TaskController::class, 'patchUserGoalIndependentTasks'])->middleware('auth:sanctum');
+
 
 
 
@@ -56,7 +71,9 @@ Route::post('/user-today-checklist', [ChecklistController::class, 'createTodayCh
 
 
 
+
     // (user) Checklist items
+// Checklist item kipipálása/visszaállítása
 Route::patch('/checklist-items/{checklistItem}', [ChecklistItemController::class, 'toggle'])->middleware('auth:sanctum');
 
 

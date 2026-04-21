@@ -35,7 +35,7 @@ export default function UserWantEssay() {
 				value={userWantEssay || ""}
 				onChange={handleChange}
 				placeholder={
-					"\n\nMit akarok a következő 4 évben?\n\n\nMi az, aminek a gondolata igazán motivál?\n\n\nHa a legtöbbet hoznám ki az életből, az hogyan nézne ki?"
+					"\n\nMit akarok a következő 4 évben?\n\n\nHa megkaphatnám azt amit igazán akarok, mi lenne az?\n\n\nHa a legtöbbet hoznám ki az életből, az hogyan nézne ki?"
 				}
 				ref={textareaRef}
 				spellCheck={false}

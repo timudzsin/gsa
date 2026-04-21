@@ -11,25 +11,27 @@ import UserTasksPage from "./pages/UserTasksPage";
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Navigate to="/login" replace />} />
+		<div className="App">
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Navigate to="/login" replace />} />
 
-				<Route path="/register" element={<RegisterPage />} />
+					<Route path="/register" element={<RegisterPage />} />
 
-				<Route path="/login" element={<LoginPage />} />
+					<Route path="/login" element={<LoginPage />} />
 
-				<Route path="/user" element={<UserPage />}>
-					<Route index element={<Navigate to="dont-want" replace />} />
-					<Route path="dont-want" element={<UserDontWantPage />} />
-					<Route path="want" element={<UserWantPage />} />
-					<Route path="goals" element={<UserGoalsPage />} />
-					<Route path="tasks" element={<UserTasksPage />} />
-				</Route>
+					<Route path="/user" element={<UserPage />}>
+						<Route index element={<Navigate to="dont-want" replace />} />
+						<Route path="dont-want" element={<UserDontWantPage />} />
+						<Route path="want" element={<UserWantPage />} />
+						<Route path="goals" element={<UserGoalsPage />} />
+						<Route path="tasks" element={<UserTasksPage />} />
+					</Route>
 
-				<Route path="/admin" element={<AdminPage />} />
-			</Routes>
-		</BrowserRouter>
+					<Route path="/admin" element={<AdminPage />} />
+				</Routes>
+			</BrowserRouter>
+		</div>
 	);
 }
 
