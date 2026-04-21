@@ -73,7 +73,7 @@
 - ✅ frontend: A UserContext lekérdezi és eltárolja a mai checklist-et.
 - ✅ backend: Lehet checklist_item-eket teljsíteni. (patch). https://chatgpt.com/share/69e0059e-df74-832d-9896-5c041ca9c3e1
 - ✅ frontend: UserContext-ben lehet toggle-ölni checklist item-eket.
-- ❌ frontend: UserTodaysChecklist komponens
+- ✅ frontend: UserTodaysChecklist komponens
 - ❌ frontend: Ha nincs teljesített célja a felhasználónak, akkor a TrophyButton nem jelenik meg.
 - ❌ frontend: Ha 8 célja van a felhasználónak, az AddGoalButton nem jelenik meg.
 - ❌ frontend: A navbar ki van emelve ott ahol éppen vagyunk.

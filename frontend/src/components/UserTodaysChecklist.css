@@ -1,43 +1,31 @@
 .UserTodaysChecklist {
-	background-color: hsl(0, 0%, 17%);
-	border-radius: 30px;
-
-	min-width: 190px;
 	max-width: 550px;
-	min-height: calc(100vh - 70px - 85px - 15vh);
+	margin: auto;
+	min-height: calc(100vh - 70px - 85px);
 
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: 15px;
-	margin-left: 15px;
-	padding: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 /* MAI NAP SZÖVEG */
 .UserTodaysChecklist > h1 {
 	margin-bottom: 5px;
 	color: hsl(0, 0%, 95%);
-	font-weight: 550;
 	text-align: center;
-}
-
-/* MAI TASKOK */
-.UserTodaysChecklist-todaysTasks {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 10px;
+	font-weight: 550;
 }
 
 /* EZEN A HÉTEN SZÖVEG */
 .UserTodaysChecklist > h2 {
-	margin-top: 30px;
+	margin-top: 45px;
 	margin-bottom: 5px;
-	color: hsl(0, 0%, 60%);
+	color: hsl(0, 0%, 40%);
 	text-align: center;
+	font-weight: 500;
 }
 
-/* EHETI TASKOK */
+/* TASKOK */
+.UserTodaysChecklist-todaysTasks,
 .UserTodaysChecklist-thisWeeksTasks {
 	display: flex;
 	flex-direction: column;
@@ -45,104 +33,41 @@
 	gap: 10px;
 }
 .UserTodaysChecklist-thisWeeksTasks .ChecklistItem {
-	color: hsl(0, 0%, 60%);
+	color: hsl(0, 0%, 40%);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Custom négyzet */
-/* Kipipált állapot */
-.ChecklistItem input:checked + .checkmark {
-	background-color: hsl(205, 99%, 50%);
-	border-color: hsl(205, 99%, 50%);
-}
-/* Pipa */
-.ChecklistItem input:checked + .checkmark::after {
-	content: "";
-	position: absolute;
-	left: 5px;
-	top: 1px;
-	width: 8px;
-	height: 16px;
-	border: solid white;
-	border-width: 0 2px 2px 0;
-	transform: rotate(45deg);
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* CHECKLIST ITEMEK */
 /* CHECKBOX ITEM */
 .ChecklistItem {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	gap: 10px;
 	cursor: pointer;
-	font-size: 18px;
+	font-size: 21px;
 	user-select: none;
 }
-
 /* input elrejtése */
 .ChecklistItem input {
 	display: none;
 }
-
 /* alap checkbox (UNCHECKED) */
 .checkmark {
-	width: 20px;
-	height: 20px;
+	width: 26px;
+	height: 26px;
 	flex-shrink: 0;
 
-	border: 2px solid #b0b0b0;
+	border: 2px solid hsl(0, 0%, 40%);
 	border-radius: 50%; /* kör */
-	background-color: transparent;
+    fill: black;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
-	transition: all 0.2s ease;
+	transition: all 0.3s ease;
 }
-
-/* SVG pipa alapból rejtett */
-.checkmark path {
-	fill: none;
-	stroke: #b0b0b0;
-	stroke-width: 120;
-}
-
 /* CHECKED state */
 .ChecklistItem input:checked + .checkmark {
 	background-color: hsl(205, 99%, 50%); /* kék */
 	border: none; /* keret eltűnik */
-}
-/* checked pipa szín */
-.ChecklistItem input:checked + .checkmark path {
-	stroke: #e5e7eb; /* világosszürke pipa */
 }
