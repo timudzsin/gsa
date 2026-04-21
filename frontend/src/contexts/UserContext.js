@@ -13,6 +13,8 @@ export const UserProvider = ({ children }) => {
 	const [userNotCompletedGoals, setUserNotCompletedGoals] = useState([]);
 	const [userCompletedGoals, setUserCompletedGoals] = useState([]);
 
+	const [userGoalIndependentTasks, setUserGoalIndependentTasks] = useState([]);
+
 	const [todaysChecklist, setTodaysChecklist] = useState(null);
 
 	useEffect(() => {
@@ -29,6 +31,7 @@ export const UserProvider = ({ children }) => {
 			getUserWantEssay(),
 			getUserNotCompletedGoals(),
 			getUserCompletedGoals(),
+			getUserGoalIndependentTasks(),
 			getOrCreateTodaysChecklist(),
 		])
 			.then(
@@ -38,6 +41,7 @@ export const UserProvider = ({ children }) => {
 					wantEssayData,
 					notCompletedGoalsData,
 					completedGoalsData,
+					goalIndependentTasksData,
 					todaysChecklistData,
 				]) => {
 					setUserName(userData.name);
@@ -45,8 +49,8 @@ export const UserProvider = ({ children }) => {
 					setUserWantEssay(wantEssayData);
 					setUserNotCompletedGoals(notCompletedGoalsData);
 					setUserCompletedGoals(completedGoalsData);
+					setUserGoalIndependentTasks(goalIndependentTasksData);
 					setTodaysChecklist(todaysChecklistData);
-                    console.log(todaysChecklistData);
 				},
 			)
 			.catch((err) => console.error(err))
@@ -130,9 +134,7 @@ export const UserProvider = ({ children }) => {
 			.then((res) => {
 				const updatedGoal = res.data.goal;
 				// lokális állapot (userNotCompletedGoals state) szinkronizálása
-				setUserNotCompletedGoals((prev) =>
-					prev.map((goal) => (goal.id === updatedGoal.id ? updatedGoal : goal)),
-				);
+				setUserNotCompletedGoals((prev) => prev.map((goal) => (goal.id === updatedGoal.id ? updatedGoal : goal)));
 
 				return updatedGoal;
 			});
@@ -167,6 +169,31 @@ export const UserProvider = ({ children }) => {
 				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 			})
 			.then((res) => res.data.goals);
+	}
+
+	//
+	// Goal independent tasks
+	function getUserGoalIndependentTasks() {
+		return axios
+			.get("http://localhost:8000/api/user-goal-independent-tasks", {
+				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+			})
+			.then((res) => res.data.tasks);
+	}
+	function patchUserGoalIndependentTasks(tasks) {
+		return axios
+			.patch(
+				"http://localhost:8000/api/user-goal-independent-tasks",
+				{ tasks },
+				{
+					headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+				},
+			)
+			.then((res) => {
+				const updatedTasks = res.data.tasks;
+				setUserGoalIndependentTasks(updatedTasks);
+				return updatedTasks;
+			});
 	}
 
 	//
@@ -223,9 +250,7 @@ export const UserProvider = ({ children }) => {
 
 					return {
 						...prev,
-						checklist_items: prev.checklist_items.map((item) =>
-							item.id === updatedItem.id ? updatedItem : item,
-						),
+						checklist_items: prev.checklist_items.map((item) => (item.id === updatedItem.id ? updatedItem : item)),
 					};
 				});
 
@@ -245,20 +270,22 @@ export const UserProvider = ({ children }) => {
 				// State-ek
 				loading, // kell a töltés spinnerekhez
 				userName, // kell a logout popuphoz
-				userDontWantEssay,    // kell a DontWantEssay komponenshez
+				userDontWantEssay, // kell a DontWantEssay komponenshez
 				setUserDontWantEssay, // kell a DontWantEssay komponenshez
-				userWantEssay,    // kell a WantEssay komponenshez
+				userWantEssay, // kell a WantEssay komponenshez
 				setUserWantEssay, // kell a WantEssay komponenshez
 				userNotCompletedGoals, // kell a nem teljesített célok kilistázásához
-				userCompletedGoals,    // kell a teljesített célok kilistázásához
+				userCompletedGoals, // kell a teljesített célok kilistázásához
+                userGoalIndependentTasks,
 				todaysChecklist, // kell a UserTodaysChecklist komponenshez
 				// API hívások
 				putUserDontWantEssay, // kell a DontWantEssay komponenshez
-				putUserWantEssay,     // kell a WantEssay komponenshez
-				postUserNotCompletedGoal,     // kell célok létrehozásához
-				patchUserNotCompletedGoal,    // kell célok szerkesztéséhez
+				putUserWantEssay, // kell a WantEssay komponenshez
+				postUserNotCompletedGoal, // kell célok létrehozásához
+				patchUserNotCompletedGoal, // kell célok szerkesztéséhez
 				completeUserNotCompletedGoal, // kell célok teljesítéséhez
-                toggleTodaysChecklistItem, // kell a UserTodaysChecklist-ben checklist item-ek kipipálásához/visszaállításához
+                patchUserGoalIndependentTasks,
+				toggleTodaysChecklistItem, // kell a UserTodaysChecklist-ben checklist item-ek kipipálásához/visszaállításához
 			}}
 		>
 			{children}

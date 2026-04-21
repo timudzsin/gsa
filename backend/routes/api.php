@@ -52,15 +52,6 @@ Route::patch('/user-not-completed-goals/{goal}/complete', [GoalController::class
     // (user) Completed goals
 // Teljesített célok lekérdezése
 Route::get('/user-completed-goals', [GoalController::class, 'getUserCompletedGoals'])->middleware('auth:sanctum');
-    
-
-
-    
-    // (user) Goal independent tasks
-// Céltól független taskok lekérdezése
-Route::get('/user-goal-independent-tasks', [TaskController::class, 'getUserGoalIndependentTasks'])->middleware('auth:sanctum');
-// Céltól független taskok szinkronizálása
-Route::patch('/user-goal-independent-tasks', [TaskController::class, 'patchUserGoalIndependentTasks'])->middleware('auth:sanctum');
 
 
 
@@ -75,7 +66,15 @@ Route::post('/user-today-checklist', [ChecklistController::class, 'createTodayCh
     // (user) Checklist items
 // Checklist item kipipálása/visszaállítása
 Route::patch('/checklist-items/{checklistItem}', [ChecklistItemController::class, 'toggle'])->middleware('auth:sanctum');
+    
 
+
+    
+    // (user) Goal independent tasks
+// Céltól független taskok lekérdezése
+Route::get('/user-goal-independent-tasks', [TaskController::class, 'getUserGoalIndependentTasks'])->middleware('auth:sanctum');
+// Céltól független taskok szinkronizálása
+Route::patch('/user-goal-independent-tasks', [TaskController::class, 'patchUserGoalIndependentTasks'])->middleware('auth:sanctum');
 
 
 
