@@ -13,15 +13,15 @@ class TaskSeeder extends Seeder
      */
     public function run(): void
     {
-        // anna: Emma Stone önbizalma
+        // anna: 2 hónapon át heti 3 futás
         Task::create([
             'goal_id' => 1,
             'user_id' => 1,
 
-            'description' => 'Szembesülni 1 dologgal ami zavar',
+            'description' => 'Futás',
 
             'type' => 'x_times_per_week',
-            'times_per_week' => 1,
+            'times_per_week' => 3,
         ]);
 
         // anna: C1 angol nyelvvizsga

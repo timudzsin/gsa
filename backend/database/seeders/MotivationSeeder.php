@@ -16,11 +16,11 @@ class MotivationSeeder extends Seeder
         // anna: Emma Stone önbizalma
         Motivation::create([
             'goal_id' => 1,
-            'description' => 'Hogy bátrabban kiálljak magamért.',
+            'description' => 'Hogy egészségesebb legyek.',
         ]);
         Motivation::create([
             'goal_id' => 1,
-            'description' => 'Hogy jobban tudjak barátkozni.',
+            'description' => 'Hogy fittebb legyek.',
         ]);
 
 

@@ -39,9 +39,7 @@ class UserSeeder extends Seeder
 
 
 👤🕯️ NEM LESZEK ELÉG JÓ BARÁTOKHOZ',
-            'want_essay' => '✨💅 EGY CSODÁLATOS LÁNY VAGYOK
- 
-😎 Magabiztos vagyok
+            'want_essay' => '😎 Magabiztos vagyok
 - Tudom magamról, hogy remek vagyok.
 - Teljesen önmagam tudok lenni.
 - Nem félek az emberek ítéletétől.

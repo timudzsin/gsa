@@ -37,7 +37,7 @@ export default function UserTodaysChecklist() {
 					</label>
 				))}
 			</div>
-			<h2>valamikor a héten</h2>
+			<h2>ezen a héten</h2>
 			<div className="UserTodaysChecklist-thisWeeksTasks">
 				{thisWeeksItems.map((item) => (
 					<label className="ChecklistItem" key={item.id}>

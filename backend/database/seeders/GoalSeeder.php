@@ -16,10 +16,10 @@ class GoalSeeder extends Seeder
         // anna
         Goal::create([
             'user_id' => 1,
-            'title' => 'Emma Stone önbizalma',
-            'deadline' => '2027-01-15',
+            'title' => '2 hónapon át heti 3 futás',
+            'deadline' => '2026-06-15',
             'color' => 'LIGHT-BLUE',
-            'icon_url' => 'person_celebrate.svg',
+            'icon_url' => 'directions_run_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg',
         ]);
         Goal::create([
             'user_id' => 1,
