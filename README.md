@@ -145,7 +145,3 @@
 
 
 
-
-# ***Ha a legtöbbet hoznád ki az életből, az hogyan nézne ki?***
-# ***Kaptál egy életet, és te tényleg úgy fogsz dönteni, hogy elpazarlod?***
-# ***Van lehetőséged küzdeni.***
